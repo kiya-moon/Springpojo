@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>받은 선물함</title>
+<link rel="stylesheet" type="text/css" href="common.css">
+<style>
+.receive_giftbox{
+	margin : 0 auto;
+}
+
+.global_spinner {
+	z-index: 999999999;
+	position: fixed;
+	top: 45px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+		url('https://t1.daumcdn.net/gift/common/global-spinner.gif');
+	background-size: 80px 80px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: 0.5;
+}
+
+.pc .global_spinner {
+	top: 0;
+}
+
+@charset "utf-8"; 
+
+body {
+	font-family: Apple SD Gothic Neo, Malgun Gothic, 맑은 고딕, sans-serif;
+	color: #333;
+}
+
+body {
+	font-family: -apple-system, Apple SD Gothic Neo, sans-serif;
+}
+
+@font-face {
+	font-family: ArialUnicodeMs;
+	font-style: normal;
+	font-weight: 400;
+	src: local("ArialUnicodeMs"), local("arial-unicode-ms");
+	src:
+		url(https://st.kakaocdn.net/commerce_ui/static/fonts/aria-unicode-ms/arial-unicode-ms.woff)
+		format("woff"),
+		url(https://st.kakaocdn.net/commerce_ui/static/fonts/aria-unicode-ms/arial-unicode-ms.woff2)
+		format("woff2");
+}
+
+body, div {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	-webkit-text-size-adjust: none;
+}
+
+body {
+	background: #fff;
+}
+
+body {
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: -apple-system, Apple SD Gothic Neo, sans-serif,
+		ArialUnicodeMs;
+	color: #000;
+}
+
+body, html {
+	min-width: 320px;
+}
+
+body, html {
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (device-width:375px) and (device-height:812px) and
+		(-webkit-device-pixel-ratio:3) , only screen and (device-width:414px)
+		and (device-height:896px) and (-webkit-device-pixel-ratio:3) , only
+		screen and (device-width:414px) and (device-height:896px) and
+		(-webkit-device-pixel-ratio:2) , only screen and (device-width:428px)
+		and (device-height:926px) and (-webkit-device-pixel-ratio:3) , only
+	screen and (device-width:390px) and (device-height:844px) and
+	(-webkit-device-pixel-ratio:3) {
+	body, html {
+		min-height: 100vh;
+	}
+}
+
+@media only screen and (device-width:375px) and (device-height:812px) and
+		(-webkit-device-pixel-ratio:3) , only screen and (device-width:414px)
+		and (device-height:896px) and (-webkit-device-pixel-ratio:3) , only
+		screen and (device-width:414px) and (device-height:896px) and
+		(-webkit-device-pixel-ratio:2) , only screen and (device-width:428px)
+		and (device-height:926px) and (-webkit-device-pixel-ratio:3) , only
+	screen and (device-width:390px) and (device-height:844px) and
+	(-webkit-device-pixel-ratio:3) {
+	body, html {
+		min-height: 100vh;
+	}
+}
+</style>
+</head>
+<body>
+	<app-inbox>
+	<div class="receive_giftbox">
+		<div>
+			<h2 class="tit_receive">
+				사용가능한 선물이<br>3개 남아있어요.
+				<!---->
+				<!---->
+				<!---->
+			</h2>
+			<app-inbox-filter-tab _nghost-ltb-c248="">
+			<ul _ngcontent-ltb-c248="" role="tablist" class="tab_receive">
+				<li _ngcontent-ltb-c248="" role="presentation" class="on"><a
+					_ngcontent-ltb-c248="" role="tab" cutiara="" class="link_tab"
+					data-tiara-layer="available tab available" data-tiara-copy="사용가능탭"
+					href="/giftbox/inbox?couponStatus=OPEN"> 사용가능 3 </a></li>
+				<li _ngcontent-ltb-c248="" role="presentation"><a
+					_ngcontent-ltb-c248="" role="tab" cutiara="" class="link_tab"
+					data-tiara-layer="unavailable tab unavailable"
+					data-tiara-copy="사용완료탭" href="complete.html">
+						사용완료 24 </a></li>
+				<!---->
+			</ul>
+			<!----><!----><!----></app-inbox-filter-tab>
+		</div>
+		<app-inbox-infinite-gift _nghost-ltb-c251="">
+		<cu-infinite-scroll _ngcontent-ltb-c251="">
+		<div infinitescroll="">
+			<ul _ngcontent-ltb-c251="" class="list_receive">
+				<li _ngcontent-ltb-c251=""><gl-link _ngcontent-ltb-c251=""
+						cutiara="" _nghost-ltb-c61="" data-tiara-layer="available item"
+						data-tiara-copy="이디야커피 디지털 상품권 1만원권"> <a
+						_ngcontent-ltb-c61="" class="link_receive"
+						href="/giftbox/inbox/detail/287267647"><div
+							_ngcontent-ltb-c251="" style="padding-top: 100%;">
+							<img _ngcontent-ltb-c251="" class="thumb_img"
+								style="position: absolute; top: 0px; left: 0px;"
+								src=" "
+								alt="이디야커피 디지털 상품권 1만원권">
+							<div _ngcontent-ltb-c251="" class="thumb_receive"></div>
+						</div> <span _ngcontent-ltb-c251=""><span _ngcontent-ltb-c251=""
+							class="screen_out">브랜드명</span><span _ngcontent-ltb-c251=""
+							class="txt_store">이디야커피</span><span _ngcontent-ltb-c251=""
+							class="screen_out">제품명</span><strong _ngcontent-ltb-c251=""
+							class="tit_product">이디야커피 디지털 상품권 1만원권 </strong></span> <!----> <!---->
+						<app-expiration-badge _ngcontent-ltb-c251=""><!----></app-expiration-badge>
+						<!----> <app-stamp _ngcontent-ltb-c251=""> <span
+							class="badge_state badge_using">사용중</span></app-stamp> <!----> <!----></a><!----><!----><!----><!----><!----><!----><!----><!----></gl-link>
+					<div _ngcontent-ltb-c251="" class="info_sender">
+						<span _ngcontent-ltb-c251="" class="txt_from">from.</span>민주누나
+					</div>
+					<div _ngcontent-ltb-c251="" class="date_receive">
+						<span _ngcontent-ltb-c251="" class="screen_out">선물받은 날짜</span>2017.07.21<span
+							_ngcontent-ltb-c251="" class="time_receive">오전 11:09</span>
+					</div></li>
+				<li _ngcontent-ltb-c251=""><gl-link _ngcontent-ltb-c251=""
+						cutiara="" _nghost-ltb-c61="" data-tiara-layer="available item"
+						data-tiara-copy="CU 모바일금액권 10,000원"> <a
+						_ngcontent-ltb-c61="" class="link_receive"
+						href="/giftbox/inbox/detail/448811337"><div
+							_ngcontent-ltb-c251="" style="padding-top: 100%;">
+							<img _ngcontent-ltb-c251="" class="thumb_img"
+								style="position: absolute; top: 0px; left: 0px;"
+								src=" "
+								alt="CU 모바일금액권 10,000원">
+							<div _ngcontent-ltb-c251="" class="thumb_receive"></div>
+						</div> <span _ngcontent-ltb-c251=""><span _ngcontent-ltb-c251=""
+							class="screen_out">브랜드명</span><span _ngcontent-ltb-c251=""
+							class="txt_store">CU</span><span _ngcontent-ltb-c251=""
+							class="screen_out">제품명</span><strong _ngcontent-ltb-c251=""
+							class="tit_product">CU 모바일금액권 10,000원 </strong></span> <!----> <!----> <app-expiration-badge
+							_ngcontent-ltb-c251=""><!----></app-expiration-badge> <!----> <app-stamp
+							_ngcontent-ltb-c251=""> <span
+							class="badge_state badge_using">사용중</span></app-stamp> <!----> <!----></a><!----><!----><!----><!----><!----><!----><!----><!----></gl-link>
+					<div _ngcontent-ltb-c251="" class="info_sender">
+						<span _ngcontent-ltb-c251="" class="txt_from">from.</span>기억이없어용
+					</div>
+					<div _ngcontent-ltb-c251="" class="date_receive">
+						<span _ngcontent-ltb-c251="" class="screen_out">선물받은 날짜</span>2018.07.21<span
+							_ngcontent-ltb-c251="" class="time_receive">오후 01:42</span>
+					</div></li>
+				<li _ngcontent-ltb-c251=""><gl-link _ngcontent-ltb-c251=""
+						cutiara="" _nghost-ltb-c61="" data-tiara-layer="available item"
+						data-tiara-copy="아이스 카페 아메리카노 T+7 레이어 가나슈 케이크"> <a
+						_ngcontent-ltb-c61="" class="link_receive"
+						href="/giftbox/inbox/detail/1733866518"><div
+							_ngcontent-ltb-c251="" style="padding-top: 100%;">
+							<img _ngcontent-ltb-c251="" class="thumb_img"
+								style="position: absolute; top: 0px; left: 0px;"
+								src=" "
+								alt="아이스 카페 아메리카노 T+7 레이어 가나슈 케이크">
+							<div _ngcontent-ltb-c251="" class="thumb_receive"></div>
+						</div> <span _ngcontent-ltb-c251=""><span _ngcontent-ltb-c251=""
+							class="screen_out">브랜드명</span><span _ngcontent-ltb-c251=""
+							class="txt_store">스타벅스</span><span _ngcontent-ltb-c251=""
+							class="screen_out">제품명</span><strong _ngcontent-ltb-c251=""
+							class="tit_product">아이스 카페 아메리카노 T+7 레이어 가나슈 케이크 </strong></span> <!---->
+						<!----> <app-expiration-badge _ngcontent-ltb-c251="">
+						<span><span class="screen_out">사용기한</span><span
+							class="badge_deadline">D-353</span></span><!----></app-expiration-badge> <!----> <!----> <!----></a><!----><!----><!----><!----><!----><!----><!----><!----></gl-link>
+					<div _ngcontent-ltb-c251="" class="info_sender">
+						<span _ngcontent-ltb-c251="" class="txt_from">from.</span>송희
+					</div>
+					<div _ngcontent-ltb-c251="" class="date_receive">
+						<span _ngcontent-ltb-c251="" class="screen_out">선물받은 날짜</span>2022.07.05<span
+							_ngcontent-ltb-c251="" class="time_receive">오전 11:57</span>
+					</div></li>
+				<!---->
+			</ul>
+			<!---->
+		</div>
+		<!----><!----></cu-infinite-scroll><!----><!----><!----></app-inbox-infinite-gift>
+	</div>
+	<!----><!----><!----><!----></app-inbox>
+</body>
+</html>
