@@ -1,10 +1,492 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>auction_main_page</title>
+<!-- 배너 CSS 파일 -->
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- 홈페이지 상단 파비콘 -->
+<link rel="shortcut icon" type="image/x-icon" href="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-128.png">
+<!-- 구글 폰트 (Cormorant SC) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+/* 공통 적용 */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	margin: 0 auto;
+	width: 1280px;
+}
+.nav-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 20px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+ul{
+	list-style: none;
+}
+
+/* 검색창 말풍선 */
+.speech-bubble::-webkit-scrollbar {
+    display: none;
+}
+.speech-bubble-wrapper{
+	position: absolute;
+	top: 80px;
+	display: none;
+}
+.speech-bubble {
+	position: relative;
+	background: white;
+	border-radius: .4em;
+	width: 300px;
+	height: 250px;
+	overflow: scroll;
+}
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 10%;
+	width: 0;
+	height: 0;
+	border: 9px solid transparent;
+	border-bottom-color: white;
+	border-top: 0;
+	border-left: 0;
+	margin-left: -4.5px;
+	margin-top: -9px;
+}
+.search-result{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid black;
+	display: flex;
+	align-items: center;
+}
+.search-result-img{
+	border: 1px solid black;
+	width: 40px;
+	height: 40px;
+}
+.search-result-name, .search-result-price, .search-result-time-left{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.search-result-name{
+	border: 1px solid black;
+	width: 80px;
+	height: 40px;
+}
+.search-result-price{
+	border: 1px solid black;
+	width: 80px;
+	height: 40px;
+}
+.search-result-time-left{
+	border: 1px solid black;
+	width: 100px;
+	height: 40px;
+}
+
+/* 헤더 */
+header{
+	width: 1280px;
+	height: 130px;
+	position: fixed;
+	z-index: 9999;
+	background: white;
+	opacity: 90%;
+}
+.fa-brands{
+	font-size: 50px;
+}
+.logo-name{
+	font-size: 30px;
+	font-weight: bold;
+}
+.nav-search{
+	width: 300px;
+	height: 25px;
+	border-bottom: 2px solid black;
+	display: flex;
+	align-items: center;
+}
+.nav-search-bar{
+	border: none;
+	width: 275px;
+	outline: none;
+	font-weight: bold;
+	font-size: 15px;
+}
+.fa-solid{
+	padding-left: 10px;
+}
+.nav-user{
+	display: flex;
+}
+.nav-user li a{
+	padding: 10px;
+	font-size: 13px;
+	font-weight: bold;
+}
+.nav-user-sell{
+	border-radius: 5px;
+	background: black;
+}
+.nav-user-sell a{
+	color: white;
+}
+.nav-main-menu{
+	padding-top: 20px;
+}
+.main-menu{
+	display: flex;
+	justify-content: space-between;
+}
+.main-menu li{
+	font-size: 20px;
+	font-weight: bold;
+}
+.main-menu li a:hover{
+	border-bottom: 2px solid #282828;
+}
+
+/* 섹션 슬릭슬라이더 배너 */
+.banner{
+	padding-top: 150px;
+}
+.slick-arrow{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	border: 0;
+	width: 48px;
+	height: 48px;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+.slick-prev{
+	z-index: 10;
+	background: url("https://cdn4.iconfinder.com/data/icons/cc_mono_icon_set/blacks/48x48/br_prev.png");
+}
+.slick-next{
+	right: 0;
+	background: url("https://cdn4.iconfinder.com/data/icons/cc_mono_icon_set/blacks/48x48/br_next.png");
+}
+
+/* 인기상품 목록 */
+.most-people-wanted{
+	margin-top: 50px;
+	width: 100%;
+	height: 30px;
+	padding-bottom: 50px;
+}
+.most-people-wanted-title{
+	text-align: center;
+	font-family: 'Cormorant SC', serif;
+	font-size: 35px;
+	display: inline-block;
+}
+.division{
+	width: 501px;
+	display: inline-block;
+}
+article{
+	padding-top: 50px;
+}
+.popular-product:nth-child(2n), .popular-product-menu:nth-child(2n){
+	margin-left: 20px;
+	float: right;
+}
+.popular-product{
+	display: inline-block;
+	width: 350px;
+	height: 600px;
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	box-shadow: 2px 2px 2px 2px;
+}
+.popular-product:hover{
+	cursor: pointer;
+	opacity: 80%;
+}
+.popular-product:nth-child(1){
+	background-image: url("https://www.ledressingideal.fr/le-total-look-blanc-en-hiver/styleoncue/");
+}
+.popular-product:nth-child(4){
+	background-image: url("https://i.pinimg.com/564x/bd/07/60/bd076083835c892ea4693b941683d003.jpg");
+}
+.popular-product:nth-child(5){
+	background-image: url("https://i.pinimg.com/564x/85/e8/10/85e8103f23a4fa6b6e82842c0cbfc921.jpg");
+}
+.popular-product:nth-child(8){
+	background-image: url("https://i.pinimg.com/564x/c4/06/c6/c406c6ba72e8ce38f4c8892f5daecfcf.jpg");
+}
+.popular-product:nth-child(9){
+	background-image: url("https://i.pinimg.com/564x/72/67/93/7267934020b24bdaed22a085cdd3f0ad.jpg");
+}
+.popular-product-title{
+	font-size: 40px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	font-family: 'Cormorant SC', serif;
+}
+.fashion-beauty{
+	color: black;
+}
+.popular-product-menu{
+	border: 1px solid gray;
+	width: 900px;
+	height: 600px;
+	display: inline-block;
+	margin-bottom: 60px;
+}
+.popular-product-list{
+	border: 1px solid gray;
+	width: 280px;
+	height: 282px;
+	display: inline-block;
+	margin: 7px;
+	text-align: center;
+}
+.popular-product-img{
+	width: 200px;
+	height: 200px;
+}
+.popular-product-name, .popular-product-about, .popular-product-price{
+	border: 1px solid gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 26px;
+	font-size: 14px;
+}
+
+/* 푸터 */
+footer{
+	border: 1px solid black;
+	margin-top: 100px;
+	width: 100%;
+	height: 400px;
+}
+.footer-front{
+	position: relative;
+	z-index: 1;
+	width: 1280px;
+	height: 50px;
+	background-color: white;
+}
+.footer-pusher{
+	position: relative;
+	z-index: -2;
+	width: 1280px;
+	height: 350px;
+	background-color: white;
+}
+.footer-behind{
+	position: fixed;
+	z-index: -1;
+	width: 1280px;
+	height: 300px;
+	background-color: gray;
+}
+</style>
 </head>
 <body>
-
+	<header>
+		<nav class="nav-top">
+			<div class="nav-logo">
+				<i class="fa-brands fa-artstation"></i>
+				<a class="logo-name" href="#">uction</a>
+			</div>
+			<div class="nav-search">
+				<input id="nav-search-bar" class="nav-search-bar" type="text" spellcheck="false" maxlength="30">
+				<a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+			<div id="speech-bubble-wrapper" class="speech-bubble-wrapper">
+				<div class="speech-bubble">
+					<!-- 나중에 검색을 안했을땐 랭킹 or 이름순 검색 시 해당 검색 문자가 포함된 수만큼 반복 -->
+					<th:block th:each="num: ${#numbers.sequence(1,10)}">
+						<div class="search-result">
+							<img class="search-result-img" alt="search-result-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+							<div class="search-result-name"><a href="#">상품이름</a></div>
+							<div class="search-result-price"><a href="#">상품가격</a></div>
+							<div class="search-result-time-left"><a href="#">경매종료시간</a></div>
+						</div>
+					</th:block>
+				</div>
+			</div>
+			</div>
+			<ul class="nav-user">
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">회원가입</a></li>
+				<li><a href="#">고객센터</a></li>
+				<li class="nav-user-sell"><a href="#">판매하기</a></li>
+			</ul>
+		</nav>
+		<nav class="nav-main-menu">
+			<ul class="main-menu">
+				<li><a href="#">Fashion & Beauty</a></li>
+				<li><a href="#">Furniture & Electronic</a></li>
+				<li><a href="#">Game & Hobby</a></li>
+				<li><a href="#">Sports & Car</a></li>
+				<li><a href="#">Book & ETC</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="banner">
+		<div id="slick-slider" class="slick-slider">
+	  		<img alt="BANNER1" src="https://media.bunjang.co.kr/images/nocrop/853828589_w2058.jpg">
+	  		<img alt="BANNER2" src="https://media.bunjang.co.kr/images/nocrop/854907597_w1029.jpg">
+	  		<img alt="BANNER3" src="https://media.bunjang.co.kr/images/nocrop/852789386_w2058.jpg">
+		</div>
+	</section>
+	<div class="most-people-wanted">
+		<hr class="division">
+		<h1 class="most-people-wanted-title">MOST &nbsp; WANTED</h1>
+		<hr class="division">
+	</div>
+		<article>
+			<div class="popular-product">
+				<h2 class="popular-product-title fashion-beauty">Fashion <br>&<br> Beauty</h2>
+			</div>
+			<div class="popular-product-menu">
+				<!-- 나중에 리스트에서 인기(조회수) 순으로 1~6등까지 가져와서 뿌려줌 -->
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product-menu">
+				<!-- 나중에 리스트에서 인기(조회수) 순으로 1~6등까지 가져와서 뿌려줌 -->
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title furniture-electronic">Furniture <br>&<br> Electronic</h2>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title game-hobby">Game <br>&<br> Hobby</h2>
+			</div>
+			<div class="popular-product-menu">
+				<!-- 나중에 리스트에서 인기(조회수) 순으로 1~6등까지 가져와서 뿌려줌 -->
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product-menu">
+				<!-- 나중에 리스트에서 인기(조회수) 순으로 1~6등까지 가져와서 뿌려줌 -->
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title sports-car">Sports <br>&<br> Car</h2>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title book-etc">Book <br>&<br> ETC</h2>
+			</div>
+			<div class="popular-product-menu">
+				<!-- 나중에 리스트에서 인기(조회수) 순으로 1~6등까지 가져와서 뿌려줌 -->
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+		</article>
+		<footer>
+			<div class="footer-front"></div>
+			<div class="footer-pusher"></div>
+			<div class="footer-behind"></div>
+		</footer>
+<!-- 폰트어썸 스크립트 -->
+<script src="https://kit.fontawesome.com/30ff607ddb.js" crossorigin="anonymous"></script>
+<!-- 제이쿼리 스크립트 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 슬릭 슬라이더 스크립트 -->
+<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- 슬릭 슬라이더 배너 버튼 효과, 자동 모션 효과 스크립트 -->
+<script type="text/javascript">
+	$(function(){
+		$(".slick-slider").slick();
+	});
+	setInterval(function() {
+		$(".slick-next").click();
+	}, 4000);
+</script>
+<!-- 이벤트 핸들러 스크립트 -->
+<script>
+	<!-- 검색창 클릭 시 검색 결과 보여주는 팝업 열기 -->
+	$("#nav-search-bar").on("click", function(e) {
+		$("#speech-bubble-wrapper").show();
+	});
+	<!-- 외부 영역 클릭 시 검색 결과 보여주는 팝업 닫기 -->
+	$(document).on("mouseup", function(e){
+		if($("#speech-bubble-wrapper").has(e.target).length == 0){
+			$("#speech-bubble-wrapper").hide();
+		}
+	});
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
