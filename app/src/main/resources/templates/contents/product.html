@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/product.css}">
+<body>
+	<div class="bg_color">
+		<div class="productContainer">
+			<div>
+				<!-- img -->
+			</div>
+			<div class="productInfo">
+				<div>
+					<input type="text" id="productName" class="productName" value="상품명"
+						readonly> <input type="text" id="productCategory"
+						class="productCategory" value="카테고리" readonly>
+				</div>
+				<div>
+					<p>시간</p>
+				</div>
+				<div>
+					<span>₩<input type="text" id="productPrice"
+						class="productPrice" value="현재금액" readonly></span>
+				</div>
+				<div>
+					<button>+ ₩1000</button>
+					<button>+ ₩5000</button>
+					<button>+ ₩10000</button>
+					<button>Reset</button>
+				</div>
+				<form method="post">
+					<div>
+						<p>입찰 금액</p>
+						<span>₩<input type="text" id="productPrice"
+							class="productPrice" value="현재금액" readonly></span>
+					</div>
+					<!-- 보더바텀, 바탕 그레이 -->
+				</form>
+				<div>
+					<button>입찰하기</button>
+					<button>찜 목록</button>
+					<button>
+						<img> <span>0</span>
+					</button>
+				</div>
+			</div>
+			<div>
+				<!-- 판매자정보 -->
+			</div>
+			<div>
+				<!-- 상품설명 -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
