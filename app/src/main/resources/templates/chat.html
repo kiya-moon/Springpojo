@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+@font-face {
+	font-family: 'RIDIBatang';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'RIDIBatang';
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.chatroom_box {
+	border: 2px solid black;
+	padding: 10px;
+	padding-bottom: 75%;
+	position: relative;
+	top: 20px;
+	margin: 5px;
+}
+
+.chatroom_header {
+	background-color: #ffffff;
+	display: inline;
+	text-align: center;
+	margin: 0 auto;
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.chatTitle {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	width: auto;
+	text-align: center;
+}
+
+.user1 {
+	text-align: right;
+}
+
+.user_id {
+	margin-left: 14px;
+	margin-right: 14px;
+}
+
+.user1_chat {
+	position: relative;
+	background: #ffffff;
+	border-radius: .4em;
+	border: 2px solid #d4d4d4;
+	padding: 10px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.user1_chat:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 18px solid transparent;
+	border-left-color: #d4d4d4;
+	border-right: 0;
+	border-top: 0;
+	margin-top: -13.5px;
+	margin-right: -19px;
+}
+
+.user2 {
+	text-align: left;
+}
+
+.user2_chat {
+	position: relative;
+	background: #d4d4d4;
+	border-radius: .4em;
+	padding: 10px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.user2_chat:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 23px solid transparent;
+	border-right-color: #d4d4d4;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -13.5px;
+	margin-left: -16px;
+}
+ .chatroom_footer{ 
+ 	position: absolute; 
+ 	bottom: 4px; 
+ } 
+.chat_msg{
+	width: 365px; 
+	height: 50px;
+	border: 2px solid black;
+	
+	
+}
+.text_send_button{
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<div class="chatroom_wrap">
+		<div class="chatroom_box">
+			<div class="chatroom_header">
+				<h2 class="chatTitle">(로고)채팅방</h2>
+			</div>
+			<div class="chatroom_content">
+				<div class="user1">
+					<h5 class="user_id">거북이 님</h5>
+					<hgroup class="user1_chat">
+						<h4>안녕하세요~</h4>
+					</hgroup>
+				</div>
+				<div class="user2">
+					<h5 class="user_id">토끼 님</h5>
+					<hgroup class="user2_chat">
+						<h4>안녕하세요!</h4>
+					</hgroup>
+				</div>
+			</div>
+			<div class="chatroom_footer">
+				<input type="text" class="chat_msg" name="chat_msg">
+				<button class="text_send_button" type="button">전송</button>
+			</div>
+		</div>
+	</div>
+	<div></div>
+</body>
+</html>
