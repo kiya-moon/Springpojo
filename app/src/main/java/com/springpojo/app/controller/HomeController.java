@@ -60,6 +60,11 @@ public class HomeController {
         return "/login/forgotPw";
     }
 	
+    // 상품목록리스트
+    @GetMapping("/productList")
+    public String prodcutList(){
+    	return "/contents/productList";
+    }
 	
 	
 	

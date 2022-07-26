@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>auction_productList</title>
+
+<!-- 배너 CSS 파일 -->
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+<!-- 홈페이지 상단 파비콘 -->
+<link rel="shortcut icon" type="image/x-icon" href="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-128.png">
+
+<!-- 구글 폰트 (Cormorant SC) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap" rel="stylesheet">
+
+<style>
+/* 공통 적용 */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	margin: 0 auto;
+	width: 1280px;
+}
+.nav-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 20px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+ul{
+	list-style: none;
+}
+
+/* 상품 목록 */
+.productList_header{
+	margin-top: 50px;
+	width: 100%;
+	height: 30px;
+	padding-bottom: 50px;
+}
+.category_name{
+	text-align: center;
+	font-size: 32px;
+	display: inline-block;
+	position: absolute;
+	background-color: white;
+	top: 20px;
+	left: 43%;
+	transform: translate(10px, 10px);
+	padding: 10px;
+	
+}
+.category_line{
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	border: 2px solid black;
+}
+.product_sort{
+	text-align: right;
+	margin-right: 50px;
+}
+
+.productList_contents{
+	display: inline-block;
+	width: 350px;
+	height: 600px;
+	position: relative;
+}
+.productList_contents:hover{
+	cursor: pointer;
+	opacity: 80%;
+}
+
+.productList_contents{
+	width: 100%;
+	height: 600px;
+	display: inline-block;
+ 	margin-bottom: 60px; 
+}
+.product_wrap{
+	text-align: center;
+}
+.productList_contents_list{
+	border: 1px solid gray;
+	width: 280px;
+	height: 282px;
+	display: inline-block;
+	margin: 7px;
+	text-align: center;
+}
+.productList_contents_img{
+	width: 200px;
+	height: 200px;
+}
+.productList_contents_name, .productList_contents_about, .productList_contents_price{
+	border: 1px solid gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 26px;
+	font-size: 14px;
+}
+.popularity_ranking_button{
+	margin-right: -4px;
+	border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.latest_order_button{
+	margin-left: -3px;
+	margin-right: -4px;
+}
+.closing_order_button{
+	margin-left: -3px;
+	border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.product_sort button{
+	border: 1px solid black;
+	background-color: black;
+	color: white;
+	padding: 5px;
+}
+.product_sort button:hover{
+	color:black;
+	background-color: white;
+}
+</style>
+</head>
+<body>
+	<div class="productList_header">
+		<hr class="category_line">
+		<h1 class="category_name">카테고리명</h1>
+	</div>
+	<div class="product_sort">
+			<button class="popularity_ranking_button">인기상품</button>
+			<button class="latest_order_button">신규등록</button>
+			<button class="closing_order_button">마감임박</button>
+	</div>
+	
+	<article>
+		<div class="productList_contents">
+			<div class="product_wrap">
+				<th:block th:each="num: ${#numbers.sequence(1,8)}">
+					<div class="productList_contents_list">
+						<img class="productList_contents_img" alt="productList_contents_img" src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="productList_contents_name">상품 이름</div>
+						<div class="productList_contents_about">현재 입찰 인원</div>
+						<div class="productList_contents_price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+		</div>
+	</article>
+	
+
+		
+<!-- 제이쿼리 스크립트 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</body>
+</html>
