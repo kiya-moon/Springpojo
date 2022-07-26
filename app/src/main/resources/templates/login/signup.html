@@ -96,45 +96,47 @@ hr:not([size]) {
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">회원가입</h2>
-				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer">
+				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer" onclick=""> <!-- 닫기 버튼 -->
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form>
+				<form name="signup">
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
-							<input type="text" class="sw_floating"  placeholder=" ">
+							<input type="text" class="sw_floating" name="userId" placeholder=" ">
 							<label id="sw_textColor">아이디</label>
-							<input class="sw_check" type="button" value="중복확인">
+							<input class="sw_check" type="button" value="중복확인" onclick="">
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password"  class="sw_floating" placeholder=" ">
+							<input type="password"  class="sw_floating" name="userPw" placeholder=" ">
 							<label id="sw_textColor">비밀번호</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password"  class="sw_floating" placeholder=" ">
+							<input type="password"  class="sw_floating" name="userPwCheck" placeholder=" ">
 							<label id="sw_textColor">비밀번호 확인</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text"  class="sw_floating" placeholder=" ">
+							<input type="text"  class="sw_floating" name="userName" placeholder=" ">
 							<label id="sw_textColor">이름</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text"  class="sw_floating" placeholder=" ">
+							<input type="number"  class="sw_floating" name="userBirth" placeholder=" ">
 							<label id="sw_textColor">생년월일</label>
 						</div>
 						<div class="sw_form-floating sw_mg2" id="sw_email">
-							<input type="text" class="sw_floating" placeholder=" ">
+							<input type="text" class="sw_floating" name="userEmail" placeholder=" ">
 							<label id="sw_textColor">이메일</label>
 							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
 							  <option value="naver.com">naver.com</option>
 							  <option value="google.com">google.com</option>
 							  <option value="hanmail.net">hanmail.net</option>
+							  <option value="daum.net">daum.net</option>
 							  <option value="nate.com">nate.com</option>
+							  <option value="hotmail.com">hotmail.com</option>
 							</select>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text" class="sw_floating" placeholder=" ">
+							<input type="number" class="sw_floating" name="userPhone" placeholder=" ">
 							<label id="sw_textColor">전화번호</label>
 						</div>
 							<div class="checkWrap">
@@ -156,50 +158,16 @@ hr:not([size]) {
 									개인정보 수집 및 이용<br>
 								</div>
 							</div>
-							<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor">회원가입</button>
+							<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>
 						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor"
 						onclick="location.href='login.html'"
-							th:onclick="|location.href='@{/login}'|">취소</button>
+							>취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-
-<script>
-
-/* 동의하기 체크박스 시작 */
-function checkSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="sw_select"]');
-	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="sw_select"]:checked');
-	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="sw_selectAll"]');
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-	  }else {
-	    selectAll.checked = false;
-	  }
-
-	}
-
-function selectAll(selectAll)  {
-	  const checkboxes 
-	       = document.getElementsByName('sw_select');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked;
-	  })
-	}
-/* 동의하기 체크 박스 끝  */
-	
-	
-</script>
+<script type="text/javascript" th:src="@{/js/signup.js}"></script>
 </body>
 </html>
