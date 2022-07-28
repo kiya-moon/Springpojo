@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+html{
+	background-color: #f6f6f8;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -8,12 +11,176 @@
 .bg_color{
 	width:100%;
 	height:100%;
-	background-color: #f6f6f8;
 }
 
 .productContainer{
-	width: 90%;
+	width: 1280px;
 	height: 90%;
 	background-color: #fff;
+	margin: 50px auto;
+	padding: 50px 0;
+}
+
+.productSubContainer{
+	width:95%;
 	margin: 0 auto;
+}
+.product_info{
+	height: 450px;
+}
+
+.img_view_box{
+	display: inline-block;
+	width: 50%;
+	height: 450px;
+	float: left;
+	border: 1px solid #000;
+}
+
+.productInfo{
+	position: relative;
+	display: inline-block;
+	width: 50%;
+	height:100%;
+	float: right;
+	padding-left: 50px;
+}
+
+.nameCategory{
+	position: relative;
+}
+
+.productName{
+	width: 85%;
+	font-weight: bold;
+	font-size: 27px;
+	display: inline-block;
+}
+
+.productCategory{
+	width: 15%;
+	float: right;
+	display:inline-block;
+	font-size: 14px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.startPrice{
+	font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.deadLineBox{
+	height: 100px;
+	margin: 20px 0;
+	padding: 20px 0;
+}
+
+.deadLine{
+	text-align: center;
+	font-size: 50px;
+	line-height: 80px;
+}
+
+.currentPrice_form{
+	background-color: #f6f6f8;
+	height: 170px;
+	position: relative;
+}
+
+.currentPriceBox{
+	display: flex;
+	justify-content:flex-end;
+	width: 95%;
+	padding-top: 50px;
+	padding-bottom: 3px;
+	margin: 0 auto;
+	border-bottom: 1px solid #ccc;
+	
+}
+
+.currentPrice{
+	display: inline-block;
+	width: 95%;
+	margin-top: 10px;
+	padding-bottom: 12px;
+	margin-left: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.priceBtn{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.btn_group{
+    background-color: black;
+    height: 30px;
+    width: 23%;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.func_btn{
+	width: 100%;
+	text-align: center;
+	margin-top: 12px;
+}
+
+.btn_group2{
+	height: 30px;
+	width: 32.83%;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.bid_btn{
+	background-color: #000;
+	color: #fff;
+}
+
+.likeList_btn, .like_btn{
+	background-color: #fff;
+}
+
+.productEx_body{
+	margin: 0 auto;
+	margin-top: 80px;
+}
+
+.like_line{
+	margin:0 70px;
+}
+
+.like_line img{
+	float:left;
+}
+.productEx_title{
+	padding: 5px 0;
+	text-align: center;
+	background-color: #000;
+	font-size: xx-large;
+	color: #fff;
+}
+
+.productEx_contents{
+	height: 300px;
+	background-color: #f6f6f6;
+}
+
+.list_btn_box{
+	text-align: end;
+	margin-top: 20px;
+}
+
+.productList{
+	height: 30px;
+	width: 80px;
+	background-color: #fff;
 }
