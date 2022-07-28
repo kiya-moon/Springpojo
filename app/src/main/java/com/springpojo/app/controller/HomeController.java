@@ -2,6 +2,7 @@ package com.springpojo.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -15,9 +16,9 @@ public class HomeController {
 		return"contents/addProduct";
 	}
 	
-	@GetMapping("/product")
+	@PostMapping("product")
 	public String product() {
-		return "contents/product";
+		return "/contents/product";
 	}
 	
 	@GetMapping("/about")
