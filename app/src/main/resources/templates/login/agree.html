@@ -217,8 +217,7 @@ label.sw_required::after {
 			<div class="sw_m-content2 sw_shadow">
 				<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 					<h2 class="sw_f1 sw_mg1">상호 뭐로 할까나</h2>
-					<img src="../img/x-square.svg" width="30em" height="30em"
-						style="cursor: pointer">
+					<img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"> <!-- 닫기 버튼 -->
 				</div>
 				<div class="sw_contents sw_m2">
 					<form action="/" method="POST" id="form_sw_wrap">

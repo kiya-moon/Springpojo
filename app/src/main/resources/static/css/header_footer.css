@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	margin: 0 auto;
+	width: 100%;
+}
+.body-wrapper-for-background{
+	margin: 0 auto;
+	background: white;
+}
+.body-wrapper-for-align{
+	margin: 0 auto;
+	width: 1280px;
+}
+.nav-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 20px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+ul{
+	list-style: none;
+}
+
+/* 검색창 말풍선 */
+.speech-bubble-wrapper::-webkit-scrollbar {
+    display: none;
+}
+.speech-bubble-wrapper{
+	position: absolute;
+	top: 57px;
+	display: none;
+	border: none;
+	box-shadow: 5px 6px 12px -11px rgba(0,0,0,0.75);
+	width: 300px;
+	height: 280px;
+	overflow: scroll;
+	background: white;
+}
+.search-result{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #bebebe;
+	display: flex;
+	align-items: center;
+}
+.search-result-name{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 30px;
+	font-size: 13px;
+	font-weight: lighter;
+}
+
+/* 헤더 */
+header{
+	width: 1280px;
+	height: 130px;
+	position: fixed;
+	z-index: 9999;
+	background: white;
+	opacity: 90%;
+}
+.fa-brands{
+	font-size: 50px;
+}
+.logo-name{
+	font-size: 30px;
+	font-weight: bold;
+}
+.nav-search{
+	width: 300px;
+	height: 25px;
+	border-bottom: 2px solid black;
+	display: flex;
+	align-items: center;
+}
+.nav-search-bar{
+	border: none;
+	width: 275px;
+	outline: none;
+	font-weight: bold;
+	font-size: 15px;
+}
+.fa-solid{
+	padding-left: 10px;
+}
+.nav-user{
+	display: flex;
+}
+.nav-user li a{
+	padding: 10px;
+	font-size: 13px;
+	font-weight: bold;
+}
+.nav-user-sell{
+	border-radius: 5px;
+	background: black;
+}
+.nav-user-sell a{
+	color: white;
+}
+.nav-main-menu{
+	padding-top: 20px;
+}
+.main-menu{
+	display: flex;
+	justify-content: space-between;
+}
+.main-menu li{
+	font-size: 20px;
+	font-weight: bold;
+}
+.main-menu li a:hover{
+	border-bottom: 2px solid #282828;
+}
+
+/* 푸터 */
+footer{
+	position:relative;
+	width: 100%;
+	right: 0;
+	height: 550px;
+	display: flex;
+	justify-content: center;
+}
+.footer-pusher{
+	position: relative;
+	z-index: -2;
+	width: 100%;
+	height: 550px;
+	background: #d1d1d1;
+}
+.footer-show{
+	position: fixed;
+	z-index: -1;
+	width: 100%;
+	height: 550px;
+	background: #d1d1d1;
+	display: block;
+	bottom: 0;
+}
+.footer-wrapper{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+.footer-main{
+	width: 1280px;
+	height: 100%;
+}
+.footer-main-title{
+	width: 100%;
+	height: 400px;
+}
+.footer-main-title-top{
+	width: 100%;
+	height: 250px;
+	display: flex;
+	justify-content: center;
+}
+.footer-site-map-wrapaper{
+	width: 90%;
+	height: 200px;
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.footer-site-map-menu{
+	width: 200px;
+	height: 100%;
+}
+.footer-site-map-subscribe{
+	width: 300px;
+	height: 100%;
+	display: inline-block;
+	margin-left: 110px;
+}
+.footer-site-map-subscribe h3, .footer-site-map-menu h3{
+	padding-bottom: 10px;
+}
+.footer-site-map-menu div, .footer-site-map-subscribe span{
+	padding-top: 4px;
+}
+.footer-email-button{
+	width: 100%;
+	height: 40px;
+	border-radius: 7px;
+	background: gray;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	margin-top: 20px;
+}
+.footer-main-title-bottom{
+	width: 100%;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+}
+.footer-company-mini-info{
+	width: 90%;
+	height: 100%;
+	border-bottom: 1px solid gray;
+	position: relative;
+}
+.footer-company-mini-info-right{
+	position: absolute;
+	right: 0;
+}
+.footer-company-mini-info-cards{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.footer-company-mini-info-cards i{
+	color: darkgray;
+	padding: 7px;
+}
+.footer-main-contents{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+.footer-main-contents-wrapper{
+	width: 90%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.footer-main-contents-logo{
+	width: 150px;
+	height: 50px;
+	margin-top: 40px;
+}
+.footer-main-contents-logo i{
+	color: gray;
+}
+.footer-main-contents-logo a{
+	font-size: 30px;
+	font-weight: bold;
+	color: gray;
+}
+.footer-main-contents-info{
+	width: 500px;
+	height: 40px;
+	margin-top: 65px;
+}
+.footer-main-contents-info span{
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	padding: 15px;
+}
+.footer-main-contents-sns{
+	width: 200px;
+	height: 50px;
+	margin-top: 60px;
+}
+.fa-facebook, .fa-twitter, .fa-instagram{
+	color: gray;
+	font-size: 30px;
+	padding-left: 10px;
+}

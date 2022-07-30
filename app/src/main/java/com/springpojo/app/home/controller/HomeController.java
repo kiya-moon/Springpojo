@@ -1,4 +1,4 @@
-package com.springpojo.app.controller;
+package com.springpojo.app.home.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +17,9 @@ public class HomeController {
 		return"contents/addProduct";
 	}
 	
-	@PostMapping("product")
+	@GetMapping("/product")
 	public String product() {
-		return "/contents/product";
+		return "contents/product";
 	}
 	
 	@GetMapping("/about")
@@ -73,6 +73,14 @@ public class HomeController {
     public String agree(Model model) {
     	return "/login/agree";
     }
+    
+    // 마이페이지
+    @GetMapping("/mypage")
+    public String mypage(Model model) {
+    	return "/mypage/Edit_member_information";
+    }
+    
+    
 
 	
 	

@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">home</title>
+<!--     공통 css, js, meta tag -->
+
+	
+    <th:block th:replace="fragments/header"></th:block>
 </head>
 <body>
+<!--     page content body 구성 -->
+<th:block th:replace="contents/home"></th:block>
+<!--     공통 footer -->
+    <footer th:replace="fragments/footer :: footer"></footer>
+<!--     공통 javascript -->
+<!--     <th:block th:replace="fragments/commonScript"></th:block> -->
+<!--     page content javascript -->
+    <th:block layout:fragment="pageCustomScript"></th:block>
+
 </body>
 </html>
