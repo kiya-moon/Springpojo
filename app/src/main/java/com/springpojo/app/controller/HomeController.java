@@ -61,12 +61,19 @@ public class HomeController {
         return "/login/forgotPw";
     }
 	
+    // 상품목록리스트
+    @GetMapping("/productList")
+    public String prodcutList(){
+    	return "/contents/productList";
+    }
+	
+
     // 이용약관
     @GetMapping("/agree")
     public String agree(Model model) {
     	return "/login/agree";
     }
-    
+
 	
 	
 	
