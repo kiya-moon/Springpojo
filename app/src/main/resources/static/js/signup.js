@@ -1,35 +1,3 @@
-/* 동의하기 체크박스 시작 */
-function checkSelectAll()  {
-  // 전체 체크박스
-  const checkboxes 
-    = document.querySelectorAll('input[name="sw_select"]');
-  // 선택된 체크박스
-  const checked 
-    = document.querySelectorAll('input[name="sw_select"]:checked');
-  // select all 체크박스
-  const selectAll 
-    = document.querySelector('input[name="sw_selectAll"]');
-  
-  if(checkboxes.length === checked.length)  {
-    selectAll.checked = true;
-  }else {
-    selectAll.checked = false;
-  }
-
-}
-
-function selectAll(selectAll)  {
-  const checkboxes 
-       = document.getElementsByName('sw_select');
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked;
-  })
-}
-/* 동의하기 체크 박스 끝  */
- 
- 
- 
  // 회원가입
  function signSend(){
 	let f = document.signup;
@@ -39,6 +7,7 @@ function selectAll(selectAll)  {
 	let userName = f.userName;
 	let userBirth = f.userBirth;
 	let userEmail = f.userEmail;
+	let userPhone = f.userPhone;
 	
 	// 아이디 입력 안 했을때
 	if(userId == ""){
@@ -47,7 +16,8 @@ function selectAll(selectAll)  {
 		return false;
 	}
 	
-	var re1 = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{4,16}$/;
+	// 아이디 6~16자리 
+	var re1 = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,16}$/;
 	
 	if(!re1.test(userId.value)) {
 		alert("아이디는 6~16자리 영문, 숫자 조합으로 입력 해주세요.");
@@ -70,8 +40,16 @@ function selectAll(selectAll)  {
 		return false;
 	}
 	
+	// 비밀번호 확인 입력 안했을때
 	if(userPwCheck.value == ""){
 		alert("비밀번호 확인을 입력 해주세요.");
+		userPwCheck.focus();
+		return false;
+	}
+	
+	// 비밀번호와 비밀번호 확인이 일치 하지 않을때
+	if(userPw.value !== userPwCheck.value){
+		alert("비밀번호가 일치 하지 않습니다.");
 		userPwCheck.focus();
 		return false;
 	}
@@ -83,7 +61,7 @@ function selectAll(selectAll)  {
 		return false;
 	}
 	
-	var re3 =  /^[가-힣]{2,4}$/;
+	var re3 =  /^[가-힣]{2,5}$/;
 	
 	if(!re3.test(userName.value)){
 		alert("이름을 정확히 적어주세요.");
@@ -113,7 +91,7 @@ function selectAll(selectAll)  {
 		return false;
 	}
 	
-	var re5 = /^[a-zA-Z0-9+-_.]$/;
+	var re5 = /^([a-zA-Z0-9]).{4,16}$/;
 	
 	if(!re5.test(userEmail.value)){
 		alert("이메일 형식에 맞게 입력 해주세요.")
@@ -130,13 +108,15 @@ function selectAll(selectAll)  {
 	
 	var re6 = /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/;
 	
-	if(!re6.test(userPhon.value)){
+	if(!re6.test(userPhone.value)){
 		alert("전화번호 형식에 맞게 입력해주세요.");
 		userPhone.focus();
 		return false;
 	}
-	
-	f.submit();
+  
+  if( !(userId == true && userPw && userPwCheck && userName && userBirth && userEmail && userPhone) == false){
+	} else{
+		alert("회원가입 성공");
+		f.submit();
+	}
 }
-
-

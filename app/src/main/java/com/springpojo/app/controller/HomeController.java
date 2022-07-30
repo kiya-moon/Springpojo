@@ -61,8 +61,12 @@ public class HomeController {
         return "/login/forgotPw";
     }
 	
-	
-	
+    // 이용약관
+    @GetMapping("/agree")
+    public String agree(Model model) {
+    	return "/login/agree";
+    }
+    
 	
 	
 	

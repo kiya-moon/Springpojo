@@ -78,6 +78,13 @@ hr {
 hr:not([size]) {
     height: 1px;
 }
+
+/* input type=number 박스 없애주기 */
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 </style>
 </head>
 <body>
@@ -99,7 +106,7 @@ hr:not([size]) {
 				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer">
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="login">
+				<form  name="login">
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" class="sw_floating" name="userId" placeholder=" ">
@@ -112,7 +119,7 @@ hr:not([size]) {
 						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="LoginOn()">로그인</button>
 						<div class="sw_etc" style="cursor:pointer">
 							<a onclick="location.href='signup.html'"
-							th:onclick="|location.href='@{/signup}'|">회원가입</a>
+							th:onclick="|location.href='@{/agree}'|">회원가입</a>
 							<div id="sw_mp-etc">
 							<a onclick="location.href='forgotId.html'"
 							th:onclick="|location.href='@{/forgotId}'|">아이디 찾기</a>
@@ -130,6 +137,6 @@ hr:not([size]) {
 		</div>
 	</div>
 </div>
-</body>
 <script type="text/javascript" th:src="@{/js/login.js}"></script>
+</body>
 </html>
