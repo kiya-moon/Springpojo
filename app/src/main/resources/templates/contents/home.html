@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+<title>auction_main_page</title>
+<!-- 배너 CSS 파일 -->
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+<link th:href="@{/css/home.css}" rel="stylesheet">
+</head>
+<body>
+	<th:block th:replace="fragments/header"></th:block>
+	<th:block layout:fragment="content">
+		<!-- 채팅 -->
+		<span class="ky_side"> <input type="image" class="chatIcon"
+			th:src="@{img/chat.png}" onclick="chatRoom();">
+		</span>
+		<div class="body-wrapper-for-background">
+			<div class="body-wrapper-for-align">
+
+
+				<!---------------------------------------------------------------배너 시작--------------------------------------------------------------->
+				<section class="banner">
+					<div id="slick-slider" class="slick-slider">
+						<img alt="BANNER1"
+							src="https://media.bunjang.co.kr/images/nocrop/853828589_w2058.jpg">
+						<img alt="BANNER2"
+							src="https://media.bunjang.co.kr/images/nocrop/854907597_w1029.jpg">
+						<img alt="BANNER3"
+							src="https://media.bunjang.co.kr/images/nocrop/852789386_w2058.jpg">
+					</div>
+				</section>
+
+
+
+				<!---------------------------------------------------------------구분점--------------------------------------------------------------->
+				<div class="most-people-wanted">
+					<hr class="division">
+					<h1 class="most-people-wanted-title">MOST&nbsp;WANTED</h1>
+					<hr class="division">
+				</div>
+
+				<!---------------------------------------------------------------메인메뉴 시작--------------------------------------------------------------->
+				<article>
+					<!-- 패션 & 뷰티 -->
+					<div class="popular-product">
+						<h2 class="popular-product-title fashion-beauty">
+							Fashion <br>&<br> Beauty
+						</h2>
+					</div>
+					<div id="popular-product-list-fashion-beauty"
+						class="popular-product-menu">
+						<th:block th:each="num: ${#numbers.sequence(1,6)}">
+							<div class="popular-product-list">
+								<img class="popular-product-img" alt="popular-product-img"
+									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+								<div class="popular-product-name">상품 이름</div>
+								<div class="popular-product-about">현재 입찰 인원</div>
+								<div class="popular-product-price">현재 입찰가</div>
+							</div>
+						</th:block>
+					</div>
+					<!-- 가구 & 가전 -->
+					<div id="popular-product-list-furniture-electronic"
+						class="popular-product-menu menu-opacity-control active">
+						<th:block th:each="num: ${#numbers.sequence(1,6)}">
+							<div class="popular-product-list">
+								<img class="popular-product-img" alt="popular-product-img"
+									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+								<div class="popular-product-name">상품 이름</div>
+								<div class="popular-product-about">현재 입찰 인원</div>
+								<div class="popular-product-price">현재 입찰가</div>
+							</div>
+						</th:block>
+					</div>
+					<div class="popular-product">
+						<h2 class="popular-product-title furniture-electronic">
+							Furniture <br>&<br> Electronic
+						</h2>
+					</div>
+					<!-- 게임 & 취미 -->
+					<div class="popular-product">
+						<h2 class="popular-product-title game-hobby">
+							Game <br>&<br> Hobby
+						</h2>
+					</div>
+					<div id="popular-product-list-game-hobby"
+						class="popular-product-menu menu-opacity-control active">
+						<th:block th:each="num: ${#numbers.sequence(1,6)}">
+							<div class="popular-product-list">
+								<img class="popular-product-img" alt="popular-product-img"
+									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+								<div class="popular-product-name">상품 이름</div>
+								<div class="popular-product-about">현재 입찰 인원</div>
+								<div class="popular-product-price">현재 입찰가</div>
+							</div>
+						</th:block>
+					</div>
+					<!-- 스포츠 & 자동차 -->
+					<div id="popular-product-list-sports-car"
+						class="popular-product-menu menu-opacity-control active">
+						<th:block th:each="num: ${#numbers.sequence(1,6)}">
+							<div class="popular-product-list">
+								<img class="popular-product-img" alt="popular-product-img"
+									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+								<div class="popular-product-name">상품 이름</div>
+								<div class="popular-product-about">현재 입찰 인원</div>
+								<div class="popular-product-price">현재 입찰가</div>
+							</div>
+						</th:block>
+					</div>
+					<div class="popular-product">
+						<h2 class="popular-product-title sports-car">
+							Sports <br>&<br> Car
+						</h2>
+					</div>
+					<!-- 책 & 기타 -->
+					<div class="popular-product">
+						<h2 class="popular-product-title book-etc">
+							Book <br>&<br> ETC
+						</h2>
+					</div>
+					<div id="popular-product-list-book-etc"
+						class="popular-product-menu menu-opacity-control active">
+						<th:block th:each="num: ${#numbers.sequence(1,6)}">
+							<div class="popular-product-list">
+								<img class="popular-product-img" alt="popular-product-img"
+									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+								<div class="popular-product-name">상품 이름</div>
+								<div class="popular-product-about">현재 입찰 인원</div>
+								<div class="popular-product-price">현재 입찰가</div>
+							</div>
+						</th:block>
+					</div>
+				</article>
+			</div>
+		</div>
+
+	</th:block>
+	<footer th:replace="fragments/footer :: footer"></footer>
+
+	<th:block layout:fragment="pageCustomScript">
+
+
+		<!-- 슬릭 슬라이더 스크립트 -->
+		<script type="text/javascript"
+			src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script>
+		<!-- 슬릭 슬라이더 배너 버튼 효과, 자동 모션 효과 스크립트 -->
+			$(function() {
+				$(".slick-slider").slick();
+			});
+			setInterval(function() {
+				$(".slick-next").click();
+			}, 4000);
+		</script>
+
+
+	</th:block>
+
+
+</body>
+</html>

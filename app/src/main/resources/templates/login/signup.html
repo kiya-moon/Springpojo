@@ -103,7 +103,7 @@ input::-webkit-inner-spin-button {
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">회원가입</h2>
-				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer" onclick=""> <!-- 닫기 버튼 -->
+				<img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"> <!-- 닫기 버튼 -->
 			</div>
 			<div class="sw_m2 sw_p4">
 				<form  name="signup" method="post">
@@ -130,7 +130,7 @@ input::-webkit-inner-spin-button {
 							<label id="sw_textColor">생년월일</label>
 						</div>
 						<div class="sw_form-floating sw_mg2" id="sw_email">
-							<input type="text" class="sw_floating" name="userEmail" placeholder=" ">
+							<input type="text" class="sw_floating" name="userEmail" placeholder="">
 							<label id="sw_textColor">이메일</label>
 							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
@@ -147,11 +147,9 @@ input::-webkit-inner-spin-button {
 							<label id="sw_textColor">전화번호</label>
 						</div>
 						<button type="button" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>
-						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor"
-						onclick="location.href='login.html'"
-							>취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
 					</div>
 				</form>
+						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="|location.href='@{/}'|">취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
 			</div>
 		</div>
 	</div>
