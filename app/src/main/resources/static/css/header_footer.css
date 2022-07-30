@@ -126,6 +126,18 @@ header{
 	border-bottom: 2px solid #282828;
 }
 
+/* 채팅 */
+.chatIcon{
+	height: 50px;
+	weight: 50px;
+}
+
+.ky_side{
+	position: sticky;
+	top: 710px;
+	left: 1440px;
+}
+
 /* 푸터 */
 footer{
 	position:relative;

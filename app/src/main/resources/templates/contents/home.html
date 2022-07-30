@@ -13,6 +13,10 @@
 <body>
 	<th:block th:replace="fragments/header"></th:block>
 	<th:block layout:fragment="content">
+		<!-- 채팅 -->
+		<span class="ky_side"> <input type="image" class="chatIcon"
+			th:src="@{img/chat.png}" onclick="chatRoom();">
+		</span>
 		<div class="body-wrapper-for-background">
 			<div class="body-wrapper-for-align">
 
@@ -28,6 +32,8 @@
 							src="https://media.bunjang.co.kr/images/nocrop/852789386_w2058.jpg">
 					</div>
 				</section>
+
+
 
 				<!---------------------------------------------------------------구분점--------------------------------------------------------------->
 				<div class="most-people-wanted">
@@ -151,7 +157,7 @@
 			}, 4000);
 		</script>
 
-		
+
 	</th:block>
 
 
