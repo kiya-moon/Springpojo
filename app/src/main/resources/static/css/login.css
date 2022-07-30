@@ -67,6 +67,19 @@
 		border-radius: 0.3em;
 		outline: 0;
 	}
+	.sw_m-content2 {
+		position: relative;
+   		display: flex;
+   		flex-direction: column;
+    	width: 100%;
+    	pointer-events: auto;
+    	background-color: #fff;
+    	background-clip: padding-box;
+    	border: 1px solid rgba(0,0,0,.2);
+    	border-radius: 0.3em;
+    	outline: 0;
+    	height: 100%
+	}
 	
 	.sw_b1{
 		border-bottom:0!important;
@@ -172,8 +185,6 @@
 	
 	.sw_btn-primary {
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
 	}
 	
 	.sw_btn-group-lg>.sw_btn, .sw_btn-lg {
@@ -192,6 +203,10 @@
 	
 	.sw_w1 {
     width: 100%!important;
+	}
+	
+	.sw_w2 {
+    width: 90%!important;
 	}
 	
 	.sw_mg3 {
@@ -251,13 +266,6 @@ input.sw_floating::placeholder{}font-weight:normal; color: #d4d9e0;}
 	opacity:1;
 	}
 	
-	.sw_formCheck{
-		display : block;
-		min-height : 1.5rem;
-		padding-left: 1.5em;
-		margin-bottom: 0.4rem;
-	}
-	
 	.sw_m-header>h2{
 		text-align:center;
 	}
@@ -268,6 +276,109 @@ input.sw_floating::placeholder{}font-weight:normal; color: #d4d9e0;}
 	
 	.olmessagef {color: red; font-style: Italic;}
 	.olmessaget {color: blue; font-style: Italic;}
+	
+	
+	
+.sw_wrap {
+	margin: auto;
+}
+
+.sw_wrap .sw_logo {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.sw_wrap .sw_logo h1 {
+	margin: 0;
+	font-size: 50px;
+}
+
+.sw_wrap .sw_contents {
+	padding: 50px;
+	background-color: #ffffff;
+	border: 1px solid #dadada;
+	border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px
+		rgba(0, 0, 0, 0.08);
+}
+
+#form_sw_wrap {
+	margin: 0 auto;
+	width: 460px;
+	font-size: 14px;
+}
+
+#form_sw_wrap .sw_terms {
+	display: flex;
+	margin-bottom: 35px;
+}
+
+.sw_checkAll {
+	text-decoration: underline;
+}
+
+ #sw_allAgree{
+	margin-left: 8px;
+}
+
+.sw_termsList .sw_termsBox {
+	margin: 20px 0;
+}
+
+.sw_contents label {
+	font-weight: 700;
+}
+
+label.sw_required::after {
+	margin-left: 4px;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 24px;
+	color: #0086ff;
+	content: "(필수)";
+}
+
+.sw_termsList .sw_termsContent {
+    height: 7rem;
+    overflow: auto;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #dadada;
+    background: #fff;
+    font-size: 12px;
+}
+
+.sw_next-button {
+	width: 100%;
+	height: 40px;
+	outline: none;
+	cursor: pointer;
+	background-color: #242222;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+}
+
+.sw_next-button:hover:enabled {
+	background-color: #a3a2a2;
+}
+
+.sw_next-button:disabled {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+
+@media ( max-width : 768px) {
+	.sw_wrap {
+		min-width: 280px;
+		padding: 20px;
+	}
+	#form_sw_wrap {
+		max-width: 460px;
+		width: auto;
+	}
+}
 	
 	
 	

@@ -1,4 +1,4 @@
-// 로그인
+// 로그인 아이디, 비밀번호 입력 안했을 시
 function LoginOn() {
 	let f = document.login;
 	let userId = f.userId

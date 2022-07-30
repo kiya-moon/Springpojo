@@ -78,6 +78,13 @@ hr {
 hr:not([size]) {
     height: 1px;
 }
+
+/* input type=number 박스 없애주기 */
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 </style>
 </head>
 <body>
@@ -98,7 +105,7 @@ hr:not([size]) {
 				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer">
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="forgotPw">
+				<form  name="forgotPw">
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" class="sw_floating" name="userId" placeholder=" ">
@@ -120,6 +127,5 @@ hr:not([size]) {
 	</div>
 </div>
 <script type="text/javascript" th:src="@{/js/forgotPw.js}"></script>
-
 </body>
 </html>
