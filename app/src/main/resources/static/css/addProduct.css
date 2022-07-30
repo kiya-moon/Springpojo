@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+html{
+	background-color: #f6f6f8;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -14,17 +18,22 @@ a {
 	text-decoration: none;
 }
 
-.contents_body_gy {
-	width: 80%;
+.src_body{
+	width: 90%;
+	height: 90%;
 	margin: 0 auto;
 }
 
+.contents_body_gy {
+	width: 1280px;
+	margin: 50px auto;
+}
+
 .contents_tit_gy {
-	border: 1px solid #000;
 	margin-top: 30px;
 	padding: 12px 29px 12px 29px;
 	letter-spacing: -1px;
-	background: url(//pics.auction.co.kr/sell/basic/bg/bg_top_line.gif);
+	background-color: #fff;
 }
 
 .add_img_gy {
@@ -32,6 +41,7 @@ a {
 }
 
 .add_text_gy {
+	color: #000;
 	display: inline-block;
 	margin-left: 50px;
 }
@@ -47,20 +57,26 @@ a {
 }
 
 .addproductForm {
-	margin-top: 20px;
+	margin-top: 40px;
+	background-color: #fff;
+	padding: 30px;
+}
+
+.devide_form{
+	height: 630px;
 }
 
 .upload_img {
-	width: 50%;
+	width: 30%;
 	display: inline-block;
 	position: relative;
-	height: 350px;
+	height: 300px;
 }
 
 .addForm {
-	display: inline-block;
-	height: 350px;
-	width: 49.4%;
+	float: right;
+	height: 300px;
+	width: 65%;
 }
 
 .img_upload {
@@ -139,17 +155,13 @@ input[type="checkbox"] {
 
 .productInfo td {
 	border-bottom: 1px solid black;
-	padding: 10px 0;
+/* 	padding: 10px 0; */
 }
 
 .productInfo .border_last td {
 	border: none;
 }
 
-.textbox_area{
-	height: 150px;
-	width: 100%
-}
 .lastBorder{
 	padding: 70px 0;
 }
@@ -160,10 +172,16 @@ input[type="checkbox"] {
 	border: 0;
 	border-radius: 15px;
 	outline: none;
-	padding: 0 10px;
-	background-color: rgb(233, 233, 233);
+	color: #fff;
+	background-color: #000;
+	padding-left: 10px;
 }
-
+.productEx_tit{
+	margin-top: 40px;
+	margin-bottom: 20px;
+	font-size: 22px;
+	font-weight: 600;
+}
 .add_btn {
 	float: right;
 	margin-top: 30px;
@@ -188,4 +206,22 @@ input[type="checkbox"] {
 .add_btn:active {
 	position:relative;
 	top:1px;
+}
+
+input::placeholder{
+	color:#fff;
+}
+
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    min-height: 150px;
+}
+
+.ck.ck-editor__editable_inline>:last-child {
+    min-height: 119.2px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+	-webkit-appearance: none;
+	margin: 0;
 }

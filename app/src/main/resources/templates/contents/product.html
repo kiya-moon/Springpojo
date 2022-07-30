@@ -5,52 +5,67 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" th:href="@{/css/product.css}">
+<script type="text/javascript" th:src="@{/js/product.js}"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <body>
 	<div class="bg_color">
 		<div class="productContainer">
-			<div>
-				<!-- img -->
-			</div>
-			<div class="productInfo">
-				<div>
-					<input type="text" id="productName" class="productName" value="상품명"
-						readonly> <input type="text" id="productCategory"
-						class="productCategory" value="카테고리" readonly>
-				</div>
-				<div>
-					<p>시간</p>
-				</div>
-				<div>
-					<span>₩<input type="text" id="productPrice"
-						class="productPrice" value="현재금액" readonly></span>
-				</div>
-				<div>
-					<button>+ ₩1000</button>
-					<button>+ ₩5000</button>
-					<button>+ ₩10000</button>
-					<button>Reset</button>
-				</div>
-				<form method="post">
-					<div>
-						<p>입찰 금액</p>
-						<span>₩<input type="text" id="productPrice"
-							class="productPrice" value="현재금액" readonly></span>
+			<div class="productSubContainer">
+				<div class="product_info">
+					<div class="img_view_box">
+						<!-- img -->
 					</div>
-					<!-- 보더바텀, 바탕 그레이 -->
-				</form>
-				<div>
-					<button>입찰하기</button>
-					<button>찜 목록</button>
-					<button>
-						<img> <span>0</span>
-					</button>
+					<div class="productInfo">
+						<div class="nameCategory">
+							<div class="productName">상품명</div>
+							<div class="productCategory">카테고리</div>
+						</div>
+						<div class="startPrice">현재금액</div>
+						<div class="deadLineBox">
+							<div class="deadLine">00 : 00 : 00</div>
+						</div>
+						<form method="post">
+							<div class="currentPrice_form">
+								<div class="currentPrice">입찰 금액</div>
+								<div class="currentPriceBox">
+									<div class="checkPrice">입찰금액(변동)</div>
+								</div>
+								<div class="priceBtn">
+									<button type="button" class="one_btn btn_group">+
+										₩1000</button>
+									<button type="button" class="five_btn btn_group">+
+										₩5000</button>
+									<button type="button" class="ten_btn btn_group">+
+										₩10000</button>
+									<button type="reset" class="reset_btn btn_group">Reset</button>
+								</div>
+							</div>
+						</form>
+						<div class="func_btn">
+							<button type="submit" class="bid_btn btn_group2">입찰하기</button>
+							<button type="button" class="likeList_btn btn_group2">찜
+								목록</button>
+							<button type="button" class="like_btn btn_group2" th:onclick="imgToggle()">
+								<div class="like_line">
+								<img id="like_off" th:src="@{img/likeoff.png}">
+								<span>0</span>
+								</div>
+							</button>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div>
-				<!-- 판매자정보 -->
-			</div>
-			<div>
-				<!-- 상품설명 -->
+				<div>
+					<!-- 판매자정보 -->
+				</div>
+				<div class="productEx_body">
+					<div class="productEx_title">상세설명</div>
+					<div class="productEx_contents">
+						<!-- 상품설명 -->
+					</div>
+				</div>
+				<div class="list_btn_box">
+					<button type="button" class="productList">목록</button>
+				</div>
 			</div>
 		</div>
 	</div>
