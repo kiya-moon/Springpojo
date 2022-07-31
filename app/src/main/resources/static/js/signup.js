@@ -91,7 +91,7 @@
 		return false;
 	}
 	
-	var re5 = /^([a-zA-Z0-9]).{4,16}$/;
+	var re5 = /^([a-zA-Z0-9]){4,16}$/;
 	
 	if(!re5.test(userEmail.value)){
 		alert("이메일 형식에 맞게 입력 해주세요.")
