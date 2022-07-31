@@ -1,3 +1,9 @@
+	function closeModal(){
+		var closeModal = document.querySelector("sw_modal");
+		closeModal.classList.add("closeModal");
+	}
+
+
 // 로그인 아이디, 비밀번호 입력 안했을 시
 function LoginOn() {
 	let f = document.login;
@@ -18,6 +24,5 @@ function LoginOn() {
 	
 	f.submit();
 }
-
 
 

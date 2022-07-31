@@ -11,6 +11,11 @@
 	btn : button 관련
 */
 
+
+.sw_close{
+		background:none;
+		border:none;
+	}
 	.sw_m{
 		position:fixed;
 		top:0;

@@ -1,3 +1,9 @@
+
+
+	function closeModal(){
+		var closeModal = document.querySelector("sw_modal");
+		closeModal.classList.add("closeModal");
+	}
  // 회원가입
  function signSend(){
 	let f = document.signup;
