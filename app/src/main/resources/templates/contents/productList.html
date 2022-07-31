@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>auction_productList</title>
+
+<link rel="stylesheet" th:href="@{/css/productList.css}">
+</head>
+<body>
+	<th:block th:replace="fragments/header"></th:block>
+	<div class="productList_header">
+		<hr class="category_line">
+		<h1 class="category_name">카테고리명</h1>
+	</div>
+	<div class="product_sort">
+		<button class="popularity_ranking_button">인기상품</button>
+		<button class="latest_order_button">신규등록</button>
+		<button class="closing_order_button">마감임박</button>
+	</div>
+
+	<article>
+		<div class="productList_contents">
+			<div class="product_wrap">
+				<th:block th:each="num: ${#numbers.sequence(1,8)}">
+					<div class="productList_contents_list">
+						<img class="productList_contents_img"
+							alt="productList_contents_img"
+							src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+						<div class="productList_contents_name">상품 이름</div>
+						<div class="productList_contents_about">현재 입찰 인원</div>
+						<div class="productList_contents_price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+		</div>
+	</article>
+	<footer th:replace="fragments/footer :: footer"></footer>
+
+
+	<script>
+	<!-- 페이지 접속 시 초기화 스크립트 -->
+	$(document).ready(function() {
+		
+	});
+
+
+<!-- 이벤트, 함수 선언 스크립트 -->
+
+	//검색창 클릭 시 검색 결과 보여주는 팝업 열기
+	$("#nav-search-bar").on("click", function(e) {
+		$("#speech-bubble-wrapper").show();
+	});
+	
+	//외부 영역 클릭 시 검색 결과 보여주는 팝업 닫기
+	$(document).on("mouseup", function(e){
+		if($("#speech-bubble-wrapper").has(e.target).length == 0){
+			$("#speech-bubble-wrapper").hide();
+		}
+	});
+	
+	//스크롤에 따른 애니메이션 효과
+	var furnitureElectronic = $("#popular-product-list-furniture-electronic");
+	var gameHobby = $("#popular-product-list-game-hobby");
+	var sportsCar = $("#popular-product-list-sports-car");
+	var bookEtc = $("#popular-product-list-book-etc");
+	
+	$(window).scroll(function(e) {
+		var scrollValue = $(document).scrollTop(); 
+		if(scrollValue >= 700){
+			furnitureElectronic.removeClass('active');
+		}
+		if(scrollValue >= 1400){
+			gameHobby.removeClass('active');
+		}
+		if(scrollValue >= 2100){
+			sportsCar.removeClass('active');
+		}
+		if(scrollValue >= 2800){
+			bookEtc.removeClass('active');
+		}
+	});
+	</script>
+</body>
+</html>
