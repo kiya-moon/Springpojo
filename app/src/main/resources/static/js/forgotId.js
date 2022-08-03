@@ -1,3 +1,8 @@
+	function closeModal(){
+		var closeModal = document.querySelector("sw_modal");
+		closeModal.classList.add("closeModal");
+	}
+
 function id_search() {
 	let f = document.forgotId;
 	let userName = f.userName;
@@ -17,3 +22,4 @@ function id_search() {
 
 	f.submit();
 }
+

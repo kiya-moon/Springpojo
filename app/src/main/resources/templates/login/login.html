@@ -85,6 +85,7 @@ input::-webkit-inner-spin-button {
   -moz-appearance: none;
   -webkit-appearance: none;
 }
+
 </style>
 </head>
 <body>
@@ -98,12 +99,13 @@ input::-webkit-inner-spin-button {
 	f: font 관련
 	btn : button 관련
  -->
-<div class="sw_m sw_position sw_d-block sw_p1 sw_bg">
+<div class="sw_m sw_position sw_d-block sw_p1 sw_bg sw_modal">
 	<div class="sw_dialog">
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">Login</h2>
-				<img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"> <!-- 닫기 버튼 -->
+				<!-- 닫기 버튼 -->
+				<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
 				<form  name="login">
@@ -138,5 +140,7 @@ input::-webkit-inner-spin-button {
 	</div>
 </div>
 <script type="text/javascript" th:src="@{/js/login.js}"></script>
+
+
 </body>
 </html>

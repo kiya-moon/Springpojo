@@ -65,6 +65,7 @@ button, select {
 
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
+    border : none;
 }
 
 hr {
@@ -103,7 +104,8 @@ input::-webkit-inner-spin-button {
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">회원가입</h2>
-				<img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"> <!-- 닫기 버튼 -->
+				<!-- 닫기 버튼 -->
+			<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
 				<form  name="signup" method="post">
