@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/default_layout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/Product.css}">
+</th:block>
 </head>
-<link rel="stylesheet" th:href="@{/css/product.css}">
-<script type="text/javascript" th:src="@{/js/product.js}"></script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <body>
-<th:block th:replace="fragments/header"></th:block>
+	<th:block layout:fragment="content">
 	<div class="bg_color">
-		<div class="productContainer">
+		<div class="productContainer" style="padding-top: 150px; margin: 0;">
 			<div class="productSubContainer">
 				<div class="product_info">
 					<div class="img_view_box">
@@ -70,6 +70,10 @@
 			</div>
 		</div>
 	</div>
-	<footer th:replace="fragments/footer :: footer"></footer>
+	</th:block>
+	
+	<th:block layout:fragment="script">
+		<script type="text/javascript" th:src="@{/js/product.js}"></script>
+	</th:block>
 </body>
 </html>

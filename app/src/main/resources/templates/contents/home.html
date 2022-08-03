@@ -1,165 +1,126 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/default_layout}">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>auction_main_page</title>
+
 <!-- 배너 CSS 파일 -->
-<link rel="stylesheet" type="text/css"
-	href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<link th:href="@{/css/home.css}" rel="stylesheet">
+<!-- 구글 폰트 (Cormorant SC) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap">
+
+<!-- home css 파일 링크 -->
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+</th:block>
 </head>
+
 <body>
-	<th:block th:replace="fragments/header"></th:block>
 	<th:block layout:fragment="content">
-		<!-- 채팅 -->
-		<span class="ky_side"> <input type="image" class="chatIcon"
-			th:src="@{img/chat.png}" onclick="chatRoom();">
-		</span>
-		<div class="body-wrapper-for-background">
-			<div class="body-wrapper-for-align">
-
-
-				<!---------------------------------------------------------------배너 시작--------------------------------------------------------------->
-				<section class="banner">
-					<div id="slick-slider" class="slick-slider">
-						<img alt="BANNER1"
-							src="https://media.bunjang.co.kr/images/nocrop/853828589_w2058.jpg">
-						<img alt="BANNER2"
-							src="https://media.bunjang.co.kr/images/nocrop/854907597_w1029.jpg">
-						<img alt="BANNER3"
-							src="https://media.bunjang.co.kr/images/nocrop/852789386_w2058.jpg">
-					</div>
-				</section>
-
-
-
-				<!---------------------------------------------------------------구분점--------------------------------------------------------------->
-				<div class="most-people-wanted">
-					<hr class="division">
-					<h1 class="most-people-wanted-title">MOST&nbsp;WANTED</h1>
-					<hr class="division">
-				</div>
-
-				<!---------------------------------------------------------------메인메뉴 시작--------------------------------------------------------------->
-				<article>
-					<!-- 패션 & 뷰티 -->
-					<div class="popular-product">
-						<h2 class="popular-product-title fashion-beauty">
-							Fashion <br>&<br> Beauty
-						</h2>
-					</div>
-					<div id="popular-product-list-fashion-beauty"
-						class="popular-product-menu">
-						<th:block th:each="num: ${#numbers.sequence(1,6)}">
-							<div class="popular-product-list">
-								<img class="popular-product-img" alt="popular-product-img"
-									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-								<div class="popular-product-name">상품 이름</div>
-								<div class="popular-product-about">현재 입찰 인원</div>
-								<div class="popular-product-price">현재 입찰가</div>
-							</div>
-						</th:block>
-					</div>
-					<!-- 가구 & 가전 -->
-					<div id="popular-product-list-furniture-electronic"
-						class="popular-product-menu menu-opacity-control active">
-						<th:block th:each="num: ${#numbers.sequence(1,6)}">
-							<div class="popular-product-list">
-								<img class="popular-product-img" alt="popular-product-img"
-									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-								<div class="popular-product-name">상품 이름</div>
-								<div class="popular-product-about">현재 입찰 인원</div>
-								<div class="popular-product-price">현재 입찰가</div>
-							</div>
-						</th:block>
-					</div>
-					<div class="popular-product">
-						<h2 class="popular-product-title furniture-electronic">
-							Furniture <br>&<br> Electronic
-						</h2>
-					</div>
-					<!-- 게임 & 취미 -->
-					<div class="popular-product">
-						<h2 class="popular-product-title game-hobby">
-							Game <br>&<br> Hobby
-						</h2>
-					</div>
-					<div id="popular-product-list-game-hobby"
-						class="popular-product-menu menu-opacity-control active">
-						<th:block th:each="num: ${#numbers.sequence(1,6)}">
-							<div class="popular-product-list">
-								<img class="popular-product-img" alt="popular-product-img"
-									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-								<div class="popular-product-name">상품 이름</div>
-								<div class="popular-product-about">현재 입찰 인원</div>
-								<div class="popular-product-price">현재 입찰가</div>
-							</div>
-						</th:block>
-					</div>
-					<!-- 스포츠 & 자동차 -->
-					<div id="popular-product-list-sports-car"
-						class="popular-product-menu menu-opacity-control active">
-						<th:block th:each="num: ${#numbers.sequence(1,6)}">
-							<div class="popular-product-list">
-								<img class="popular-product-img" alt="popular-product-img"
-									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-								<div class="popular-product-name">상품 이름</div>
-								<div class="popular-product-about">현재 입찰 인원</div>
-								<div class="popular-product-price">현재 입찰가</div>
-							</div>
-						</th:block>
-					</div>
-					<div class="popular-product">
-						<h2 class="popular-product-title sports-car">
-							Sports <br>&<br> Car
-						</h2>
-					</div>
-					<!-- 책 & 기타 -->
-					<div class="popular-product">
-						<h2 class="popular-product-title book-etc">
-							Book <br>&<br> ETC
-						</h2>
-					</div>
-					<div id="popular-product-list-book-etc"
-						class="popular-product-menu menu-opacity-control active">
-						<th:block th:each="num: ${#numbers.sequence(1,6)}">
-							<div class="popular-product-list">
-								<img class="popular-product-img" alt="popular-product-img"
-									src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-								<div class="popular-product-name">상품 이름</div>
-								<div class="popular-product-about">현재 입찰 인원</div>
-								<div class="popular-product-price">현재 입찰가</div>
-							</div>
-						</th:block>
-					</div>
-				</article>
+		<!---------------------------------------------------------------배너 시작--------------------------------------------------------------->
+		<section class="banner">
+			<div id="slick-slider" class="slick-slider">
+		  		<img alt="BANNER1" src="https://media.bunjang.co.kr/images/nocrop/853828589_w2058.jpg">
+		  		<img alt="BANNER2" src="https://media.bunjang.co.kr/images/nocrop/854907597_w1029.jpg">
+		  		<img alt="BANNER3" src="https://media.bunjang.co.kr/images/nocrop/852789386_w2058.jpg">
 			</div>
+		</section>
+		
+		<!---------------------------------------------------------------구분점--------------------------------------------------------------->
+		<div class="most-people-wanted">
+			<hr class="division">
+			<h1 class="most-people-wanted-title">MOST&nbsp;WANTED</h1>
+			<hr class="division">
 		</div>
-
+		
+		<!---------------------------------------------------------------메인메뉴 시작--------------------------------------------------------------->
+		<article>
+			<!-- 패션 & 뷰티 -->
+			<div class="popular-product">
+				<a th:href="@{/productList}"><h2 class="popular-product-title fashion-beauty">Fashion <br>&<br> Beauty</h2></a>
+			</div>
+			<div id="popular-product-list-fashion-beauty" class="popular-product-menu">
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<!-- 가구 & 가전 -->
+			<div id="popular-product-list-furniture-electronic" class="popular-product-menu menu-opacity-control active">
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTBfMTE4/MDAxNDg5MTIwMzgxNDAw.lzC7J1msEClj4h5d0q7tXfYP-x7K2VMRAxB3GA5XZfQg.2wdBK8h5WsVpg04kuj73dz-bKdZrGtALiz2ic6d_uE8g.PNG.eoflvkdnj9/dbrtbrt.png?type=w800">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title furniture-electronic">Furniture <br>&<br> Electronic</h2>
+			</div>
+			<!-- 게임 & 취미 -->
+			<div class="popular-product">
+				<h2 class="popular-product-title game-hobby">Game <br>&<br> Hobby</h2>
+			</div>
+			<div id="popular-product-list-game-hobby" class="popular-product-menu menu-opacity-control active">
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://img.danawa.com/prod_img/500000/442/793/img/10793442_1.jpg?shrink=160:160&_v=20220124193820">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<!-- 스포츠 & 자동차 -->
+			<div id="popular-product-list-sports-car" class="popular-product-menu menu-opacity-control active">
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://newsimg.hankookilbo.com/cms/articlerelease/2021/09/09/5d546bd9-9a60-4c52-9544-ef113aeebded.jpg">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+			<div class="popular-product">
+				<h2 class="popular-product-title sports-car">Sports <br>&<br> Car</h2>
+			</div>
+			<!-- 책 & 기타 -->
+			<div class="popular-product">
+				<h2 class="popular-product-title book-etc">Book <br>&<br> ETC</h2>
+			</div>
+			<div id="popular-product-list-book-etc" class="popular-product-menu menu-opacity-control active">
+				<th:block th:each="num: ${#numbers.sequence(1,6)}">
+					<div class="popular-product-list">
+						<img class="popular-product-img" alt="popular-product-img" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/817c/e865da1ee86b218294ce7cef565a86b40625e0830c09407aec88c650d112.png">
+						<div class="popular-product-name">상품 이름</div>
+						<div class="popular-product-about">현재 입찰 인원</div>
+						<div class="popular-product-price">현재 입찰가</div>
+					</div>
+				</th:block>
+			</div>
+		</article>
 	</th:block>
-	<footer th:replace="fragments/footer :: footer"></footer>
-
-	<th:block layout:fragment="pageCustomScript">
-
-
+	
+	<th:block layout:fragment="script">
 		<!-- 슬릭 슬라이더 스크립트 -->
-		<script type="text/javascript"
-			src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-		<script>
-		<!-- 슬릭 슬라이더 배너 버튼 효과, 자동 모션 효과 스크립트 -->
-			$(function() {
-				$(".slick-slider").slick();
-			});
-			setInterval(function() {
-				$(".slick-next").click();
-			}, 4000);
-		</script>
-
-
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
+		<script src="/js/home.js" type="text/javascript"></script>
 	</th:block>
-
-
 </body>
 </html>
+
+
+
+

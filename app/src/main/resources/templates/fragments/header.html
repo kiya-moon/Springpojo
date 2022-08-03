@@ -1,67 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- 홈페이지 상단 파비콘 -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-128.png">
-
-<!-- 구글 폰트 (Cormorant SC) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap"
-	rel="stylesheet">
-
-<!-- 헤더&푸터 css -->
-<link rel="stylesheet" th:href="@{/css/header_footer.css}">
-
-<!-- 제이쿼리 스크립트 -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-</script>
-
-<!-- 폰트어썸 스크립트 -->
-<script src="https://kit.fontawesome.com/30ff607ddb.js"
-	crossorigin="anonymous"></script>
-
-<!-- home.js -->
-<script type="text/javascript" th:src="@{/js/home.js}"></script>
-
-<th:block layout:fragment="header">
-	<nav class="nav-top">
-		<div class="nav-logo">
-			<i class="fa-brands fa-artstation"></i> <a class="logo-name" th:href="@{/}">uction</a>
-		</div>
-		<div class="nav-search">
-			<input id="nav-search-bar" class="nav-search-bar" type="text"
-				spellcheck="false" maxlength="30"> <a href="#"><i
-				class="fa-solid fa-magnifying-glass"></i></a>
-			<div id="speech-bubble-wrapper" class="speech-bubble-wrapper">
-				<!-- 나중에 검색을 안했을땐 랭킹 or 이름순 검색 시 해당 검색 문자가 포함된 수만큼 반복 -->
-				<th:block th:each="num: ${#numbers.sequence(1,10)}">
-					<div class="search-result">
-						<div class="search-result-name">
-							<a href="#">상품이름</a>
+<title>header</title>
+</head>
+<body>
+	<th:block th:fragment="headerFragment">
+		<header>
+			<nav class="nav-top">
+				<div class="nav-logo">
+					<i class="fa-brands fa-artstation"></i>
+					<a class="logo-name" href="#">uction</a>
+				</div>
+				<div class="nav-search">
+					<input id="nav-search-bar" class="nav-search-bar" type="text" spellcheck="false" maxlength="30">
+					<a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+				<div id="speech-bubble-wrapper" class="speech-bubble-wrapper">
+					<!-- 나중에 검색을 안했을땐 랭킹 or 이름순 검색 시 해당 검색 문자가 포함된 수만큼 반복 -->
+					<th:block th:each="num: ${#numbers.sequence(1,10)}">
+						<div class="search-result">
+							<div class="search-result-name"><a href="#">상품 이름</a></div>
 						</div>
-					</div>
-				</th:block>
-			</div>
-		</div>
-		<ul class="nav-user">
-			<li><a th:href="@{/login}">로그인</a></li>
-			<li><a th:href="@{/agree}">회원가입</a></li>
-			<!-- 						<li><a href="#">고객센터</a></li> -->
-			<li class="nav-user-sell"><a th:href="@{/add}">판매하기</a></li>
-		</ul>
-	</nav>
-	<nav class="nav-main-menu">
-		<ul class="main-menu">
-			<li><a href="/productList">Fashion & Beauty</a></li>
-			<li><a href="/productList">Furniture & Electronic</a></li>
-			<li><a href="/productList">Game & Hobby</a></li>
-			<li><a href="/productList">Sports & Car</a></li>
-			<li><a href="/productList">Book & ETC</a></li>
-		</ul>
-	</nav>
-
-</th:block>
+					</th:block>
+				</div>
+				</div>
+				<ul class="nav-user">
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">고객센터</a></li>
+					<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
+				</ul>
+			</nav>
+			<nav class="nav-main-menu">
+				<ul class="main-menu">
+					<li><a href="#">Fashion & Beauty</a></li>
+					<li><a href="#">Furniture & Electronic</a></li>
+					<li><a href="#">Game & Hobby</a></li>
+					<li><a href="#">Sports & Car</a></li>
+					<li><a href="#">Book & ETC</a></li>
+				</ul>
+			</nav>
+		</header>
+	</th:block>
+</body>
+</html>

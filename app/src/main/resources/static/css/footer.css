@@ -1,19 +1,10 @@
 @charset "UTF-8";
-
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 body{
-	margin: 0 auto;
-	width: 100%;
-}
-.body-wrapper-for-background{
-	margin: 0 auto;
-	background: white;
-}
-.body-wrapper-for-align{
 	margin: 0 auto;
 	width: 1280px;
 }
@@ -30,118 +21,7 @@ a{
 ul{
 	list-style: none;
 }
-
-/* 검색창 말풍선 */
-.speech-bubble-wrapper::-webkit-scrollbar {
-    display: none;
-}
-.speech-bubble-wrapper{
-	position: absolute;
-	top: 57px;
-	display: none;
-	border: none;
-	box-shadow: 5px 6px 12px -11px rgba(0,0,0,0.75);
-	width: 300px;
-	height: 280px;
-	overflow: scroll;
-	background: white;
-}
-.search-result{
-	width: 100%;
-	height: 40px;
-	border-bottom: 1px solid #bebebe;
-	display: flex;
-	align-items: center;
-}
-.search-result-name{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100px;
-	height: 30px;
-	font-size: 13px;
-	font-weight: lighter;
-}
-
-/* 헤더 */
-header{
-	width: 1280px;
-	height: 130px;
-	position: fixed;
-	z-index: 9999;
-	background: white;
-	opacity: 90%;
-}
-.fa-brands{
-	font-size: 50px;
-}
-.logo-name{
-	font-size: 30px;
-	font-weight: bold;
-}
-.nav-search{
-	width: 300px;
-	height: 25px;
-	border-bottom: 2px solid black;
-	display: flex;
-	align-items: center;
-}
-.nav-search-bar{
-	border: none;
-	width: 275px;
-	outline: none;
-	font-weight: bold;
-	font-size: 15px;
-}
-.fa-solid{
-	padding-left: 10px;
-}
-.nav-user{
-	display: flex;
-}
-.nav-user li a{
-	padding: 10px;
-	font-size: 13px;
-	font-weight: bold;
-}
-.nav-user-sell{
-	border-radius: 5px;
-	background: black;
-}
-.nav-user-sell a{
-	color: white;
-}
-.nav-main-menu{
-	padding-top: 20px;
-}
-.main-menu{
-	display: flex;
-	justify-content: space-between;
-}
-.main-menu li{
-	font-size: 20px;
-	font-weight: bold;
-}
-.main-menu li a:hover{
-	border-bottom: 2px solid #282828;
-}
-
-/* 채팅 */
-.chatIcon{
-	height: 50px;
-	weight: 50px;
-}
-
-.ky_side{
-	position: sticky;
-	top: 710px;
-	left: 1440px;
-}
-
-/* 푸터 */
 footer{
-	position:relative;
-	width: 100%;
 	right: 0;
 	height: 550px;
 	display: flex;
@@ -150,16 +30,16 @@ footer{
 .footer-pusher{
 	position: relative;
 	z-index: -2;
-	width: 100%;
+	width: 1280px;
 	height: 550px;
 	background: #d1d1d1;
 }
 .footer-show{
 	position: fixed;
 	z-index: -1;
-	width: 100%;
+	width: 1280px;
 	height: 550px;
-	background: #d1d1d1;
+	background: gainsboro;
 	display: block;
 	bottom: 0;
 }
@@ -246,8 +126,7 @@ footer{
 	padding: 7px;
 }
 .footer-main-contents{
-	width: 100%;
-	height: 100%;
+	width: 1280px;
 	display: flex;
 	justify-content: center;
 }

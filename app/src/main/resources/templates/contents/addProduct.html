@@ -5,12 +5,8 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" th:href="@{/css/addProduct.css}">
-<script type="text/javascript" th:src="@{/js/addProduct.js}"></script>
-<script type="text/javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <body>
-<th:block th:replace="fragments/header"></th:block>
+<th:block layout:fragment="content">
 	<div class="fullscr_gy">
 		<div class="scr_body">
 			<div class="contents_body_gy">
@@ -93,6 +89,11 @@
              console.error(error);
           });
     </script>
+    <script type="text/javascript" th:src="@{/js/addProduct.js}"></script>
+<script type="text/javascript"
+	src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</th:block>
 								<div>
 									<button id= "add_btn" class="add_btn" type="button" th:onclick="chkNull()">등록</button>
 								</div>
@@ -103,6 +104,5 @@
 			</div>
 		</div>
 	</div>
-	<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

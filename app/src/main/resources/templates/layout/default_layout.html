@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">home</title>
-<!--     공통 css, js, meta tag -->
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
+<!-- head 및 공통 CSS, 스크립트 영역 -->
+<th:block th:replace="/fragments/config :: configFragment">
+
+	<!-- 각자 html 파일에서만 사용되는 CSS -->
+	<th:block layout:fragment="css"></th:block>
 	
-    <th:block th:replace="fragments/header"></th:block>
-</head>
-<body>
-<!--     page content body 구성 -->
-<th:block th:replace="contents/home"></th:block>
-<!--     공통 footer -->
-    <footer th:replace="fragments/footer :: footer"></footer>
-<!--     공통 javascript -->
-<!--     <th:block th:replace="fragments/commonScript"></th:block> -->
-<!--     page content javascript -->
-    <th:block layout:fragment="pageCustomScript"></th:block>
+</th:block>
 
+<body>
+
+	<!-- 헤더 영역 -->
+	<th:block th:replace="/fragments/header :: headerFragment"></th:block>
+	
+	<!-- 페이지 이동시 지속적으로 바뀌는 내용 부분 -->
+	<th:block layout:fragment="content"></th:block>
+	
+	<!-- 푸터 영역 -->
+	<th:block th:replace="/fragments/footer :: footerFragment"></th:block>
+	
+	<!-- 각자 html 파일에서만 사용되는 스크립트 -->
+	<th:block layout:fragment="script"></th:block>
+	
 </body>
 </html>

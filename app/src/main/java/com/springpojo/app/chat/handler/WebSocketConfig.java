@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-
+import com.springpojo.app.chat.handler.ChatHandler;
 import lombok.RequiredArgsConstructor;
 
 // 핸들러를 이용해 WebSocket을 호라성화하기 위한 Config

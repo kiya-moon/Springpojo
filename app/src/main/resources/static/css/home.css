@@ -1,6 +1,28 @@
 @charset "UTF-8";
 
-
+/* 공통 적용 */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	margin: 0 auto;
+	width: 1280px;
+}
+.nav-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 20px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+ul{
+	list-style: none;
+}
 
 /* 섹션 슬릭슬라이더 배너 */
 .banner{
@@ -104,7 +126,6 @@ article{
 	color: black;
 }
 .popular-product-menu{
-	border: 1px solid gray;
 	width: 900px;
 	height: 600px;
 	display: inline-block;
@@ -117,7 +138,6 @@ article{
 	transition: all 2s;
 }
 .popular-product-list{
-	border: 1px solid gray;
 	width: 280px;
 	height: 282px;
 	display: inline-block;
@@ -128,6 +148,9 @@ article{
 	width: 200px;
 	height: 200px;
 }
+.popular-product-name{
+	font-weight: bold;
+}
 .popular-product-name, .popular-product-about, .popular-product-price{
 	border: 1px solid gray;
 	display: flex;
@@ -137,6 +160,3 @@ article{
 	height: 26px;
 	font-size: 14px;
 }
-
-
-
