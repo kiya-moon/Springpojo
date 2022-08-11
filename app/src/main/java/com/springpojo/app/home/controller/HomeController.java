@@ -38,10 +38,10 @@ public class HomeController {
 	}
 	
 	// 로그인 페이지
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login/login";
-    }
+	@GetMapping("/login") 
+	public String login(Model model) {
+		return "login/login"; 
+	}
 
     // 회원가입
     @GetMapping("/signup")
@@ -66,7 +66,6 @@ public class HomeController {
     public String prodcutList(){
     	return "/contents/productList";
     }
-	
 
     // 이용약관
     @GetMapping("/agree")

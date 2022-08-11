@@ -1,9 +1,3 @@
-
-
-	function closeModal(){
-		var closeModal = document.querySelector("sw_modal");
-		closeModal.classList.add("closeModal");
-	}
  // 회원가입
  function signSend(){
 	let f = document.signup;
@@ -126,3 +120,25 @@
 		f.submit();
 	}
 }
+
+//중복확인
+$("#overlapperdID").click(function(){
+	$("#signup").attr("type", "button");
+	const userId = $("#userId").val();
+	$.ajax({
+	type:"get",
+	async: false,
+	url: "http://localhost:9090/signup",
+	data: {userId: userId},
+	success: function(data){
+		if(data == 1) {
+			alert("이미 사용중인 ID입니다.");
+		}else{
+			alert("사용 가능한 ID 입니다.");
+			$("#signup").attr("type", "submit");
+		}
+	}
+	})
+});
+
+

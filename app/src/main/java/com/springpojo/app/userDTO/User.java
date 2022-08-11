@@ -14,13 +14,17 @@ import com.springpojo.app.bidDTO.Like;
 import com.springpojo.app.productDTO.Image;
 import com.springpojo.app.productDTO.Product;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// @Data : @Setter Getter ToString 통합하여 불러오는 lombok
-@Entity
-@Getter @Setter
+//@Data : @Setter Getter ToString 통합하여 불러오는 lombok
+//@Data : @Setter Getter ToString 통합하여 불러오는 lombok
+@Data
+@AllArgsConstructor	// 모든 파라미터가 있는 생성자 생성
+@NoArgsConstructor	// 기본 생성자 생성
 @Table(name = "USERS")
+@Entity
 public class User {
 	
 	@Id
@@ -54,7 +58,6 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Like> like = new ArrayList<>();
 	
-	
 	public User(String userId, String userPw, 
 			String userName, String userBirth, 
 			String userEmail, String userPhone) {
@@ -66,5 +69,4 @@ public class User {
 		this.UserPhone = userPhone;
 	}
 	
-	public User() {}
 }
