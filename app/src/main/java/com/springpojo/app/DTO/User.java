@@ -1,4 +1,4 @@
-package com.springpojo.app.userDTO;
+package com.springpojo.app.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.springpojo.app.bidDTO.Bid;
-import com.springpojo.app.bidDTO.Like;
-import com.springpojo.app.productDTO.Image;
-import com.springpojo.app.productDTO.Product;
-
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 // @Data : @Setter Getter ToString 통합하여 불러오는 lombok
 @Entity
-@Getter @Setter
+@Getter @Setter(value = AccessLevel.NONE)
 @Table(name = "USERS")
 public class User {
 	
