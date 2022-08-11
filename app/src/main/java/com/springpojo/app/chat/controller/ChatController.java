@@ -10,7 +10,7 @@ import lombok.extern.log4j.Log4j2;
 public class ChatController {
 	@GetMapping("/chat/icon")
 	public String clickIcon() {
-		return "chat/icon";
+		return "fragments/icon";
 	}
 	
 	@GetMapping("/chat")

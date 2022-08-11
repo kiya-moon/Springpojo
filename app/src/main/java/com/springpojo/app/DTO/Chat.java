@@ -1,14 +1,15 @@
-package com.springpojo.app.chatDTO;
+package com.springpojo.app.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter @Setter(value = AccessLevel.NONE)
 public class Chat {
 	// 채팅방번호?
 	@Id @GeneratedValue

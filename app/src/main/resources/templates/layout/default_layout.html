@@ -17,6 +17,9 @@
 	<!-- 페이지 이동시 지속적으로 바뀌는 내용 부분 -->
 	<th:block layout:fragment="content"></th:block>
 	
+	<!-- 채팅아이콘 -->
+	<th:block th:replace="/fragments/icon :: iconFragment"></th:block>
+	
 	<!-- 푸터 영역 -->
 	<th:block th:replace="/fragments/footer :: footerFragment"></th:block>
 	

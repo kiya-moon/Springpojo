@@ -1,17 +1,17 @@
-package com.springpojo.app.productDTO;
+package com.springpojo.app.DTO;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.springpojo.app.userDTO.User;
-
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter @Setter(value = AccessLevel.NONE)
 public class Image {
 	@Id
 	private String ImgCopyName;
