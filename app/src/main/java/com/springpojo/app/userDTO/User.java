@@ -5,8 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.springpojo.app.bidDTO.Bid;
@@ -19,13 +22,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //@Data : @Setter Getter ToString 통합하여 불러오는 lombok
-//@Data : @Setter Getter ToString 통합하여 불러오는 lombok
 @Data
 @AllArgsConstructor	// 모든 파라미터가 있는 생성자 생성
 @NoArgsConstructor	// 기본 생성자 생성
 @Table(name = "USERS")
+@SequenceGenerator(
+        name = "USER_SEQ_GENERATOR",
+        sequenceName = "USER_SEQ",
+        initialValue = 1,
+        allocationSize = 1
+)
 @Entity
 public class User {
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,
+					generator = "USER_SEQ_GENERATOR")
+	private Long id;
 	
 	@Id
 	@Column(name = "USERID", unique = true, nullable = false)
@@ -58,15 +70,15 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Like> like = new ArrayList<>();
 	
-	public User(String userId, String userPw, 
-			String userName, String userBirth, 
-			String userEmail, String userPhone) {
-		this.UserId = userId;
-		this.UserPw = userPw;
-		this.UserName = userName;
-		this.UserBirth = userBirth;
-		this.UserEmail = userEmail;
-		this.UserPhone = userPhone;
+	public User(String UserId, String UserPw, 
+			String UserName, String UserBirth, 
+			String UserEmail, String UserPhone) {
+		this.UserId = UserId;
+		this.UserPw = UserPw;
+		this.UserName = UserName;
+		this.UserBirth = UserBirth;
+		this.UserEmail = UserEmail;
+		this.UserPhone = UserPhone;
 	}
 	
 }

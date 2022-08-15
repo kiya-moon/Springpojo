@@ -23,7 +23,7 @@ public class UserMain {
 			
 			list.add(user);
 			
-			em.persist(user);
+			em.persist(list);
 			
 	
 			tx.commit();

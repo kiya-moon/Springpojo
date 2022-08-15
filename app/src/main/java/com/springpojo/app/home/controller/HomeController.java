@@ -44,7 +44,7 @@ public class HomeController {
 	}
 
     // 회원가입
-    @GetMapping("/signup")
+    @GetMapping("/signup/new")
     public String signup(Model model) {
         return "/login/signup";
     }

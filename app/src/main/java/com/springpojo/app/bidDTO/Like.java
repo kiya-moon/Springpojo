@@ -15,7 +15,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-@Table(name="USERS")
+@Table(name="LIKE")
 public class Like {
 	// 관심상품순서...?
 	@Id
