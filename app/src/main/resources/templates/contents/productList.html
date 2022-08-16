@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{/layout/default_layout}">
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{/layout/default_layout}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>auction_productList</title>
 <!-- productList css 파일 링크 -->
 <th:block layout:fragment="css">
-   <link rel="stylesheet" th:href="@{/css/productList.css}">
+	<link rel="stylesheet" th:href="@{/css/productList.css}">
 </th:block>
 </head>
 <body>
 <th:block layout:fragment="content">
-   <div class="contents_wrap_ky">
-      <div class="productList_header">
-         <hr class="category_line">
-         <h1 class="category_name">카테고리명</h1>
-      </div>
-      <div class="product_sort">
-         <button class="popularity_ranking_button">인기상품</button>
-         <button class="latest_order_button">신규등록</button>
-         <button class="closing_order_button">마감임박</button>
-      </div>
-   
-      <article>
-         <div class="productList_contents">
-            <div class="product_wrap">
-               <th:block th:each="num: ${#numbers.sequence(1,8)}">
-                  <div class="productList_contents_list">
-                     <img class="productList_contents_img"
-                        alt="productList_contents_img"
-                        src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
-                     <div class="productList_contents_name">상품 이름</div>
-                     <div class="productList_contents_about">현재 입찰 인원</div>
-                     <div class="productList_contents_price">현재 입찰가</div>
-                  </div>
-               </th:block>
-            </div>
-         </div>
-      </article>
-   </div>
+	<div class="contents_wrap_ky">
+		<div class="productList_header">
+			<hr class="category_line">
+			<h1 class="category_name">카테고리명</h1>
+		</div>
+		<div class="product_sort">
+			<button class="popularity_ranking_button">인기상품</button>
+			<button class="latest_order_button">신규등록</button>
+			<button class="closing_order_button">마감임박</button>
+		</div>
+	
+		<article>
+			<div class="productList_contents">
+				<div class="product_wrap">
+					<th:block th:each="num: ${#numbers.sequence(1,8)}">
+						<div class="productList_contents_list">
+							<img class="productList_contents_img"
+								alt="productList_contents_img"
+								src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">
+							<div class="productList_contents_name">상품 이름</div>
+							<div class="productList_contents_about">현재 입찰 인원</div>
+							<div class="productList_contents_price">현재 입찰가</div>
+						</div>
+					</th:block>
+				</div> 
+			</div>
+		</article>
+	</div>
 </th:block>
 <th:block layout:fragment="script">
-   <!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
-   <script th:src="@{/js/home.js}" type="text/javascript"></script>
+	<!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
+	<script th:src="@{/js/home.js}" type="text/javascript"></script>
 </th:block>
 
 </body>

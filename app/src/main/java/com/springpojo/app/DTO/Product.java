@@ -1,4 +1,4 @@
-package com.springpojo.app.productDTO;
+package com.springpojo.app.DTO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,15 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.springpojo.app.bidDTO.Bid;
-import com.springpojo.app.bidDTO.Like;
-import com.springpojo.app.userDTO.User;
-
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter @Setter(value = AccessLevel.NONE)
 public class Product {
 
 	// 상품번호 -> PK

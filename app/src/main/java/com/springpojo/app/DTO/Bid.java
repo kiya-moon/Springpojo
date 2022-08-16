@@ -1,21 +1,18 @@
-package com.springpojo.app.bidDTO;
+package com.springpojo.app.DTO;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.springpojo.app.productDTO.Product;
-import com.springpojo.app.userDTO.User;
-
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
-@Getter @Setter
+@Getter @Setter(value = AccessLevel.NONE)
 public class Bid {
 	
 	// 경매참여번호
