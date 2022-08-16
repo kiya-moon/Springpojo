@@ -1,123 +1,122 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorate="~{/layout/default_layout}">
+   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+   layout:decorate="~{/layout/default_layout}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <th:block layout:fragment="css">
-	<link rel="stylesheet" th:href="@{/css/addProduct.css}">
+   <link rel="stylesheet" th:href="@{/css/addProduct.css}">
 </th:block>
 </head>
 <body>
-	<th:block layout:fragment="content">
-		<div class="fullscr_gy">
-			<div class="scr_body">
-				<div class="contents_body_gy">
-					<div class="contents_tit_gy">
-						<div class="add_img_gy">
-							<img src="http://pics.auction.co.kr/sell/basic/img_register.gif">
-						</div>
-						<div class="add_text_gy">
-							<h3>물품등록</h3>
-							<p class="effect_gy">
-								등록시 경매기간은 최대 <span class="effect2_gy">7</span>일 까지 선택 가능합니다.<br>
-								<span>허위물품</span>으로 의심 될 경우 관리자에 의해 임의로 <span>삭제</span> 될 수
-								있습니다.<br> <span>시세조작</span>으로 의심 될 경우 관리자에 의해 임의로 <span>삭제</span>
-								될 수 있습니다.
-							</p>
-						</div>
-					</div>
-					<div class="addproductForm">
-						<form method=post th:action="@{/product}" id="addForm">
-							<div class="devide_form">
-								<div class="upload_img">
-									<a class="close_btn" id="close_btn" onclick="deleteImg()"><img
-										src="/img/close_btn.png"></a> <img class="img_upload"
-										id="img_upload"
-										src="http://pics.auction.co.kr/sell/basic/img_no_286x286.gif">
-									<span class="upload_product" id="upload_product"
-										onclick="document.getElementById('upload_box').click()">
-										<input id="upload_box" type=file accept=image/*
-										onchange="readURL(this)">
-									</span>
-								</div>
-								<div class="addForm">
-									<table class="productInfo">
-										<tr>
-											<td class="borderTitle">상품명</td>
-											<td><span class="borderList"></span></td>
-											<td><input type=text
-												placeholder="&nbsp;&nbsp;상품명을 입력해주세요." id="productNameBox"
-												class="textbox" maxlength='18'></td>
-										</tr>
-										<tr>
-											<td class="borderTitle">카테고리</td>
-											<td><span class="borderList"></span></td>
-											<td><select name="category" id="categorySelect">
-													<option value="selectOne">==선택==</option>
-													<option value="goods">의류/잡화</option>
-													<option value="electirc">가구/가전</option>
-													<option value="collection">취미/컬렉션</option>
-													<option value="sports">스포츠/레져/자동차</option>
-													<option value="books">도서/기타</option>
-											</select></td>
-										</tr>
-										<tr>
-											<td class="borderTitle">경매 시작가</td>
-											<td><span class="borderList"></span></td>
-											<td><input type="number"
-												placeholder="&nbsp;&nbsp;1000원 단위로 입력해주세요."
-												id="productPriceBox" class="textbox"></td>
-										</tr>
-										<tr>
-											<td class="borderTitle">경매 기간</td>
-											<td><span class="borderList"></span></td>
-											<td><input type="checkbox" id="cbDate" name="date"
-												value="day" onclick='checkOnlyOne(this)'> <label
-												class="cb" for="cbDate"></label>
-												<h5>&nbsp;&nbsp;1일</h5> <input type="checkbox" id="cbDate2"
-												name="date" value="3days" onclick='checkOnlyOne(this)'>
-												<label class="cb" for="cbDate2"></label>
-												<h5>&nbsp;&nbsp;3일</h5> <input type="checkbox" id="cbDate3"
-												name="date" value="week" onclick='checkOnlyOne(this)'>
-												<label class="cb" for="cbDate3"></label>
-												<h5>&nbsp;&nbsp;7일</h5></td>
-										</tr>
-									</table>
-								</div>
-								<div>
-									<div class="productEx_tit">물품 상세 설명</div>
-									<div id="editor" class="productEx_box">
-										<p id="productEx_text">This is the editor content.</p>
-									</div>
-									<script>
-								       ClassicEditor
-								          .create( document.querySelector('#editor'))
-								          .catch(error => {
-								             console.error(error);
-								          });
-								    </script>
+   <th:block layout:fragment="content">
+      <div class="fullscr_gy">
+         <div class="scr_body">
+            <div class="contents_body_gy">
+            <div class="wrap_tit_gy">
+            </div>
+               <div class="contents_tit_gy">
+                  <div class="add_img_gy">
+                     <img src="http://pics.auction.co.kr/sell/basic/img_register.gif">
+                  </div>
+                  <div class="add_text_gy">
+                     <h3>물품등록</h3>
+                     <p class="effect_gy">
+                        등록시 경매기간은 최대  <span class="effect2_gy">7 </span>일 까지 선택 가능합니다.<br>
+                        <span>허위물품</span>으로 의심 될 경우 관리자에 의해 임의로 <span>삭제</span> 될 수
+                        있습니다.<br> <span>시세조작</span>으로 의심 될 경우 관리자에 의해 임의로 <span>삭제</span>
+                        될 수 있습니다.
+                     </p>
+                  </div>
+               </div>
+               <div class="addproductForm">
+                  <form method=post th:action="@{/product}" id="addForm">
+                     <div class="devide_form">
+                        <div class="upload_img">
+                           <a class="close_btn" id="close_btn" onclick="deleteImg()"><img
+                              src="/img/close_btn.png"></a> <img class="img_upload"
+                              id="img_upload"
+                              src="http://pics.auction.co.kr/sell/basic/img_no_286x286.gif">
+                           <span class="upload_product" id="upload_product"
+                              onclick="document.getElementById('upload_box').click()">
+                              <input id="upload_box" type=file accept=image/*
+                              onchange="readURL(this)">
+                           </span>
+                        </div>
+                        <div class="addForm">
+                           <table class="productInfo">
+                              <tr>
+                                 <td class="borderTitle">상품명</td>
+                                 <td><span class="borderList"></span></td>
+                                 <td><input type=text
+                                    placeholder="&nbsp;&nbsp;상품명을 입력해주세요." id="productNameBox"
+                                    class="textbox" maxlength='18'></td>
+                              </tr>
+                              <tr>
+                                 <td class="borderTitle">카테고리</td>
+                                 <td><span class="borderList"></span></td>
+                                 <td><select name="category" id="categorySelect">
+                                       <option class="option" value="selectOne">==선택==</option>
+                                       <option class="option" value="goods">의류/잡화</option>
+                                       <option class="option" value="electirc">가구/가전</option>
+                                       <option class="option" value="collection">취미/컬렉션</option>
+                                       <option class="option" value="sports">스포츠/레져/자동차</option>
+                                       <option class="option" value="books">도서/기타</option>
+                                 </select></td>
+                              </tr>
+                              <tr>
+                                 <td class="borderTitle">경매 시작가</td>
+                                 <td><span class="borderList"></span></td>
+                                 <td><input type="number"
+                                    placeholder="&nbsp;&nbsp;1000원 단위로 입력해주세요."
+                                    id="productPriceBox" class="textbox"></td>
+                              </tr>
+                              <tr>
+                                 <td class="borderTitle">경매 기간</td>
+                                 <td><span class="borderList"></span></td>
+                                 <td><input type="checkbox" id="cbDate" name="date"
+                                    value="day" onclick='checkOnlyOne(this)'> <label
+                                    class="cb" for="cbDate"></label>
+                                    <h5>&nbsp;&nbsp;1일</h5> <input type="checkbox" id="cbDate2"
+                                    name="date" value="3days" onclick='checkOnlyOne(this)'>
+                                    <label class="cb" for="cbDate2"></label>
+                                    <h5>&nbsp;&nbsp;3일</h5> <input type="checkbox" id="cbDate3"
+                                    name="date" value="week" onclick='checkOnlyOne(this)'>
+                                    <label class="cb" for="cbDate3"></label>
+                                    <h5>&nbsp;&nbsp;7일</h5></td>
+                              </tr>
+                           </table>
+                        </div>
+                        <div>
+                           <div class="productEx_tit">물품 상세 설명</div>
+                           <div id="editor" class="productEx_box">
+                              <p id="productEx_text">This is the editor content.</p>
+                           </div>
 
-									<div>
-										<button id="add_btn" class="add_btn" type="button"
-											th:onclick="chkNull()">등록</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</th:block>
-	<th:block layout:fragment="script">
-		<!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
-		<script type="text/javascript" th:src="@{/js/addProduct.js}"></script>
-		<script type="text/javascript"
-			src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	</th:block>
-</body>
+                           <div>
+                              <button id="add_btn" class="add_btn" type="button"
+                                 th:onclick="chkNull()">등록</button>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </th:block>
+   <th:block layout:fragment="script">
+   <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
+                           <script>
+                               ClassicEditor
+                                  .create( document.querySelector('#editor'))
+                                  .catch(error => {
+                                     console.error(error);
+                                  });
+                            </script>
+      <!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
+      <script type="text/javascript" th:src="@{/js/addProduct.js}"></script>
+   </th:block>
 </html>
