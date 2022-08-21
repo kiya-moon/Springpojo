@@ -32,7 +32,7 @@
                   </div>
                </div>
                <div class="addproductForm">
-                  <form method=post th:action="@{/product}" id="addForm">
+                  <form method=post th:action="@{/product}" enctype="multipart/form-data" id="addForm">
                      <div class="devide_form">
                         <div class="upload_img">
                            <a class="close_btn" id="close_btn" onclick="deleteImg()"><img
@@ -51,13 +51,13 @@
                                  <td class="borderTitle">상품명</td>
                                  <td><span class="borderList"></span></td>
                                  <td><input type=text
-                                    placeholder="&nbsp;&nbsp;상품명을 입력해주세요." id="productNameBox"
+                                    placeholder="&nbsp;&nbsp;상품명을 입력해주세요." id="productNameBox" name="productName"
                                     class="textbox" maxlength='18'></td>
                               </tr>
                               <tr>
                                  <td class="borderTitle">카테고리</td>
                                  <td><span class="borderList"></span></td>
-                                 <td><select name="category" id="categorySelect">
+                                 <td><select name="productCategory" id="categorySelect">
                                        <option class="option" value="selectOne">==선택==</option>
                                        <option class="option" value="goods">의류/잡화</option>
                                        <option class="option" value="electirc">가구/가전</option>
@@ -71,19 +71,19 @@
                                  <td><span class="borderList"></span></td>
                                  <td><input type="number"
                                     placeholder="&nbsp;&nbsp;1000원 단위로 입력해주세요."
-                                    id="productPriceBox" class="textbox"></td>
+                                    id="productPriceBox" name="productPrice"class="textbox"></td>
                               </tr>
                               <tr>
                                  <td class="borderTitle">경매 기간</td>
                                  <td><span class="borderList"></span></td>
-                                 <td><input type="checkbox" id="cbDate" name="date"
+                                 <td><input type="checkbox" id="cbDate" name="productDate"
                                     value="day" onclick='checkOnlyOne(this)'> <label
                                     class="cb" for="cbDate"></label>
                                     <h5>&nbsp;&nbsp;1일</h5> <input type="checkbox" id="cbDate2"
-                                    name="date" value="3days" onclick='checkOnlyOne(this)'>
+                                    name="productDate" value="3days" onclick='checkOnlyOne(this)'>
                                     <label class="cb" for="cbDate2"></label>
                                     <h5>&nbsp;&nbsp;3일</h5> <input type="checkbox" id="cbDate3"
-                                    name="date" value="week" onclick='checkOnlyOne(this)'>
+                                    name="productDate" value="week" onclick='checkOnlyOne(this)'>
                                     <label class="cb" for="cbDate3"></label>
                                     <h5>&nbsp;&nbsp;7일</h5></td>
                               </tr>

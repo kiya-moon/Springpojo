@@ -39,7 +39,6 @@ public class HomeController {
 		return "contents/product";
 	}
 
-	@GetMapping("/about")
 	public String about() {
 		return "about";
 	}
@@ -95,7 +94,5 @@ public class HomeController {
 	public String mypage(Model model) {
 		return "/mypage/Edit_member_information";
 	}
-
-
 
 }
