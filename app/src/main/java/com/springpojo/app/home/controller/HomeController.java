@@ -12,16 +12,6 @@ public class HomeController {
 		return "contents/home";
 	}
 	
-	@GetMapping("/add")
-	public String add() {
-		return"contents/addProduct";
-	}
-	
-	@GetMapping("/product")
-	public String product() {
-		return "contents/product";
-	}
-	
 	@GetMapping("/about")
 	public String about() {
 		return "about";
@@ -81,13 +71,4 @@ public class HomeController {
     }
     
     
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

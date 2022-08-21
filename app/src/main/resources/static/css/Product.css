@@ -60,9 +60,16 @@ html{
 	font-size: 27px;
 	display: inline-block;
 }
+input{
+	border:none;
+}
+input:focus{
+	border:none;
+	outline:none;
+}
 
 .productCategory{
-	width: 15%;
+	width: 30%;
 	float: right;
 	display:inline-block;
 	position: absolute;
@@ -78,12 +85,12 @@ html{
 	display:inline-block;
 	font-weight: bold;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .productCeller{
 	display:inline-block;
 	float: right;
-	padding-top: 25px;
+	padding-top: 20px;
 }
 
 .cellerName{
@@ -131,6 +138,10 @@ html{
 	border-bottom: 1px solid #ccc;
 }
 
+input.checkPrice{
+	text-align: end;
+	background-color:#f6f6f8;
+}
 .priceBtn{
 	text-align: center;
 	margin-top: 10px;

@@ -19,12 +19,18 @@
 					</div>
 					<div class="productInfo">
 						<div class="nameCategory">
-							<div class="productName">상품명</div>
-							<div class="productCategory">카테고리</div>
+							<div class="productName">
+							<input class="productName" name="productName" th:value="${product.productName}" readonly>
+							</div>
+							<div class="productCategory">
+							<input class="productCategory" name="productCategory" th:value="${product.productCategory}" readonly>
+							</div>
 						</div>
 						<div class="priceCeller">
-						<div class="startPrice">현재금액</div>
-						<div class="productCeller">판매자 : <a class="cellerName"href="#">OOO</a></div>
+						<div class="startPrice">
+						<input class="startPrice" name="productPrice" th:value="'&#8361;' + ${product.productPrice}" readonly>
+						</div>
+						<div class="productCeller">판매자 : <a class="cellerName" href="#">ooo</a></div>
 						</div>
 						<div class="deadLineBox">
 							<div class="deadLine">00 : 00 : 00</div>
@@ -33,7 +39,9 @@
 							<div class="currentPrice_form">
 								<div class="currentPrice">입찰 금액</div>
 								<div class="currentPriceBox">
-									<div class="checkPrice">입찰금액(변동)</div>
+									<div class="checkPrice">
+									<input class="checkPrice" name="checkPrice" th:value="${product.productPrice}" readonly>
+									</div>
 								</div>
 								<div class="priceBtn">
 									<button type="button" class="one_btn btn_group">+
