@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
-<meta charset="UTF-8">
+<eta charset="UTF-8">
 <title>회원가입</title>
 <link href="../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
 <style>
@@ -108,34 +109,34 @@ input::-webkit-inner-spin-button {
 			<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="signup" method="post" action="/signup/new"  >
+				<form name="signup" method="post" action="/singup" th:action="@{/login/signup}" >
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
-							<input type="text" class="sw_floating" name="UserId" id="UserId" placeholder=" ">
-							<label id="sw_textColor" for="UserId">아이디</label>
+							<input type="text" class="sw_floating" name="UserId" id="UserId" placeholder=" " >
+							<label id="sw_textColor" for ="UserId">아이디</label>
 							<button class="sw_check" type="button" id ="overlapperdID">중복확인</button>
 						</div>
-							<span id="olmessage"></span>
+						<!--	<span id="olmessage"></span> -->
 						<div class="sw_form-floating sw_mg2">
 							<input type="password"  class="sw_floating" name="UserPw" id="UserPw" placeholder=" ">
 							<label id="sw_textColor" for="UserPw">비밀번호</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password" class="sw_floating" name="UserPwCheck" id="UserPwCheck" placeholder=" ">
+							<input type="password" class="sw_floating" name="UserPwCheck" id="UserPwCheck" placeholder=" " >
 							<label id="sw_textColor" for="UserPwCheck">비밀번호 확인</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text"  class="sw_floating" name="UserName" id="UserName" placeholder=" ">
+							<input type="text"  class="sw_floating" name="UserName" id="UserName" placeholder=" " >
 							<label id="sw_textColor" for="UserName">이름</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="number"  class="sw_floating" name="UserBirth" id="Userbirth" placeholder=" ">
+							<input type="number"  class="sw_floating" name="UserBirth" id="Userbirth" placeholder=" " >
 							<label id="sw_textColor" for="UserBirth">생년월일</label>
 						</div>
 						<div class="sw_form-floating sw_mg2" id="sw_email">
 							<input type="text" class="sw_floating" name="UserEmail" id="UserEmail" placeholder=" ">
 							<label id="sw_textColor" for="UserEmail">이메일</label>
-							<h3 class="sw_h3">@</h3>
+<!--							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
 							  <option value="naver.com">naver.com</option>
 							  <option value="google.com">google.com</option>
@@ -143,13 +144,14 @@ input::-webkit-inner-spin-button {
 							  <option value="daum.net">daum.net</option>
 							  <option value="nate.com">nate.com</option>
 							  <option value="hotmail.com">hotmail.com</option>
-							</select>
+							</select>				-->
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="number" class="sw_floating" name="UserPhone" id="UserPhone" placeholder=" ">
+							<input type="number" class="sw_floating" name="UserPhone" id="UserPhone" placeholder=" " th:value="*{UserPhone}">
 							<label id="sw_textColor" for="UserPhone">전화번호</label>
 						</div>
-						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>
+						<button type="submit"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" >회원가입</button>
+<!--						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>	-->
 					</div>
 				</form>
 						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="|location.href='@{/}'|">취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
