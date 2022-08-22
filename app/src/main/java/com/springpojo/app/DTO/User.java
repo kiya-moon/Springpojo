@@ -61,6 +61,8 @@ public class User {
 	@NotEmpty
 	private String UserPhone;
 	
+	private String UserRole;		// 유저 권한
+	
 	@OneToMany(mappedBy = "user")
 	private List<Bid> bid = new ArrayList<>();
 	

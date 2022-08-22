@@ -109,7 +109,7 @@ input::-webkit-inner-spin-button {
 			<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="signup" method="post" action="/singup" th:action="@{/login/signup}" >
+				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" >
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
 							<input type="text" class="sw_floating" name="UserId" id="UserId" placeholder=" " >

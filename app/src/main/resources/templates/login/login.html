@@ -108,7 +108,7 @@ input::-webkit-inner-spin-button {
 				<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form  name="login" method="post" action="" th:action="@{/login/login}">
+				<form  name="login" method="post" action="/login.do" th:action="@{/login.do}">
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" class="sw_floating" name="UserId" placeholder=" " th:value="*{UserId}">
@@ -119,6 +119,7 @@ input::-webkit-inner-spin-button {
 							<label id="sw_textColor">비밀번호</label>
 						</div>
 						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="LoginOn()">로그인</button>
+						<p th:text="${loginMessage}" style="color: red"></p>
 						<div class="sw_etc" style="cursor:pointer">
 							<a onclick="location.href='signup.html'"
 							th:onclick="|location.href='@{/agree}'|">회원가입</a>
