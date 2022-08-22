@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.springpojo.app.DTO.User;
-import com.springpojo.app.repository.UserRepository;
+//import com.springpojo.app.repository.UserRepository;
 import com.springpojo.app.session.SessionConst;
 import com.springpojo.app.session.SessionManager;
 
@@ -29,15 +29,15 @@ public class HomeController {
 		return "contents/home";
 	}
 
-	@GetMapping("/add")
-	public String add() {
-		return "contents/addProduct";
-	}
+//	@GetMapping("/add")
+//	public String add() {
+//		return "contents/addProduct";
+//	}
 
-	@GetMapping("/product")
-	public String product() {
-		return "contents/product";
-	}
+//	@GetMapping("/product")
+//	public String product() {
+//		return "contents/product";
+//	}
 
 	public String about() {
 		return "about";

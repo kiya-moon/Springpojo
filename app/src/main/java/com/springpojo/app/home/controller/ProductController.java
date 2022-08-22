@@ -2,8 +2,8 @@ package com.springpojo.app.home.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springpojo.app.DTO.Product;
@@ -19,18 +19,26 @@ public class ProductController {
 	}
 	
 	@GetMapping("/add")
-	public String addProduct() {
+	public String addProduct(Model model) {
+		model.addAttribute("Product", new Product());
 		return "contents/addProduct";
 	}
 	
 	@PostMapping("/product")
-	public String add(@ModelAttribute Product product) {
-		System.out.println("productController");
-		System.out.println(product.getProductName());
-		System.out.println(product.getProductCategory());
+	public String add(Product product) {
 		addService.saveProduct(product);
 		return "contents/product";
 	}
 	
+//	@GetMapping("/product")
+//	public String productPlus() {
+//		return "contents/product";
+//	}
+	
+//	@PostMapping("/price")
+//	public String price(Model model) {
+//		Product product = new Product();
+//		product.setProductPrice(model)
+//	}
 	
 }
