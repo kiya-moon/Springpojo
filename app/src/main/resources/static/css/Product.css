@@ -157,21 +157,30 @@ input.checkPrice{
 }
 
 .func_btn{
-	width: 100%;
+	display: inline-block;
+	width: 370px;
 	text-align: center;
 	margin-top: 12px;
+	margin-left: 2px;
+	float: right;
 }
-
+.bid_btnGroup{
+	display: inline-block;
+	width: 186px;
+	float: left;
+	margin-top:12px;
+}
 .btn_group2{
 	height: 30px;
-	width: 32.83%;
 	cursor: pointer;
 	font-weight: 600;
+	width: 49%;
 }
 
 .bid_btn{
 	background-color: #000;
 	color: #fff;
+	width: 100%;
 }
 
 .likeList_btn, .like_btn{

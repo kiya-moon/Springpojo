@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/default_layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/default_layout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -9,81 +11,85 @@
 </head>
 <body>
 	<th:block layout:fragment="content">
-	<div class="bg_color">
-	<div class="devideContainer"></div>
-		<div class="productContainer">
-			<div class="productSubContainer">
-				<div class="product_info">
-					<div class="img_view_box">
-						<!-- img -->
-					</div>
-					<div class="productInfo">
-						<div class="nameCategory">
-							<div class="productName">
-							<input class="productName" name="productName" th:value="${product.productName}" readonly>
+		<div class="bg_color">
+			<div class="devideContainer"></div>
+			<div class="productContainer">
+				<div class="productSubContainer">
+					<div class="product_info">
+						<div class="img_view_box">
+							<!-- img -->
+						</div>
+						<div class="productInfo">
+							<div class="nameCategory">
+								<div class="productName">
+									<input class="productName" name="productName" readonly>
+								</div>
+								<div class="productCategory">
+									<input class="productCategory" name="productCategory" readonly>
+								</div>
 							</div>
-							<div class="productCategory">
-							<input class="productCategory" name="productCategory" th:value="${product.productCategory}" readonly>
+							<div class="priceCeller">
+								<div class="startPrice">
+									<input class="startPrice" name="productPrice" readonly>
+								</div>
+								<div class="productCeller">
+									판매자 : <a class="cellerName" href="#">ooo</a>
+								</div>
 							</div>
-						</div>
-						<div class="priceCeller">
-						<div class="startPrice">
-						<input class="startPrice" name="productPrice" th:value="'&#8361;' + ${product.productPrice}" readonly>
-						</div>
-						<div class="productCeller">판매자 : <a class="cellerName" href="#">ooo</a></div>
-						</div>
-						<div class="deadLineBox">
-							<div class="deadLine">00 : 00 : 00</div>
-						</div>
-						<form method="post">
-							<div class="currentPrice_form">
-								<div class="currentPrice">입찰 금액</div>
-								<div class="currentPriceBox">
-									<div class="checkPrice">
-									<input class="checkPrice" name="checkPrice" th:value="${product.productPrice}" readonly>
+							<div class="deadLineBox">
+								<div class="deadLine">00 : 00 : 00</div>
+							</div>
+							<form method="post">
+								<div class="currentPrice_form">
+									<div class="currentPrice">입찰 금액</div>
+									<div class="currentPriceBox">
+										<div class="checkPrice">
+											<input class="checkPrice" name="checkPrice" readonly>
+										</div>
+									</div>
+									<div class="priceBtn">
+									<button type="button" class="one_btn btn_group" name="price1" th:value=1000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price1.value)">+
+                              ₩1000</button>
+                           <button type="button" class="five_btn btn_group" name="price2" th:value=5000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price2.value)">+
+                              ₩5000</button>
+                           <button type="button" class="ten_btn btn_group" name="price3" th:value=10000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price3.value)">+
+                              ₩10000</button>
+										<button type="reset" class="reset_btn btn_group">Reset</button>
 									</div>
 								</div>
-								<div class="priceBtn">
-									<button type="button" class="one_btn btn_group">+
-										₩1000</button>
-									<button type="button" class="five_btn btn_group">+
-										₩5000</button>
-									<button type="button" class="ten_btn btn_group">+
-										₩10000</button>
-									<button type="reset" class="reset_btn btn_group">Reset</button>
+								<div class="bid_btnGroup">
+									<button type="button" class="bid_btn btn_group2">입찰하기</button>
 								</div>
+							</form>
+							<div class="func_btn">
+								<button type="button" class="likeList_btn btn_group2">찜
+									목록</button>
+								<button type="button" class="like_btn btn_group2"
+									th:onclick="imgToggle()">
+									<div class="like_line">
+										<img id="like_off" th:src="@{img/likeoff.png}"> <span th:value="0">0</span>
+									</div>
+								</button>
 							</div>
-						</form>
-						<div class="func_btn">
-							<button type="submit" class="bid_btn btn_group2">입찰하기</button>
-							<button type="button" class="likeList_btn btn_group2">찜
-								목록</button>
-							<button type="button" class="like_btn btn_group2" th:onclick="imgToggle()">
-								<div class="like_line">
-								<img id="like_off" th:src="@{img/likeoff.png}">
-								<span>0</span>
-								</div>
-							</button>
 						</div>
 					</div>
-				</div>
-				<div>
-					<!-- 판매자정보 -->
-				</div>
-				<div class="productEx_body">
-					<div class="productEx_title">상세설명</div>
-					<div class="productEx_contents">
-						<!-- 상품설명 -->
+					<div>
+						<!-- 판매자정보 -->
 					</div>
-				</div>
-				<div class="list_btn_box">
-					<button type="button" class="productList">목록</button>
+					<div class="productEx_body">
+						<div class="productEx_title">상세설명</div>
+						<div class="productEx_contents">
+							<!— 상품설명 —>
+						</div>
+					</div>
+					<div class="list_btn_box">
+						<button type="button" class="productList">목록</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</th:block>
-	
+
 	<th:block layout:fragment="script">
 		<script type="text/javascript" th:src="@{/js/product.js}"></script>
 	</th:block>

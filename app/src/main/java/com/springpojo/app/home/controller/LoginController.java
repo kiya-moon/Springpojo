@@ -1,28 +1,28 @@
-package com.springpojo.app.home.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.springpojo.app.DTO.User;
-import com.springpojo.app.repository.UserRepository;
-import com.springpojo.app.service.LoginService;
-import com.springpojo.app.session.SessionManager;
-
-import lombok.RequiredArgsConstructor;
-
-@Controller
-@RequiredArgsConstructor
-@RequestMapping("/login")
-public class LoginController {
-
-	private final LoginService loginService;
-	private final UserRepository userRepository;
-	// 세션
-	private final SessionManager sessionManager;
-
-	
+//package com.springpojo.app.home.controller;
+//
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//
+//import com.springpojo.app.DTO.User;
+//import com.springpojo.app.repository.UserRepository;
+//import com.springpojo.app.service.LoginService;
+//import com.springpojo.app.session.SessionManager;
+//
+//import lombok.RequiredArgsConstructor;
+//
+//@Controller
+//@RequiredArgsConstructor
+//@RequestMapping("/login")
+//public class LoginController {
+//
+//	private final LoginService loginService;
+//	private final UserRepository userRepository;
+//	// 세션
+//	private final SessionManager sessionManager;
+//
+//	
 //	// 로그인
 //	@PostMapping("login")
 //	public String loginId(@ModelAttribute User user) {
@@ -198,4 +198,4 @@ public class LoginController {
 	
 	
 	
-}
+//}

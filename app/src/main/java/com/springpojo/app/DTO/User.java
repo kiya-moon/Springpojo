@@ -64,8 +64,8 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Bid> bid = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user")
-	private List<Product> product = new ArrayList<>();
+//	@OneToMany(mappedBy = "user")
+//	private List<Product> product = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "user")
 	private List<Image> image = new ArrayList<>();

@@ -1,29 +1,29 @@
-package com.springpojo.app.repository;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-
-import com.springpojo.app.DTO.User;
-
-@Repository
-public interface UserRepository extends JpaRepository<User, String>{
-	
-//	@Query("select u from USERS u where USERID = ?")
-//	List<User> findUser(String UserId, String UserPw);
-	
-	@Query("select u from UserVO u where u.userId=:userId and u.password=:password")
-	User selectUserInfo(@Param("userId")String UserId, @Param("UserPw")String UserPw);
-};
+//package com.springpojo.app.repository;
+//
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
+//import java.util.Optional;
+//
+//import javax.persistence.EntityManager;
+//
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.Query;
+//import org.springframework.data.repository.query.Param;
+//import org.springframework.stereotype.Repository;
+//
+//import com.springpojo.app.DTO.User;
+//
+//@Repository
+//public interface UserRepository extends JpaRepository<User, String>{
+//	
+////	@Query("select u from USERS u where USERID = ?")
+////	List<User> findUser(String UserId, String UserPw);
+//	
+//	@Query("select u from UserVO u where u.userId=:userId and u.password=:password")
+//	User selectUserInfo(@Param("userId")String UserId, @Param("UserPw")String UserPw);
+//};
 	
 ////	@Query("select u from User u where UserId = :UserId and UserPw = :UserPw")
 ////	User findUser(String UserId, String UserPw);

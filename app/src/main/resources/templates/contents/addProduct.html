@@ -34,17 +34,17 @@
                <div class="addproductForm">
                   <form method=post th:action="@{/product}" enctype="multipart/form-data" id="addForm">
                      <div class="devide_form">
-                        <div class="upload_img">
-                           <a class="close_btn" id="close_btn" onclick="deleteImg()"><img
-                              src="/img/close_btn.png"></a> <img class="img_upload"
-                              id="img_upload"
-                              src="http://pics.auction.co.kr/sell/basic/img_no_286x286.gif">
-                           <span class="upload_product" id="upload_product"
-                              onclick="document.getElementById('upload_box').click()">
-                              <input id="upload_box" type=file accept=image/*
-                              onchange="readURL(this)">
-                           </span>
-                        </div>
+<!--                         <div class="upload_img"> -->
+<!--                            <a class="close_btn" id="close_btn" onclick="deleteImg()"><img -->
+<!--                               src="/img/close_btn.png"></a> <img class="img_upload" -->
+<!--                               id="img_upload" -->
+<!--                               src="http://pics.auction.co.kr/sell/basic/img_no_286x286.gif"> -->
+<!--                            <span class="upload_product" id="upload_product" -->
+<!--                               onclick="document.getElementById('upload_box').click()"> -->
+<!--                               <input id="upload_box" type=file accept=image/* -->
+<!--                               onchange="readURL(this)"> -->
+<!--                            </span> -->
+<!--                         </div> -->
                         <div class="addForm">
                            <table class="productInfo">
                               <tr>
@@ -73,39 +73,39 @@
                                     placeholder="&nbsp;&nbsp;1000원 단위로 입력해주세요."
                                     id="productPriceBox" name="productPrice"class="textbox"></td>
                               </tr>
-                              <tr>
-                                 <td class="borderTitle">경매 기간</td>
-                                 <td><span class="borderList"></span></td>
-                                 <td><input type="checkbox" id="cbDate" name="productDate"
-                                    value="day" onclick='checkOnlyOne(this)'> <label
-                                    class="cb" for="cbDate"></label>
-                                    <h5>&nbsp;&nbsp;1일</h5> <input type="checkbox" id="cbDate2"
-                                    name="productDate" value="3days" onclick='checkOnlyOne(this)'>
-                                    <label class="cb" for="cbDate2"></label>
-                                    <h5>&nbsp;&nbsp;3일</h5> <input type="checkbox" id="cbDate3"
-                                    name="productDate" value="week" onclick='checkOnlyOne(this)'>
-                                    <label class="cb" for="cbDate3"></label>
-                                    <h5>&nbsp;&nbsp;7일</h5></td>
-                              </tr>
+<!--                               <tr> -->
+<!--                                  <td class="borderTitle">경매 기간</td> -->
+<!--                                  <td><span class="borderList"></span></td> -->
+<!--                                  <td><input type="checkbox" id="cbDate" name="productDate" -->
+<!--                                     value="day" onclick='checkOnlyOne(this)'> <label -->
+<!--                                     class="cb" for="cbDate"></label> -->
+<!--                                     <h5>&nbsp;&nbsp;1일</h5> <input type="checkbox" id="cbDate2" -->
+<!--                                     name="productDate" value="3days" onclick='checkOnlyOne(this)'> -->
+<!--                                     <label class="cb" for="cbDate2"></label> -->
+<!--                                     <h5>&nbsp;&nbsp;3일</h5> <input type="checkbox" id="cbDate3" -->
+<!--                                     name="productDate" value="week" onclick='checkOnlyOne(this)'> -->
+<!--                                     <label class="cb" for="cbDate3"></label> -->
+<!--                                     <h5>&nbsp;&nbsp;7일</h5></td> -->
+<!--                               </tr> -->
                            </table>
                         </div>
-                        <div>
-                           <div class="productEx_tit">물품 상세 설명</div>
-                           <div id="editor" class="productEx_box">
-                              <p id="productEx_text">This is the editor content.</p>
-                           </div>
+<!--                         <div> -->
+<!--                            <div class="productEx_tit">물품 상세 설명</div> -->
+<!--                            <div id="editor" class="productEx_box"> -->
+<!--                               <p id="productEx_text">This is the editor content.</p> -->
+<!--                            </div> -->
 
                            <div>
-                              <button id="add_btn" class="add_btn" type="button"
+                              <button id="add_btn" class="add_btn" type="submit"
                                  th:onclick="chkNull()">등록</button>
                            </div>
                         </div>
+	                  </form>
                      </div>
-                  </form>
                </div>
             </div>
          </div>
-      </div>
+<!--       </div> -->
    </th:block>
    <th:block layout:fragment="script">
    <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>

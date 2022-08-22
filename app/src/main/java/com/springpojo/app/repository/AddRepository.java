@@ -12,16 +12,16 @@ import com.springpojo.app.DTO.Product;
 import lombok.RequiredArgsConstructor;
 
 @Repository
+@RequiredArgsConstructor
 //public interface AddRepository extends JpaRepository<Product, Long>{
 //	
-//	@Query("select p from PRODUCT p")
+//	@Query("select p from ProductVO p")
 //	
 //}
-@RequiredArgsConstructor
 public class AddRepository {
 
 	@PersistenceContext
-	private EntityManager em;
+	private final EntityManager em;
 	
 	public void save(Product product) {
 		if(product.getId() == null) {
@@ -29,10 +29,9 @@ public class AddRepository {
 		}else {
 			em.merge(product);
 		}
-		
 	}
+	
 	public List<Product> findAll() {
-		
 		return em.createQuery("select p from Product p", Product.class).getResultList();
 	}
 }
