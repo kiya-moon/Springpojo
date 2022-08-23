@@ -23,7 +23,7 @@ public class AddRepository {
 	@PersistenceContext
 	private final EntityManager em;
 	
-	public void save(Product product) {
+	public  void save(Product product) {
 		if(product.getId() == null) {
 			em.persist(product);
 		}else {

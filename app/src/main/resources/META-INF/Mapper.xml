@@ -1,3 +1,0 @@
-<select id="overlapperdID" parameterType="User" resultType="int">
-	select count(USERID) From USERS u where USERID=#{USERID}
-</select>

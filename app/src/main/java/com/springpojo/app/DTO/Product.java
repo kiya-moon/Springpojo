@@ -1,8 +1,7 @@
 package com.springpojo.app.DTO;
 	
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -46,9 +43,10 @@ public class Product {
 	private String productCategory;
 	// 이미지는 이미지 DB에서 받아올 예정
 //	private String productImage;
-//	private LocalDateTime productDate;
-//	@Column(nullable=true)
-//	private String productText;
+	private LocalTime startDate;
+	private String productDate;
+	@Column(nullable=true, length=500)
+	private String productText;
 //	@Column(nullable=true)
 	// likecount는 like 테이블에서 prodcut_name을 count
 //	private int likeCount;
@@ -56,7 +54,7 @@ public class Product {
 //	private String productCeller;
 //	// Date인지 잘 모르겠지만 일단 넣어둠
 //	@Column(nullable=true)
-//	private Date productEnddate;
+	private LocalTime endDate;
 	
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();

@@ -25,7 +25,7 @@ footer{
 	right: 0;
 	height: 550px;
 	display: flex;
-	justify-content: center;
+	/* justify-content: center; */
 }
 .footer-pusher{
 	position: relative;

@@ -22,43 +22,43 @@
 						<div class="productInfo">
 							<div class="nameCategory">
 								<div class="productName">
-									<input class="productName" name="productName" readonly>
+									<input class="productName" name="productName" th:value="${product.productName}" readonly>
 								</div>
 								<div class="productCategory">
-									<input class="productCategory" name="productCategory" readonly>
+									<input class="productCategory" name="productCategory" th:value="${product.productCategory}" readonly>
 								</div>
 							</div>
 							<div class="priceCeller">
 								<div class="startPrice">
-									<input class="startPrice" name="productPrice" readonly>
+									<input id="startPrice" class="startPrice" name="productPrice" th:value="${product.productPrice}" readonly>
 								</div>
 								<div class="productCeller">
 									판매자 : <a class="cellerName" href="#">ooo</a>
 								</div>
 							</div>
 							<div class="deadLineBox">
-								<div class="deadLine">00 : 00 : 00</div>
+									<input type="text" id="period" class="period" name="period" value="90" readonly>
 							</div>
-							<form method="post">
+							<form method="post" id="new_price">
 								<div class="currentPrice_form">
 									<div class="currentPrice">입찰 금액</div>
 									<div class="currentPriceBox">
 										<div class="checkPrice">
-											<input class="checkPrice" name="checkPrice" readonly>
+											<input id="checkPrice" class="checkPrice" name="checkPrice" th:value="${product.productPrice}" readonly>
 										</div>
 									</div>
 									<div class="priceBtn">
-									<button type="button" class="one_btn btn_group" name="price1" th:value=1000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price1.value)">+
+									<button type="button" class="one_btn btn_group" name="price1" th:value=1000 th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price1.value)">+
                               ₩1000</button>
-                           <button type="button" class="five_btn btn_group" name="price2" th:value=5000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price2.value)">+
+                           <button type="button" class="five_btn btn_group" name="price2" th:value=5000 th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price2.value)">+
                               ₩5000</button>
-                           <button type="button" class="ten_btn btn_group" name="price3" th:value=10000 onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price3.value)">+
+                           <button type="button" class="ten_btn btn_group" name="price3" th:value=10000 th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price3.value)">+
                               ₩10000</button>
 										<button type="reset" class="reset_btn btn_group">Reset</button>
 									</div>
 								</div>
 								<div class="bid_btnGroup">
-									<button type="button" class="bid_btn btn_group2">입찰하기</button>
+									<button type="button" class="bid_btn btn_group2" th:onclick="chk_price()">입찰하기</button>
 								</div>
 							</form>
 							<div class="func_btn">
@@ -79,7 +79,7 @@
 					<div class="productEx_body">
 						<div class="productEx_title">상세설명</div>
 						<div class="productEx_contents">
-							<!— 상품설명 —>
+							<textarea id="productText" class="productText" name="productText" th:text="${product.productText}" readonly></textarea>
 						</div>
 					</div>
 					<div class="list_btn_box">
