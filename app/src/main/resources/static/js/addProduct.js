@@ -16,7 +16,7 @@ function readURL(input) {
 function checkOnlyOne(element) {
   
   const checkboxes 
-      = document.getElementsByName("date");
+      = document.getElementsByName("productDate");
   
   checkboxes.forEach((cb) => {
     cb.checked = false;

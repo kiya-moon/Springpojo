@@ -30,14 +30,14 @@
 							</div>
 							<div class="priceCeller">
 								<div class="startPrice">
-									<input id="startPrice" class="startPrice" name="productPrice" th:value="${product.productPrice}" readonly>
+									<input id="startPrice" class="startPrice" name="productPrice" th:value="${product.productPrice}" style="display:none;" readonly>
 								</div>
 								<div class="productCeller">
 									판매자 : <a class="cellerName" href="#">ooo</a>
 								</div>
 							</div>
 							<div class="deadLineBox">
-									<input type="text" id="period" class="period" name="period" value="90" readonly>
+									<input type="text" id="period" class="period" name="period" th:value="${product.cellPeriod}" readonly>
 							</div>
 							<form method="post" id="new_price">
 								<div class="currentPrice_form">

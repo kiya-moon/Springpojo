@@ -1,7 +1,8 @@
 package com.springpojo.app.DTO;
 	
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -43,7 +44,7 @@ public class Product {
 	private String productCategory;
 	// 이미지는 이미지 DB에서 받아올 예정
 //	private String productImage;
-	private LocalTime startDate;
+	private LocalDateTime startDate;
 	private String productDate;
 	@Column(nullable=true, length=500)
 	private String productText;
@@ -54,7 +55,8 @@ public class Product {
 //	private String productCeller;
 //	// Date인지 잘 모르겠지만 일단 넣어둠
 //	@Column(nullable=true)
-	private LocalTime endDate;
+	private LocalDateTime endDate;
+	private StringBuffer cellPeriod;
 	
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();

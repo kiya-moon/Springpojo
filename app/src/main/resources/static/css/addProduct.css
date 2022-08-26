@@ -1,225 +1,225 @@
 @charset "UTF-8";
 
 html{
-	background-color: #f6f6f8;
+   background-color: #f6f6f8;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 li {
-	list-style: none;
+   list-style: none;
 }
 
 a {
-	text-decoration: none;
+   text-decoration: none;
 }
 
 .src_body{
-	width: 90%;
-	height: 90%;
-	margin: 0 auto;
+   width: 90%;
+   height: 90%;
+   margin: 0 auto;
 }
 
 .contents_body_gy {
-	width: 1280px;
-	margin: 0 auto;
-	background-color:#f6f6f8;
+   width: 1280px;
+   margin: 0 auto;
+   background-color:#f6f6f8;
 }
 
 .contents_tit_gy {
-	padding: 12px 29px 12px 29px;
-	letter-spacing: -1px;
-	background-color: #fff;
+   padding: 12px 29px 12px 29px;
+   letter-spacing: -1px;
+   background-color: #fff;
 }
 .wrap_tit_gy{
-	width:100%;
-	height: 50px;
-	padding-top:170px;
-	background-color:#f6f6f8;
+   width:100%;
+   height: 50px;
+   padding-top:170px;
+   background-color:#f6f6f8;
 }
 
 .add_img_gy {
-	display: inline-block;
+   display: inline-block;
 }
 
 .add_text_gy {
-	color: #000;
-	display: inline-block;
-	margin-left: 50px;
+   color: #000;
+   display: inline-block;
+   margin-left: 50px;
 }
 
 .add_text_gy h3 {
-	line-height: 50px;
+   line-height: 50px;
 }
 
 .effect_gy span {
-	font-size: 16px;
-	color: red;
-	font-weight: bold;
+   font-size: 16px;
+   color: red;
+   font-weight: bold;
 }
 
 .addproductForm {
-	margin-top: 40px;
-	background-color: #fff;
-	padding: 30px;
+   margin-top: 40px;
+   background-color: #fff;
+   padding: 30px 30px 100px 30px;
 }
 
 .devide_form{
-	height: 630px;
+   height: 630px;
 }
 
 .upload_img {
-	width: 30%;
-	display: inline-block;
-	position: relative;
-	height: 300px;
+   width: 30%;
+   display: inline-block;
+   position: relative;
+   height: 300px;
 }
 
 .addForm {
-	float: right;
-	height: 300px;
-	width: 65%;
+   float: right;
+   height: 300px;
+   width: 65%;
 }
 
 .img_upload {
-	z-index: 1;
-	border: 2px solid black;
-	height: 100%;
-	width: 100%;
+   z-index: 1;
+   border: 2px solid black;
+   height: 100%;
+   width: 100%;
 }
 
 .close_btn{
-	position: absolute;
-	top: 3%;
-	right: 2%;
-	cursor: pointer;
+   position: absolute;
+   top: 3%;
+   right: 2%;
+   cursor: pointer;
 }
 .close_btn img:hover{
-	border: 1px solid #000;
+   border: 1px solid #000;
 }
 
 .upload_product {
-	z-index: 1;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
-	bottom: 80px;
-	padding: 0;
-	height: 32px;
-	width: 90px;
-	background:
-		url('//pics.auction.co.kr/sell/basic/button/btn_upload_b01.gif')
-		no-repeat 0 -64px;
-	cursor: pointer;
+   z-index: 1;
+   position: absolute;
+   left: 50%;
+   transform: translate(-50%, 0);
+   bottom: 80px;
+   padding: 0;
+   height: 32px;
+   width: 90px;
+   background:
+      url('//pics.auction.co.kr/sell/basic/button/btn_upload_b01.gif')
+      no-repeat 0 -64px;
+   cursor: pointer;
 }
 
 #upload_box {
-	display: none;
+   display: none;
 }
 
 .borderTitle {
-	font-weight: bold;
-	font-size: 18px;
-	text-align: center;
+   font-weight: bold;
+   font-size: 18px;
+   text-align: center;
 }
 .cb {
-	width: 17px;
-	height: 17px;
+   width: 17px;
+   height: 17px;
   border: 3px solid #ccc;
   border-radius: 5px;
-  display: inline-block;	
+  display: inline-block;   
   box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
+   cursor: pointer;
+   display: inline-block;
 }
 h5{
-	display: inline-block;
-	margin-right: 10px;
+   display: inline-block;
+   margin-right: 10px;
 }
 input[type="checkbox"]:checked + label {
   border-color: #000;
 }
 input[type="checkbox"] {
-	display: none;
+   display: none;
 }
 .borderList {
-	border-radius: 5px;
-	border-right: 5px solid #ccc;
-	margin: 0 10px;
+   border-radius: 5px;
+   border-right: 5px solid #ccc;
+   margin: 0 10px;
 }
 
 .productInfo {
-	border-collapse: collapse;
-	width: 100%;
-	height: 100%;
-	margin-left: 10px;
+   border-collapse: collapse;
+   width: 100%;
+   height: 100%;
+   margin-left: 10px;
 }
 
 .productInfo td {
-	border-bottom: 1px solid black;
-/* 	padding: 10px 0; */
+   border-bottom: 1px solid black;
+/*    padding: 10px 0; */
 }
 
 .option{
-	background-color: #000;
+   background-color: #000;
 }
 
 .productInfo .border_last td {
-	border: none;
+   border: none;
 }
 
 .lastBorder{
-	padding: 70px 0;
+   padding: 70px 0;
 }
 
 .textbox {
-	height: 25px;
-	width: 80%;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	color: #fff;
-	background-color: #000;
-	padding-left: 10px;
+   height: 25px;
+   width: 80%;
+   border: 0;
+   border-radius: 15px;
+   outline: none;
+   color: #fff;
+   background-color: #000;
+   padding-left: 10px;
 }
 .productEx_tit{
-	margin-top: 40px;
-	margin-bottom: 20px;
-	font-size: 22px;
-	font-weight: 600;
+   margin-top: 40px;
+   margin-bottom: 20px;
+   font-size: 22px;
+   font-weight: 600;
 }
 .add_btn {
-	float: right;
-	margin-top: 30px;
-	box-shadow: 2px 2px 5px 0px #9ea1a3;
-	background:linear-gradient(to bottom, #5d6063 5%, #090a0a 100%);
-	background-color:#5d6063;
-	border-radius:4px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	font-weight:bold;
-	padding:3px 15px;
-	text-decoration:none;
-	text-shadow:0px 0px 12px #000000;
+   float: right;
+   margin-top: 30px;
+   box-shadow: 2px 2px 5px 0px #9ea1a3;
+   background:linear-gradient(to bottom, #5d6063 5%, #090a0a 100%);
+   background-color:#5d6063;
+   border-radius:4px;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:17px;
+   font-weight:bold;
+   padding:3px 15px;
+   text-decoration:none;
+   text-shadow:0px 0px 12px #000000;
 }
 .add_btn:hover {
-	background:linear-gradient(to bottom, #090a0a 5%, #5d6063 100%);
-	background-color:#090a0a;
+   background:linear-gradient(to bottom, #090a0a 5%, #5d6063 100%);
+   background-color:#090a0a;
 }
 .add_btn:active {
-	position:relative;
-	top:1px;
+   position:relative;
+   top:1px;
 }
 
 input::placeholder{
-	color:#fff;
+   color:#fff;
 }
 
 .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -232,6 +232,6 @@ input::placeholder{
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button{
-	-webkit-appearance: none;
-	margin: 0;
+   -webkit-appearance: none;
+   margin: 0;
 }
