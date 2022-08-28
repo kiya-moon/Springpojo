@@ -25,9 +25,16 @@ function chk_price(){
 }
 
 $('document').ready(function (){
+	
+	var sendData = "period"+$('input[name=period]').val();
 	$.ajax({
 		type: "POST",
-		url: http://localhost:9091/product
+		url: "localhost:9091/product",
+		data: sendData,
+		success: function(data){
+			setInterval(1000)
+		}
+		
 	})
 })
 	
