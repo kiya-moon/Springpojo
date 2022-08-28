@@ -1,12 +1,23 @@
 @charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
-body {
-	margin: 0px;
-	padding: 0px;
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.test{
+	background-color: white;
 }
 
 .list {
-	border: 1px solid;
 	padding: 10px;
 	height: 1500p;
 }
@@ -21,7 +32,7 @@ table {
 	text-align: center;
 	border-spacing: 0;
 	width: auto;
-	height: auto;;
+	height: auto;
 }
 
 th td {
@@ -85,14 +96,14 @@ th td {
 	background: blue;
 	color: white;
 	text-align: center;
-	top: 100;
-	left: 30;
+	margin: 10% 0 0 0;
 	display: block;
-	width: 250px;
+	width: 15%;
+	height: 32%;
 	background-color: #000;
 	color: #fff;
 	border-radius: 20px;
-	padding: 10px;
+	padding: 20px;
 	box-sizing: border-box;
 	overflow: hidden; /* 반응형 애니메이션용 */
 	transition: all 0.5s ease; /* 반응형 애니메이션 */
@@ -106,7 +117,6 @@ th td {
 
 .menu a, .menu>label {
 	display: block;
-	height: 25px;
 	padding: 8px;
 	cursor: pointer;
 	color: #fff;
@@ -118,6 +128,7 @@ th td {
 }
 
 .menu ul li:hover, .menu>label:hover {
+	padding: 0 0 0 0;
 	background-color: #fff;
 	color: #000;
 	border-radius: 10px;
@@ -156,10 +167,11 @@ th td {
 
 tbody {
 	font-size: 12px;
+	
 }
 
 td {
-	padding: 15px 0px;
+	padding: 15px 5px;
 	border-bottom: 1px solid lightgray;
 	text-align: center;
 }
@@ -167,8 +179,8 @@ td {
 .like {
 	border: 1px solid lightgray;
 	padding: 10px;
-	width: 65%;
-	margin: 5% 0 0 22%;
+	width: 75%;
+	margin: 15% 0 10% 22%;
 }
 
 .like-list-1 a {
@@ -181,8 +193,8 @@ td {
 }
 
 .like-mainbtn {
-	width: 420px;
-	height: 200px;
+	width: 35%;
+	height: 122px;
 	padding-top: 40px;
 	display: block;
 	margin: auto;
@@ -210,12 +222,12 @@ td {
 	border: 1px solid lightgray;
 	text-align: center;
 	width: 60%;
-	margin: 8% 0 15% 25%;
-	padding: 10px;
+	margin: 15% 0 15% 25%;
+	padding: 2% 0 0 0;
 }
 
 .singup_retoch_title {
-	margin: 0 0 6% 3%;
+	margin: 0 0 5% 0;
 }
 
 .hj_floating {
@@ -234,8 +246,12 @@ td {
 	margin: 1% 0 0 0;
 }
 
+h1{
+	margin: 3% 0 -4% 0;
+}
+
 .retoch_btn {
-	margin: 3% 5% 0 0%;
+	margin: 3% 5% 3% 0;
 	color: #fff;
 	background-color: #6c757d;
 	border-color: #6c757d;
