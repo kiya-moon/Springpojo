@@ -46,4 +46,8 @@ public class MypageController {
 		mypageRepository.save(new User("testA", "test1", "조혜진", "20220101", "heajin0305@naver.com","01012345678"));
 	}
 	
+	
+	
+	
+	
 }

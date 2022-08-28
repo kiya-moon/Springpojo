@@ -43,5 +43,7 @@ public class MypageRepository {
 		findUser.setUserPhone(updateParam.getUserPhone ());
 	}
 
+	
+	
 
 }
