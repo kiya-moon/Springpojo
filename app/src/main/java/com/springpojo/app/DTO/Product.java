@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor	// 모든 파라미터가 있는 생성자 생성
 @NoArgsConstructor	// 기본 생성자 생성
-@SequenceGenerator( name="PRODUCT_SEQ_GENERATOR",
+@SequenceGenerator( name="SPRING_SEQ_GENERATOR",
 					sequenceName = "PRODUCT_SEQ",
 					initialValue = 1, allocationSize = 1)
 public class Product {
@@ -29,14 +29,14 @@ public class Product {
 	// 상품번호 -> PK
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-					generator = "PRODUCT_SEQ_GENERATOR")
+					generator = "SPRING_SEQ_GENERATOR")
 	@Column(name = "PRODUCT_ID")
 	private Long id;
 	
 	// 유저아이디 -> FK
 //	@ManyToOne
 //	@JoinColumn(name="USERID")
-//	private User user;
+//	private Users users;
 	private String productName;
 	
 	private Long productPrice;
@@ -61,5 +61,5 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	private List<Like> like = new ArrayList<>();
-	
+
 }

@@ -19,7 +19,7 @@ public class Image {
 	// FK
 	@ManyToOne
 	@JoinColumn(name="USERID")
-	private User user;
+	private Users users;
 
 	private String ImgName;
 	private String ImgRoute;
