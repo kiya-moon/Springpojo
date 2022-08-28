@@ -22,7 +22,7 @@ public class Bid {
 	// FK
 	@ManyToOne
 	@JoinColumn(name="USERID")
-	private User user;
+	private Users users;
 	
 	// FK
 	@ManyToOne

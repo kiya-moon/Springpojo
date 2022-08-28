@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.springpojo.app.DTO.User;
+import com.springpojo.app.DTO.Users;
 //import com.springpojo.app.repository.UserRepository;
 import com.springpojo.app.session.SessionConst;
 import com.springpojo.app.session.SessionManager;
@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
 @RequiredArgsConstructor
+@Controller
 public class HomeController {
 	private final SessionManager sessionManager;
 
@@ -55,13 +55,13 @@ public class HomeController {
 
 	// 로그인 페이지
 	@GetMapping("/login")
-	public String login(Model model) {
+	public String login() {
 		return "login/login";
 	}
 
 	// 회원가입
 	@GetMapping("/signup")
-	public String signup(Model model) {
+	public String signup() {
 		return "login/signup";
 	}
 

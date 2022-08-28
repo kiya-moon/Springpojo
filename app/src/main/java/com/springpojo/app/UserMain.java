@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.springpojo.app.DTO.User;
+import com.springpojo.app.DTO.Users;
 
 public class UserMain {
 	public static void main(String[] args) {
@@ -18,10 +18,10 @@ public class UserMain {
 		tx.begin();
 		
 		try {
-			User user = new User();
-			List<User> list = new ArrayList<>();
+			Users users = new Users();
+			List<Users> list = new ArrayList<>();
 			
-			list.add(user);
+			list.add(users);
 			
 			em.persist(list);
 			
