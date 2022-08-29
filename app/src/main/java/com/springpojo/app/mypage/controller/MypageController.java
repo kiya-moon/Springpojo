@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springpojo.app.DTO.User;
+import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,15 +26,15 @@ public class MypageController {
 	
 	@GetMapping
 	public String items(Model model) {
-		List<User> users = mypageRepository.findAll();
+		List<Users> users = mypageRepository.findAll();
 		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
 	
-	@GetMapping("/{UserId2}")
-	public String editForm(@PathVariable Long UserId2, Model model){
-		User user = mypageRepository.findById(UserId2);
-		model.addAttribute("user", user);
+	@GetMapping("/{id}")
+	public String editForm(@PathVariable Long id, Model model){
+		Users users = mypageRepository.findById(id);
+		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
 	
@@ -43,7 +43,7 @@ public class MypageController {
 	 */
 	@PostConstruct
 	public void init() {
-		mypageRepository.save(new User("testA", "test1", "조혜진", "20220101", "heajin0305@naver.com","01012345678"));
+		mypageRepository.save(new Users("testA", "test1", "조혜진", "20220101", "heajin0305@naver.com","01012345678"));
 	}
 	
 	
