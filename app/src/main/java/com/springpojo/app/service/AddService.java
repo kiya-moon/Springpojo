@@ -19,8 +19,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class AddService {
 
-	private AddRepository addRepository;
+	private final AddRepository addRepository;
 	SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	// 물품등록
 	public Long saveProduct(Product product) {
 		LocalDateTime date = LocalDateTime.now().withNano(0);
@@ -124,6 +125,11 @@ public class AddService {
 	// 전체 물품 조회
 	public List<Product> findProducts(){
 		return addRepository.findAll();
+	}
+	
+	// 특정 상품 조회
+	public Product findById(Long id) {
+		return addRepository.findById(id);
 	}
 	
 }
