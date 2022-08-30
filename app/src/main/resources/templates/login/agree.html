@@ -228,7 +228,7 @@ label.sw_required::after {
 					<img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|">
 					</div>
 				<div class="sw_contents sw_m2">
-					<form action="/" method="POST" id="form_sw_wrap">
+					<form action="" method="POST" id="form_sw_wrap" >
 						<div class="sw_terms sw_checkAll">
 							<input type="checkbox" name="checkAll" id="checkAll" /> 
 							<label for="checkAll" id="sw_allAgree">"uction" 이용약관, 개인정보 수집 및 이용, <br />전자금융거래
@@ -417,7 +417,7 @@ label.sw_required::after {
 							</li>
 						</ul>
 						<button type="submit" class="sw_next-button" disabled
-						 onclick="location.href='signup.html'" th:onclick="|location.href='@{/signup}'|">확인</button>
+						 onclick="location.href='signup.html' "th:onclick="|location.href='@{/login/signup/add}'|">확인</button>
 					</form>
 				</div>
 			</div>

@@ -109,7 +109,8 @@ input::-webkit-inner-spin-button {
 			<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" >
+				<form name="signup" method="post" >
+<!--				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" > -->
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
 							<input type="text" class="sw_floating" name="UserId" id="UserId" placeholder=" " >
@@ -126,7 +127,7 @@ input::-webkit-inner-spin-button {
 							<label id="sw_textColor" for="UserPwCheck">비밀번호 확인</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text"  class="sw_floating" name="UserName" id="UserName" placeholder=" " >
+							<input type="text"  class="sw_floating" name="UserName" id="UserName" placeholder=" ">
 							<label id="sw_textColor" for="UserName">이름</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
@@ -134,7 +135,7 @@ input::-webkit-inner-spin-button {
 							<label id="sw_textColor" for="UserBirth">생년월일</label>
 						</div>
 						<div class="sw_form-floating sw_mg2" id="sw_email">
-							<input type="text" class="sw_floating" name="UserEmail" id="UserEmail" placeholder=" ">
+							<input type="text" class="sw_floating" name="UserEmail" id="UserEmail" placeholder=" " >
 							<label id="sw_textColor" for="UserEmail">이메일</label>
 <!--							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
@@ -147,10 +148,10 @@ input::-webkit-inner-spin-button {
 							</select>				-->
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="number" class="sw_floating" name="UserPhone" id="UserPhone" placeholder=" " th:value="*{UserPhone}">
+							<input type="number" class="sw_floating" name="UserPhone" id="UserPhone" placeholder=" ">
 							<label id="sw_textColor" for="UserPhone">전화번호</label>
 						</div>
-						<button type="submit"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" >회원가입</button>
+						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary sw_btnColor" onclick="signSend()">회원가입</button>
 <!--						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>	-->
 					</div>
 				</form>

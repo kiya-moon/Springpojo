@@ -1,8 +1,7 @@
 // 로그인 아이디, 비밀번호 입력 안했을 시
 function LoginOn() {
-	let f = document.form;
-	let userId = f.userId;
-	let userPw = f.userPw;
+	let userId = document.getElementById('userId').value;
+	let userPw = document.getElementById('userPw').value;
 	
 	if(userId == "") {
 		alert("아이디를 입력 해주세요");
@@ -15,8 +14,7 @@ function LoginOn() {
 		userPw.focus();
 		return false;
 	}
-	
-	f.submit();
+	document.getElementByName('login').submit();
 }
 
 

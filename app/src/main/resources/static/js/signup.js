@@ -123,7 +123,7 @@
 }
 
 //중복확인
-$("#overlapperdID").click(function(){
+/*$("#overlapperdID").click(function(){
 	$("#signup").attr("type", "button");
 	const UserId = $("#UserId").val();
 	$.ajax({
@@ -140,7 +140,7 @@ $("#overlapperdID").click(function(){
 		}
 	}
 	})
-});
+});*/
 
 
 
