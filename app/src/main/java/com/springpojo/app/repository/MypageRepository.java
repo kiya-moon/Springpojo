@@ -16,10 +16,10 @@ public class MypageRepository {
 	private static long sequence = 0L;
 	
 	// 저장
-	 public Users save(Users Users) {
-		Users.setId(++sequence);
-		store.put(Users.getId(), Users);
-		return Users;
+	 public Users save(Users User) {
+		User.setId(++sequence);
+		store.put(User.getId(), User);
+		return User;
 	}
 	
 	// id로 찾기

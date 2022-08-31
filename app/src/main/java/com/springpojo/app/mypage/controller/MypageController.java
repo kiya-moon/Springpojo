@@ -31,10 +31,10 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 	
-	@GetMapping("/{UserId2}")
-	public String editForm(@PathVariable Long UserId2, Model model){
-		Users user = mypageRepository.findById(UserId2);
-		model.addAttribute("user", user);
+	@GetMapping("/{id}")
+	public String editForm(@PathVariable Long id, Model model){
+		Users users = mypageRepository.findById(id);
+		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
 	

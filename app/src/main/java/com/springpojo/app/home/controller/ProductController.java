@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springpojo.app.DTO.Product;
@@ -32,10 +33,13 @@ public class ProductController {
 		return "contents/product";
 	}
 	
-//	@GetMapping("/product")
-//	public String productPlus() {
-//		return "contents/product";
-//	}
+	@GetMapping("/product/{id}")
+	public String productPage(@PathVariable Long id, Model model) {
+		Product product = addService.findById(id);
+		model.addAttribute("product", product);
+		
+		return "contents/product";
+	}
 	
 //	@PostMapping("/price")
 //	public String price(Model model) {

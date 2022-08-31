@@ -9,15 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.springpojo.app.DTO.Product;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
-
-import com.springpojo.app.DTO.Product;
-
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -36,32 +27,15 @@ public class AddRepository  {
 		}
 	}
 	
+	// 상품 전체조회
 	public List<Product> findAll() {
 		return em.createQuery("select p from Product p", Product.class).getResultList();
 	}
 	
+	// 특정 상품 조회
+	public Product findById(Long id) {
+		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id).getSingleResult();
+	}
+	
 }
-//k.RequiredArgsConstructor;
-//
-//@Repository
-//@RequiredArgsConstructor
-//public class AddRepository  {
-//
-//	@PersistenceContext
-//	private final EntityManager em;
-//	
-//	// Product Repository
-//	public  void save(Product product) {
-//		if(product.getId() == null) {
-//			em.persist(product);
-//		}else {
-//			em.merge(product);
-//		}
-//	}
-//	
-//	public List<Product> findAll() {
-//		return em.createQuery("select p from Product p", Product.class).getResultList();
-//	}
-//	
-//}
 
