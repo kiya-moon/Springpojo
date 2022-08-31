@@ -123,12 +123,14 @@ public class AddService {
 	}
 	
 	// 전체 물품 조회
-	public List<Product> findProducts(){
-		return addRepository.findAll();
-	}
-	
+	public List<Product> findProducts(String productCategory){
+		return addRepository.findAll(productCategory);
+}
+
 	// 특정 상품 조회
 	public Product findById(Long id) {
+		System.out.println("asd");
+    
 		return addRepository.findById(id);
 	}
 	

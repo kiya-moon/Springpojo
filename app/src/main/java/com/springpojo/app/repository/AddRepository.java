@@ -1,6 +1,8 @@
 package com.springpojo.app.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,29 +15,31 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class AddRepository  {
+public class AddRepository {
 
 	@PersistenceContext
 	private final EntityManager em;
-	
+
 	// Product Repository
-	public  void save(Product product) {
-		if(product.getId() == null) {
+	public void save(Product product) {
+		if (product.getId() == null) {
 			em.persist(product);
-		}else {
+		} else {
 			em.merge(product);
 		}
 	}
-	
-	// 상품 전체조회
-	public List<Product> findAll() {
-		return em.createQuery("select p from Product p", Product.class).getResultList();
-	}
-	
+
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id).getSingleResult();
+		System.out.println("asdasd");
+		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id)
+				.getSingleResult();
 	}
-	
-}
 
+	public List<Product> findAll(String productCategory) {
+		return em.createQuery("select p from Product p where p.productCategory = :productCategory order by p.id", Product.class)
+				.setParameter("productCategory", productCategory)
+				.getResultList();
+	}
+
+}
