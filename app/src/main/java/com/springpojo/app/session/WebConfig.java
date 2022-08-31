@@ -28,19 +28,24 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**"
-                        , "/*.ico"
+                        , "/js/**"
+                        ,"/img/**"
                         , "/error");
 
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(2)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/"
-                        , "/signup/add"
-                        , "/login"
-                        , "/logout"
-                        , "/css/**"
-                        , "/*.ico"
-                        , "/error");
+                		,"/login/signup"
+                		,"/forgotId"
+                		,"/forgotPw"
+                        ,"/agree"
+                        ,"/login"
+                        ,"/chat"
+                        ,"/css/**"
+                        ,"/js/**"
+                        ,"/img/**"
+                        ,"/error");
     }
 
     // @Bean

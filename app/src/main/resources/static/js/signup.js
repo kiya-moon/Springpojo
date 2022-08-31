@@ -10,7 +10,7 @@
 	let UserPhone = f.UserPhone;
 	
 	// 아이디 입력 안 했을때
-	if(UserId == ""){
+	if(UserId.value == ""){
 		alert("아이디를 입력 해주세요.");
 		UserId.focus();
 		return false;
@@ -35,7 +35,7 @@
 	var re2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 	
 	if(!re2.test(UserPw.value)) {
-		alert("비밀번호는 *~16자 영문, 숫자, 특수문자 조합으로 입력 해주세요.");
+		alert("비밀번호는 8~16자 영문, 숫자, 특수문자 조합으로 입력 해주세요.");
 		UserPw.focus();
 		return false;
 	}
@@ -102,7 +102,7 @@
 	// 전화번호 입력 안 했을때
 	if(UserPhone.value == ""){
 		alert("전화번호를 입력 해주세요.");
-		UserPhone.focust();
+		UserPhone.focus();
 		return false;
 	}
 	

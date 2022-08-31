@@ -14,7 +14,17 @@ import java.io.IOException;
 @Slf4j
 public class LoginCheckFilter implements Filter {
 
-    private static final String[] whitelist = {"/", "/signup/add", "/login", "/logout", "/css/*", "/favicon.ico"};
+    private static final String[] whitelist = {"/"
+    				,"/login/signup"
+    				,"/forgotId"
+            		,"/forgotPw"
+                    ,"/agree"
+                    ,"/login"
+                    ,"/chat"
+    				,"/css/*"
+    				,"/js/**" 
+    				,"/img/**"
+    				,"/favicon.ico"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
