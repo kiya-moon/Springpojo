@@ -1,54 +1,36 @@
 package com.springpojo.app.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.UserRepository;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-@Transactional
-@RequiredArgsConstructor
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
 public class LoginService {
-	
-	private final UserRepository userRepository;
 
-	// 회원가입
-	public Long saveUser(Users users) {
-		userRepository.save(users);
-		return users.getId();
-	}
-	
-//	public String joinUser(User user) {
-////		user.setUserRole("USER");
-//		userRepository.save(user);
-//		return user.getUserId();
-//	}
-	
-	// 로그인
-	public boolean login(Users users) {
-		Users findUser = userRepository.findByUserId(users.getUserId());
-		
-		if(findUser == null) {
-			return false;
-		} 
-		
-		if (findUser.getUserPw().equals(users.getUserPw())){
-			return false;
-		}
-		
-		return true;
-			
-		}
-	
-//	public User loginUser(String id, String pw) {
-//		User user = userRepository.selectUserInfo(id, pw);
-//		return user;
-//	}
-	
+    private final UserRepository userRepository;
+
+    /**
+     * @return null 로그인 실패
+     */
+    public Users login(String userId, String userPw) {
+        Optional<Users> optionalUsers = userRepository.findByLoginId(userId);
+
+        return optionalUsers
+                .filter(users -> users.getUserPw().equals(userPw))
+                .orElse(null);
+
+//        Member member = optionalMember.get();
+//
+//        if (member.getPassword().equals(password)) {
+//            return member;
+//        } else {
+//            return null;
+//        }
+    }
 }
 
 

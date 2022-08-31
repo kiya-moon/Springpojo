@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.springpojo.app.DTO.Product;
-//import com.springpojo.app.DTO.User;
 
 import lombok.RequiredArgsConstructor;
 
