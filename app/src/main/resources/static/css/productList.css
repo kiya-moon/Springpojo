@@ -60,10 +60,10 @@ a {
 	height: 600px;
 	position: relative;
 }
-.productList_contents:hover{
-	cursor: pointer;
-	opacity: 80%;
-}
+/* .productList_contents:hover{ */
+/* 	cursor: pointer; */
+/* 	opacity: 80%; */
+/* } */
 
 .productList_contents{
 	width: 100%;
@@ -81,6 +81,10 @@ a {
 	display: inline-block;
 	margin: 7px;
 	text-align: center;
+}
+
+.productList_contents_list:hover{
+	cursor: pointer;
 }
 .productList_contents_img{
 	width: 200px;

@@ -1,18 +1,10 @@
 package com.springpojo.app.home.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.springpojo.app.DTO.Users;
-//import com.springpojo.app.repository.UserRepository;
-import com.springpojo.app.session.SessionConst;
 import com.springpojo.app.session.SessionManager;
 
 import lombok.RequiredArgsConstructor;
@@ -75,12 +67,6 @@ public class HomeController {
 	@GetMapping("/forgotPw")
 	public String forgotPw(Model model) {
 		return "login/forgotPw";
-	}
-
-	// 상품목록리스트
-	@GetMapping("/productList")
-	public String prodcutList() {
-		return "/contents/productList";
 	}
 
 	// 이용약관

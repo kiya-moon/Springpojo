@@ -23,18 +23,3 @@ function chk_price(){
 	
 	document.getElementById('new_price').submit();
 }
-
-$('document').ready(function (){
-	
-	var sendData = "period"+$('input[name=period]').val();
-	$.ajax({
-		type: "POST",
-		url: "localhost:9091/product",
-		data: sendData,
-		success: function(data){
-			setInterval(1000)
-		}
-		
-	})
-})
-	

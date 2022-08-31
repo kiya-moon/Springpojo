@@ -30,6 +30,10 @@ ul{
 	padding-bottom: 50px;
 	background: white;
 }
+
+.main-menu{
+	cursor:pointer;
+}
 .slick-arrow{
 	position: absolute;
 	top: 50%;

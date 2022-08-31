@@ -10,7 +10,7 @@
 			<nav class="nav-top">
 				<div class="nav-logo">
 					<i class="fa-brands fa-artstation"></i>
-					<a class="logo-name" href="#">uction</a>
+					<a class="logo-name" href="/">uction</a>
 				</div>
 				<div class="nav-search">
 					<input id="nav-search-bar" class="nav-search-bar" type="text" spellcheck="false" maxlength="30">
@@ -33,11 +33,11 @@
 			</nav>
 			<nav class="nav-main-menu">
 				<ul class="main-menu">
-					<li><a href="#">Fashion & Beauty</a></li>
-					<li><a href="#">Furniture & Electronic</a></li>
-					<li><a href="#">Game & Hobby</a></li>
-					<li><a href="#">Sports & Car</a></li>
-					<li><a href="#">Book & ETC</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Fashion}'|">Fashion & Beauty</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Furniture}'|">Furniture & Electronic</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Game}'|">Game & Hobby</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Sports}'|">Sports & Car</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Book}'|">Book & ETC</a></li>
 				</ul>
 			</nav>
 		</header>
