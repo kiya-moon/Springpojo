@@ -49,17 +49,17 @@ public class HomeController {
 		return "shop";
 	}
 
-	// 로그인 페이지
-	@GetMapping("/login")
-	public String login() {
-		return "login/login";
-	}
-	
-	// 회원가입
-	@GetMapping("/signup")
-	public String signup() {
-		return "login/signup";
-	}
+//	// 로그인 페이지
+//	@GetMapping("/login")
+//	public String login() {
+//		return "login/login";
+//	}
+//	
+//	// 회원가입
+//	@GetMapping("/signup")
+//	public String signup() {
+//		return "login/signup";
+//	}
 	
 	// 아이디 찾기
 	@GetMapping("/forgotId")
@@ -81,7 +81,7 @@ public class HomeController {
 
 	// 이용약관
 	@GetMapping("/agree")
-	public String agree(Model model) {
+	public String agree() {
 		return "/login/agree";
 	}
 
