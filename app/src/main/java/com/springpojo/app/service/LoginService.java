@@ -35,11 +35,9 @@ public class LoginService {
 		if(findUser == null) {
 			return false;
 		} 
-		
-		if (findUser.getUserPw().equals(users.getUserPw())){
-			return false;
+		if(findUser != null && findUser.getUserPw().equals(users.getUserPw())) {
+			return true;
 		}
-		
 		return true;
 			
 		}

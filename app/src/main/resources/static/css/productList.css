@@ -16,6 +16,7 @@ li {
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .contents_wrap_ky{
@@ -73,6 +74,8 @@ a {
 }
 .product_wrap{
 	text-align: center;
+	padding-bottom: 30px;
+	background-color: #fff;
 }
 .productList_contents_list{
 	border: 1px solid gray;
@@ -91,7 +94,7 @@ a {
 	height: 200px;
 }
 .productList_contents_name, .productList_contents_about, .productList_contents_price{
-	border: 1px solid gray;
+	border-top: 1px solid gray;
 	display: flex;
 	justify-content: center;
 	align-items: center;

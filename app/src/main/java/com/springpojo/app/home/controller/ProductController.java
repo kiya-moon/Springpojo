@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.service.AddService;
@@ -31,16 +33,29 @@ public class ProductController {
 	
 	@GetMapping("/product/{id}")
 	public String product(@PathVariable Long id, Model model) {
-		System.out.println("asd");
+		System.out.println("3");
 		Product product = addService.findById(id);
 		model.addAttribute("product", product);
 		return "contents/product";
 	}
 	
 	// 상품 등록
+//	@PostMapping("/product")
+//	public String add(Product product, Long id) {
+//		addService.saveProduct(product);
+//		return "contents/product";
+//	}
+	// 상품 등록
 	@PostMapping("/product")
-	public String add(Product product, Long id) {
-		addService.saveProduct(product);
+	public String add(@ModelAttribute("product") Product product, RedirectAttributes redirectAttributes) {
+		Product savedProduct = addService.saveProduct(product);
+		
+		redirectAttributes.addAttribute("id", savedProduct.getId());
+		return "redirect:/product/{id}";
+	}
+	
+	@GetMapping("/product")
+	public String productPage(@PathVariable Long id, Model model) {
 		return "contents/product";
 	}
 	

@@ -1,12 +1,12 @@
 package com.springpojo.app.repository;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import com.springpojo.app.DTO.Product;
@@ -29,10 +29,10 @@ public class AddRepository {
 			em.merge(product);
 		}
 	}
-
+	
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		System.out.println("asdasd");
+		System.out.println("2");
 		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id)
 				.getSingleResult();
 	}
@@ -42,5 +42,6 @@ public class AddRepository {
 				.setParameter("productCategory", productCategory)
 				.getResultList();
 	}
-
+	
+	
 }

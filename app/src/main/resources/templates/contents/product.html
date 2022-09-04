@@ -33,7 +33,7 @@
 							<div class="priceCeller">
 								<div class="startPrice">
 									<input id="startPrice" class="startPrice" name="productPrice"
-										th:value="${product.productPrice}" style="display: none;"
+										th:value="${product.productPrice} + 원"
 										readonly>
 								</div>
 								<div class="productCeller">
@@ -46,12 +46,11 @@
 									th:value="${product.endDate}" readonly>
 								<!-- 								<input type="text" id="period" class="period" name="period" th:value="${product.cellPeriod}" readonly> -->
 								<div class="time">
-									<span class="hours"></span> <span class="col">:</span> <span
-										class="minutes"></span> <span class="col">:</span> <span
-										class="seconds"></span>
+									<span class="day"></span><span class="col days">일&nbsp;</span> <span class="hours"></span><span class="col days">시&nbsp;
+									</span><span class="minutes"></span><span class="col days">분&nbsp;</span> <span class="seconds"></span><span class="col days">초</span>
 								</div>
 							</div>
-							<form method="post" id="new_price">
+							<form method="post" id="new_price" name="new_price">
 								<div class="currentPrice_form">
 									<div class="currentPrice">입찰 금액</div>
 									<div class="currentPriceBox">
@@ -114,7 +113,7 @@
 
 	<th:block layout:fragment="script">
 		<script type="text/javascript" th:src="@{/js/product.js}"></script>
-		<script>
+ <!-- 		<script> 
 			function remindTime(){
 				var end = document.getElementById('endDate').value;
 				var dday = new Date(end).getTime();
@@ -135,6 +134,7 @@
 			     if(hour<10){hour="0"+hour;}
 			     if(min<10){min="0"+min;}
 			     if(sec<10){sec="0"+sec;}
+			      $(".day").html(day);
 			      $(".hours").html(hour);
 			      $(".minutes").html(min);
 			      $(".seconds").html(sec);
@@ -142,33 +142,33 @@
 			 }
 			      
 			 setInterval(remindTime,1000);
-// 			      function remindTime(){
+			      function remindTime(){
 			    	  
-// 			    	    var now = new Date();
-// 			    	    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),23,30,00);
+			    	    var now = new Date();
+			    	    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),23,30,00);
 			    	  
-// 			    	    var nt = now.getTime();
-// 			    	    var et = end.getTime();
+			    	    var nt = now.getTime();
+			    	    var et = end.getTime();
 			    	  
-// 			    	  $(".time").fadeIn();
-// 			    	     sec =parseInt(et - nt) / 1000;
-// 			    	     day  = parseInt(sec/60/60/24);
-// 			    	     sec = (sec - (day * 60 * 60 * 24));
-// 			    	     hour = parseInt(sec/60/60);
-// 			    	     sec = (sec - (hour*60*60));
-// 			    	     min = parseInt(sec/60);
-// 			    	     sec = parseInt(sec-(min*60));
-// 			    	     if(hour<10){hour="0"+hour;}
-// 			    	     if(min<10){min="0"+min;}
-// 			    	     if(sec<10){sec="0"+sec;}
-// 			    	      $(".hours").html(hour);
-// 			    	      $(".minutes").html(min);
-// 			    	      $(".seconds").html(sec);
-// 			    	 }
+			    	  $(".time").fadeIn();
+			    	     sec =parseInt(et - nt) / 1000;
+			    	     day  = parseInt(sec/60/60/24);
+			    	     sec = (sec - (day * 60 * 60 * 24));
+			    	     hour = parseInt(sec/60/60);
+			    	     sec = (sec - (hour*60*60));
+			    	     min = parseInt(sec/60);
+			    	     sec = parseInt(sec-(min*60));
+			    	     if(hour<10){hour="0"+hour;}
+			    	     if(min<10){min="0"+min;}
+			    	     if(sec<10){sec="0"+sec;}
+			    	      $(".hours").html(hour);
+			    	      $(".minutes").html(min);
+			    	      $(".seconds").html(sec);
+			    	 }
 			      
-// 			   	setInterval(remindTime,1000);
+			   	setInterval(remindTime,1000);
 			   
-		</script>
+		</script>	-->
 	</th:block>
 </body>
 </html>

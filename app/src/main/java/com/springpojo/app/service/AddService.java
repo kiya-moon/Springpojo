@@ -23,17 +23,17 @@ public class AddService {
 	SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	// 물품등록
-	public Long saveProduct(Product product) {
+	public Product saveProduct(Product product) {
 		LocalDateTime date = LocalDateTime.now().withNano(0);
 		addRepository.save(product);
 		product.setStartDate(date);
 		System.out.println(product.getStartDate());
 		if(product.getProductDate().equals("day")) {
-			product.setEndDate(date.plusDays(1));
+			product.setEndDate((date.plusDays(1)).toString().replace("T", " "));
 		}else if(product.getProductDate().equals("3days")) {
-			product.setEndDate(date.plusDays(3));
+			product.setEndDate((date.plusDays(3)).toString().replace("T", " "));
 		}else if(product.getProductDate().equals("week")) {
-			product.setEndDate(date.plusDays(7));
+			product.setEndDate((date.plusDays(7)).toString().replace("T", " "));
 		}
 		
 		String startDateTime = (product.getStartDate().toString()).replace("T", " ");
@@ -119,7 +119,7 @@ public class AddService {
 //        product.setCellPeriod(sb.toString());
 //
 //        System.out.println(product.getCellPeriod());
-		return product.getId();
+		return product;
 	}
 	
 	// 전체 물품 조회
@@ -129,8 +129,9 @@ public class AddService {
 	
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		System.out.println("asd");
+		System.out.println("1");
 		return addRepository.findById(id);
 	}
+	
 	
 }

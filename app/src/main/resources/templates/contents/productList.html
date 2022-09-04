@@ -26,8 +26,9 @@
 		<article>
 			<div class="productList_contents">
 				<div class="product_wrap">
-					<th:block th:each="product : ${productList}" >
-						<div class="productList_contents_list" th:onclick="|location.href='@{/product/${product.id}}'|">
+					<th:block th:each="product : ${productList}">
+<!-- 						<div class="productList_contents_list" th:onclick="|location.href='@{/product/${product.id}}'|"> -->
+						<div class="productList_contents_list" th:onclick="|location.href='@{product/{id}(id=${product.id})}'|">
 							<img class="productList_contents_img"
 								alt="productList_contents_img"
 								src="https://cdn3.iconfinder.com/data/icons/remixicon-finance/24/auction-line-256.png">

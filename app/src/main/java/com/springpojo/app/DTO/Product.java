@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -54,7 +56,7 @@ public class Product {
 //	private String productCeller;
 //	// Date인지 잘 모르겠지만 일단 넣어둠
 //	@Column(nullable=true)
-	private LocalDateTime endDate;
+	private String endDate;
 	private StringBuffer cellPeriod;
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();
