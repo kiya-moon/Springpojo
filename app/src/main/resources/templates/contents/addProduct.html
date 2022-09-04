@@ -33,7 +33,7 @@
 					<div class="addproductForm">
 						<div class="devide_form">
 							<form method=post th:action="@{/product}"
-								enctype="multipart/form-data" id="addForm">
+								enctype="multipart/form-data" id="addForm" name="addForm">
 								                        <div class="upload_img">
 								                           <a class="close_btn" id="close_btn" onclick="deleteImg()"><img
 								                              src="/img/close_btn.png"></a> <img class="img_upload"
@@ -41,7 +41,7 @@
 								                              src="http://pics.auction.co.kr/sell/basic/img_no_286x286.gif">
 								                           <span class="upload_product" id="upload_product"
 								                              onclick="document.getElementById('upload_box').click()">
-								                              <input id="upload_box" type=file accept=image/*
+								                              <input id="upload_box" name="upload_box" type=file
 								                              onchange="readURL(this)">
 								                           </span>
 								                        </div>

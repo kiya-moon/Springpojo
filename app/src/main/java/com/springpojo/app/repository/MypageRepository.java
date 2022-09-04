@@ -1,45 +1,42 @@
 package com.springpojo.app.repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
 import com.springpojo.app.DTO.Users;
 
-@Repository
-public class MypageRepository {
+import lombok.RequiredArgsConstructor;
 
-	private static final Map<Long, Users> store = new HashMap<>();
-	private static long sequence = 0L;
+@Repository
+@RequiredArgsConstructor
+public class MypageRepository {
 	
-	// 저장
-	 public Users save(Users User) {
-		User.setId(++sequence);
-		store.put(User.getId(), User);
-		return User;
+	@PersistenceContext
+	private final EntityManager em;
+	
+	// 특정 회원 찾기
+	public Users findById(Long id) {
+		return em.createQuery("select u from Users u where u.usernum = :id", Users.class).setParameter("id", id).getSingleResult();
 	}
 	
-	// id로 찾기
-	public Users findById(Long UserId2) {
-		return store.get(UserId2);
+	// 마이페이지 회원정보 업데이트
+	public void save(Users updateParam) {
+//		Users updateUser = findById(id);
+//		updateUser.setUserPw(updateParam.getUserPw());
+//		updateUser.setUserEmail(updateParam.getUserEmail());
+//		updateUser.setUserBirth(updateParam.getUserBirth());
+//		updateUser.setUserName(updateParam.getUserName());
+//		updateUser.setUserPhone(updateParam.getUserPhone());
+//		
+//		em.persist(updateUser);
+		
+		em.merge(updateParam);
+		
+		// return updateUser >> return 하려면 void > Users로 변경해야 하는데 필요한지 모르겠음
 	}
 	
-	// 전체 검색
-	public List<Users> findAll(){
-		return new ArrayList<Users>(store.values());
-	}
 	
-	// 수정
-	public void update(Long UserId2, Users updateParam) {
-		Users findUser = findById(UserId2);
-		findUser.setUserId(updateParam.getUserId());
-		findUser.setUserPw(updateParam.getUserPw());
-		findUser.setUserName(updateParam.getUserName());
-		findUser.setUserBirth(updateParam.getUserBirth());
-		findUser.setUserEmail(updateParam.getUserEmail());
-		findUser.setUserPhone(updateParam.getUserPhone ());
-	}
+	
 }

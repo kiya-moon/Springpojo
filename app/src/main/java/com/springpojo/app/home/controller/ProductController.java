@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.service.AddService;
@@ -29,6 +30,7 @@ public class ProductController {
 		return "contents/addProduct";
 	}
 	
+	// 상품 페이지
 	@GetMapping("/product/{id}")
 	public String product(@PathVariable Long id, Model model) {
 		System.out.println("asd");
@@ -39,15 +41,14 @@ public class ProductController {
 	
 	// 상품 등록
 	@PostMapping("/product")
-	public String add(Product product, Long id) {
-		addService.saveProduct(product);
+	public String add(Product product, Long id, MultipartFile upload_box) throws Exception{
+		addService.saveProduct(product, upload_box);
 		return "contents/product";
 	}
 	
 	// 상품 리스트
 	@GetMapping("/productList")
 	public String prodcutList(@RequestParam("productCategory") String productCategory, Product product, Model model) {
-		System.out.println(productCategory);
 		List<Product> productList = addService.findProducts(productCategory);
 		
 		model.addAttribute("productList", productList);

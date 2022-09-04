@@ -5,9 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.springpojo.app.DTO.Users;
-import com.springpojo.app.repository.UserRepository;
-import com.springpojo.app.session.Login;
-import com.springpojo.app.session.SessionManager;
+//import com.springpojo.app.repository.UserRepository;
+//import com.springpojo.app.session.Login;
+//import com.springpojo.app.session.SessionManager;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class HomeController {
 	
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
-    private final SessionManager sessionManager;
+//    private final SessionManager sessionManager;
 
 
-	//@GetMapping("/")
+	@GetMapping("/")
 	public String home() {
 		return "contents/home";
 	}
@@ -79,25 +79,25 @@ public class HomeController {
 		return "/login/agree";
 	}
 
-	// 마이페이지
-	@GetMapping("/mypage")
-	public String mypage(Model model) {
-		return "/mypage/Edit_member_information";
-	}
+//	// 마이페이지
+//	@GetMapping("/mypage")
+//	public String mypage(Model model) {
+//		return "/mypage/Edit_member_information";
+//	}
 	
 
-    @GetMapping("/")
-    public String homeLoginV3ArgumentResolver(@Login Users users
-            , Model model) {
-        // 세션에 회원 데이터가 없으면 home
-        if (users == null) {
-            return "/contents/home";
-        }
-
-        // 세션이 유지되면 로그인 된 상태의 홈으로 이동
-        model.addAttribute("users", users);
-
-        return "/contents/home";
-    }
+//    @GetMapping("/")
+//    public String homeLoginV3ArgumentResolver(@Login Users users
+//            , Model model) {
+//        // 세션에 회원 데이터가 없으면 home
+//        if (users == null) {
+//            return "/contents/home";
+//        }
+//
+//        // 세션이 유지되면 로그인 된 상태의 홈으로 이동
+//        model.addAttribute("users", users);
+//
+//        return "/contents/home";
+//    }
 
 }
