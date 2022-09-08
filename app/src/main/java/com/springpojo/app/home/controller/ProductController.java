@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.service.AddService;
@@ -39,12 +41,20 @@ public class ProductController {
 		return "contents/product";
 	}
 	
+	
 	// 상품 등록
 	@PostMapping("/product")
-	public String add(Product product, Long id, MultipartFile upload_box) throws Exception{
-		addService.saveProduct(product, upload_box);
-		return "contents/product";
+	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes) throws Exception {
+		Product savedProduct = addService.saveProduct(product, upload_box);
+		
+		redirectAttributes.addAttribute("id", savedProduct.getId());
+		return "redirect:/product/{id}";
 	}
+	
+//	@GetMapping("/product")
+//	public String productPage(@PathVariable Long id, Model model) {
+//		return "contents/product";
+//	}
 	
 	// 상품 리스트
 	@GetMapping("/productList")
@@ -53,6 +63,17 @@ public class ProductController {
 		
 		model.addAttribute("productList", productList);
 		return "/contents/productList";
+	}
+	
+	// 상품 금액 업데이트
+	@PostMapping("/new_price")
+	public String priceUpdate(Product product, Long new_price, RedirectAttributes redirectAttributes) {
+		addService.priceUpdate(product, new_price);
+		
+		redirectAttributes.addAttribute("id", product.getId());
+		
+		return "redirect:/product/{id}";
+		
 	}
 	
 //	@GetMapping

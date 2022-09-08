@@ -26,7 +26,7 @@ public class AddService {
 	SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	// 물품등록
-	public Long saveProduct(Product product, MultipartFile upload_box) throws Exception {
+	public Product saveProduct(Product product, MultipartFile upload_box) throws Exception {
 		// 이미지 저장 처리
 		String imgPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\uploadImg";
 		System.out.println("imgPath = " + imgPath);
@@ -37,7 +37,7 @@ public class AddService {
 //		Image saveImage = new Image(imgPath, filename);
 		upload_box.transferTo(saveImg);
 		product.setImgName(imgName);
-		product.setImgPath("uploadImg/" +imgName);
+		product.setImgPath("/uploadImg/"+imgName);
 		
 		LocalDateTime date = LocalDateTime.now().withNano(0);
 		addRepository.save(product);
@@ -100,7 +100,7 @@ public class AddService {
 		System.out.println("남은 시간 : " + sb);
 		product.setCellPeriod(sb);
 		
-		return product.getId();
+		return product;
 	}
 	
 	// 전체 물품 조회
@@ -113,6 +113,18 @@ public class AddService {
 		System.out.println("asd");
     
 		return addRepository.findById(id);
+	}
+
+	// 상품 금액 업데이트
+//	public Product priceUpdate(Long new_price) {
+//		System.out.println("업데이트 서비스 도착 여부");
+//		return addRepository.update(new_price);
+//	}
+	
+	public Product priceUpdate(Product product, Long new_price) {
+		product.setProductPrice(new_price);
+		
+		return addRepository.update(new_price);
 	}
 	
 }

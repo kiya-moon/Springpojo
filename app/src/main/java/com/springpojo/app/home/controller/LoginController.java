@@ -41,12 +41,12 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	// 회원가입
-	@PostMapping("/signup.do")
-	public String join(Users users) {
-		loginService.saveUser(users);
-		
-		return "redirect:/";
-	}
+//	// 회원가입
+//	@PostMapping("/signup.do")
+//	public String join(Users users) {
+//		loginService.saveUser(users);
+//		
+//		return "redirect:/";
+//	}
 	
 }

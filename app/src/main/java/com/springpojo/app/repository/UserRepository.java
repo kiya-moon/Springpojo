@@ -1,16 +1,14 @@
 package com.springpojo.app.repository;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.springpojo.app.DTO.Users;
 
-@Repository
-public interface UserRepository extends JpaRepository<Users, Long>{
+public interface UserRepository extends JpaRepository<Users, String>{
 
-		List<Users> findAll();
-		
-		Users findByUserId(String UserId);
+   @Query("select u from Users u where userid = :userid")
+   Users findByUserId(String userid);
+
 }
