@@ -1,5 +1,6 @@
-
 package com.springpojo.app.home.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springpojo.app.DTO.CartList;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.MypageService;
 
@@ -27,12 +29,22 @@ public class MypageController {
 		return "mypage/mypage";
 	}	
 	
-	// 마이페이지
-	@GetMapping("/mypage/{id}")
+	// 마이페이지 // 수정예정
+	@GetMapping("/mypage/{id}") 
 	public String mypage(@PathVariable Long id, Model model) {
 		Users users = mypageService.findById(id);
 		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
 	
-}
+	//입찰중인물건
+	@GetMapping("/mypage/{BidJoinNum}{userid}")
+	public String mypagegetcar(Long BidJoinNum, Long userid) {
+		return "mypage/mypage";
+	}
+	
+		
+		
+	}
+	
+
