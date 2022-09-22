@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,11 +28,14 @@ public class AddService {
 	private final AddRepository addRepository;
 	SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
+	@Value("${file.dir}")
+	private String fileDir;
+	
 	// 물품등록
 	public Product saveProduct(Product product, MultipartFile upload_box) throws Exception {
 		// 이미지 저장 처리
-		String imgPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\uploadImg";
-		System.out.println("imgPath = " + imgPath);
+		String imgPath = fileDir;
+		System.out.println("imgPath = " + fileDir);
 		UUID uuid = UUID.randomUUID();
 		String imgName = uuid + "_" + upload_box.getOriginalFilename();
 		System.out.println("imgName = " + imgName);
@@ -39,8 +43,10 @@ public class AddService {
 //		Image saveImage = new Image(imgPath, filename);
 		upload_box.transferTo(saveImg);
 		product.setImgName(imgName);
-		product.setImgPath("/uploadImg/"+imgName);
+		product.setImgPath(imgPath+imgName);
+		System.out.println(product.getImgPath());
 		
+		// 날짜 저장
 		LocalDateTime date = LocalDateTime.now().withNano(0);
 		addRepository.save(product);
 		product.setStartDate(date);
@@ -52,6 +58,7 @@ public class AddService {
 		}else if(product.getProductDate().equals("week")) {
 			product.setEndDate((date.plusDays(7)).toString().replace("T", " "));
 		}
+		
 		
 		String startDateTime = (product.getStartDate().toString()).replace("T", " ");
         String endDateTime = (product.getEndDate().toString()).replace("T", " ");
@@ -121,10 +128,12 @@ public class AddService {
 //		return addRepository.update(new_price);
 //	}
 	
-	public Product priceUpdate(Product product, Long new_price) {
-		product.setProductPrice(new_price);
+	public Product priceUpdate(Long id, Long checkPrice) throws Exception {
+		addRepository.update(id, checkPrice);
 		
-		return addRepository.update(new_price);
+		Product product = new Product();
+		
+		return product;
 	}
 	
 	public Product deleteProduct(Product product) {

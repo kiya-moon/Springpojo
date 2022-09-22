@@ -17,8 +17,8 @@
 				<div class="productSubContainer">
 					<div class="product_info">
 						<div class="img_view_box">
+							<img th:src="|/upload/${product.id}|" width="100%" height="100%"/>
 
-							<img th:src="@{${product.imgPath}}"/>
 						</div>
 						<div class="productInfo">
 							<div class="nameCategory">
@@ -51,7 +51,7 @@
 									</span><span class="minutes"></span><span class="col days">분&nbsp;</span> <span class="seconds"></span><span class="col days">초</span>
 								</div>
 							</div>
-							<form method="post" id="new_price" name="new_price">
+							<form method="post" th:action="@{/updatePrice/}+${product.id}" id="new_price" name="new_price">
 								<div class="currentPrice_form">
 									<div class="currentPrice">입찰 금액</div>
 									<div class="currentPriceBox">
