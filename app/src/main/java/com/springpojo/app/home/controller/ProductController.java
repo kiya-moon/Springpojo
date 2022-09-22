@@ -1,8 +1,11 @@
 package com.springpojo.app.home.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +27,16 @@ public class ProductController {
 	@Autowired
 	public ProductController(AddService addService) {
 		this.addService = addService;
+	}
+	
+	// 이미지 불러오기
+	@GetMapping("/upload/{id}")
+	@ResponseBody
+	public Resource img(@PathVariable("id") Long id, Model model) throws IOException {
+		System.out.println("이미지 컨트롤러");
+		Product product = addService.findById(id);
+		System.out.println(product.getImgPath());
+		return new UrlResource("file:" + product.getImgPath());
 	}
 	
 	// 상품등록페이지 이동
@@ -66,11 +80,16 @@ public class ProductController {
 	}
 	
 	// 상품 금액 업데이트
-	@PostMapping("/new_price")
-	public String priceUpdate(Product product, Long new_price, RedirectAttributes redirectAttributes) {
-		addService.priceUpdate(product, new_price);
+	@PostMapping("/updatePrice/{id}")
+	public String priceUpdate(@PathVariable Long id, Long checkPrice, RedirectAttributes redirectAttributes) throws Exception {
+		addService.priceUpdate(id, checkPrice);
 		
-		redirectAttributes.addAttribute("id", product.getId());
+//		product.setId(id);
+//		product.setProductPrice(checkPrice);
+		
+//		addService.priceUpdate(product);
+		
+		redirectAttributes.addAttribute("id", id);
 		
 		return "redirect:/product/{id}";
 		

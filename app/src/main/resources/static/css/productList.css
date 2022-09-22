@@ -87,7 +87,7 @@ a {
 	cursor: pointer;
 }
 .productList_contents_img{
-	width: 200px;
+	width: 100%;
 	height: 200px;
 }
 .productList_contents_name, .productList_contents_about, .productList_contents_price{

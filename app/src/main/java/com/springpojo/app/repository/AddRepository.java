@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
@@ -46,9 +47,9 @@ public class AddRepository {
 	}
 
 	// 상품 가격 업데이트
-	public Product update(Long new_price) {
+	public void update(Long id, Long checkPrice) {
 		System.out.println("업데이트 레파지토리 도착");
-		return (Product) em.createQuery("update p set p.productPrice = :new_price where p.id = :id", Product.class);
+		em.createQuery("update Product p set p.productPrice = :checkPrice where p.id = :id").setParameter("checkPrice", checkPrice).setParameter("id", id).executeUpdate();
 	}
 	
 	
