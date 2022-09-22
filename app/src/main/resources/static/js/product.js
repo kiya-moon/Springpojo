@@ -28,10 +28,7 @@ function remindTime(){
 				var end = document.getElementById('endDate').value;
 				var dday = new Date(end).getTime();
 				var now = new Date().getTime();
-//				console.log("end" + end);
-//				console.log("dday : " + dday);
-//				console.log("now" + now);
-//
+
 
 				 $(".time").fadeIn();
 			     sec = parseInt(dday - now) / 1000;
@@ -64,6 +61,4 @@ function remindTime(){
 			 }
 
 $(document).ready(remindTime())
-
-
 			      

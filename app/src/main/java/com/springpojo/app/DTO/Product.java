@@ -59,12 +59,17 @@ public class Product {
 //	@Column(nullable=true)
 	private String endDate;
 	private StringBuffer cellPeriod;
+
 	private String imgName;
 	private String imgPath;
+
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "product")
 	private List<Like> like = new ArrayList<>();
+	
+//	@OneToMany(mappedBy = "product")
+//	private List<Image> image = new ArrayList<>();
 
 }

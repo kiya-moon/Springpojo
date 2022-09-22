@@ -32,6 +32,7 @@ public class ProductController {
 		return "contents/addProduct";
 	}
 	
+	// 상품 페이지
 	@GetMapping("/product/{id}")
 	public String product(@PathVariable Long id, Model model) {
 		System.out.println("3");
@@ -40,6 +41,7 @@ public class ProductController {
 		model.addAttribute("product", product);
 		return "contents/product";
 	}
+	
 	
 	// 상품 등록
 //	@PostMapping("/product")
@@ -51,36 +53,37 @@ public class ProductController {
 	@PostMapping("/product")
 	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes) throws Exception {
 		Product savedProduct = addService.saveProduct(product, upload_box);
-		System.out.println(product.getImgPath());
+
 		redirectAttributes.addAttribute("id", savedProduct.getId());
 		return "redirect:/product/{id}";
 	}
 	
-	@GetMapping("/product")
-	public String productPage(@PathVariable Long id, Model model) {
-		return "contents/product";
-	}
+//	@GetMapping("/product")
+//	public String productPage(@PathVariable Long id, Model model) {
+//		return "contents/product";
+//	}
 	
 	// 상품 리스트
 	@GetMapping("/productList")
 	public String prodcutList(@RequestParam("productCategory") String productCategory, Product product, Model model) {
-		System.out.println(productCategory);
 		List<Product> productList = addService.findProducts(productCategory);
 		
 		model.addAttribute("productList", productList);
 		return "/contents/productList";
 	}
 	
+
+	// 상품 금액 업데이트
+	@PostMapping("/new_price")
+	public String priceUpdate(Product product, Long new_price, RedirectAttributes redirectAttributes) {
+		addService.priceUpdate(product, new_price);
+		
+		redirectAttributes.addAttribute("id", product.getId());
+		
+		return "redirect:/product/{id}";
+		
+	}
 	
-	
-//	@PostMapping("/delete")
-//	@ResponseBody
-//	public Product delete(@RequestBody Product product) {
-//		System.out.println("aaaaa");
-//		Product deleteProduct = addService.deleteProduct(product);
-//		
-//		return product;
-//	}
 //	@GetMapping
 //	public String productList(Model model, String productCategory) {
 //		List<Product> productList = addService.findProducts(productCategory);

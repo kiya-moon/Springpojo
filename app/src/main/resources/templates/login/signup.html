@@ -109,10 +109,12 @@ input::-webkit-inner-spin-button {
 			<button class="sw_close"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" >
+				<form name="signup" action method="post" th:object="${users}" >
+<!--				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" > -->
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
 							<input type="text" class="sw_floating" name="userId" id="userId" placeholder=" " >
+
 							<label id="sw_textColor" for ="UserId">아이디</label>
 							<button class="sw_check" type="button" id ="overlapperdID" th:onclick="checkId(signup.userId.value)">중복확인</button>
 						</div>
@@ -124,6 +126,7 @@ input::-webkit-inner-spin-button {
 						</div>
 						<div class="sw_form-floating sw_mg2">
 							<input type="password" class="sw_floating" name="userPwCheck" id="userPwCheck" placeholder=" " >
+
 							<label id="sw_textColor" for="UserPwCheck">비밀번호 확인</label>
 							<font id="chkNotice"></font>
 						</div>
@@ -139,7 +142,6 @@ input::-webkit-inner-spin-button {
 						</div>
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" class="sw_floating" name="userEmail" id="userEmail" placeholder=" ">
-							<label id="sw_textColor" for="UserEmail">이메일</label>
 							<font id="chkNotice_E"></font>
 <!--							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
@@ -153,20 +155,21 @@ input::-webkit-inner-spin-button {
 						</div>
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" oninput="autoHyphen(this)" class="sw_floating" name="userPhone" id="userPhone" placeholder=" " th:value="*{UserPhone}">
+
 							<label id="sw_textColor" for="UserPhone">전화번호</label>
 							<font id="chkNotice_P"></font>
 						</div>
 						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="signChk()" >회원가입</button>
-<!--						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>	-->
 					</div>
 				</form>
-						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="|location.href='@{/}'|">취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
+						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary sw_btnColor" th:onclick="|location.href='@{/}'|">취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
 			</div>
 		</div>
 	</div>
 </div>
 <th:block layout:fragment="script">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <script type="text/javascript" th:src="@{/js/signup.js}"></script>
 </th:block>

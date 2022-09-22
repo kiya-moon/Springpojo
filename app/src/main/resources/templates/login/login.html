@@ -110,18 +110,19 @@ input::-webkit-inner-spin-button {
 				<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form id="login" name="login" method="post" action="/login.do" th:action="@{/login.do}">
+				<form id="login" name="login" method="post" th:action th:object="${loginForm}" >
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2">
-							<input type="text" class="sw_floating" id="userId" name="userId" required>
+							<input type="text" class="sw_floating" id="userId" name="userId"  placeholder = " " th:field="*{userId}" required>
 							<label id="sw_textColor">아이디</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password"  class="sw_floating" id="userPw" name="userPw" required>
+							<input type="password"  class="sw_floating" id="userPw" name="userPw"  placeholder = " " th:field="*{userPw}" required autocomplete="off">
 							<label id="sw_textColor">비밀번호</label>
 						</div>
 						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="LoginOn()">로그인</button>
 						<p th:text="${loginMessage}" style="color: red"></p>
+
 						<div class="sw_etc" style="cursor:pointer">
 							<a onclick="location.href='signup.html'"
 							th:onclick="|location.href='@{/agree}'|">회원가입</a>
@@ -135,7 +136,7 @@ input::-webkit-inner-spin-button {
 							<hr class="sw_my-4">
 						</div>
 						<h2 class="sw_f-size sw_f1 sw_mg2">SNS계정으로 로그인 하기</h2>
-						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor">카카오계정으로 로그인</button>
+						<button type="button" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary sw_btnColor">카카오계정으로 로그인</button>
 					</div>
 				</form>
 			</div>
@@ -149,4 +150,7 @@ input::-webkit-inner-spin-button {
 </th:block>
 
 </body>
+<th:block layout:fragment="script">
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</th:block>
 </html>

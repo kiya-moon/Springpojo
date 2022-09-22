@@ -1,8 +1,7 @@
 package com.springpojo.app.service;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -30,28 +29,18 @@ public class AddService {
 	
 	// 물품등록
 	public Product saveProduct(Product product, MultipartFile upload_box) throws Exception {
+		// 이미지 저장 처리
+		String imgPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\uploadImg";
+		System.out.println("imgPath = " + imgPath);
 		UUID uuid = UUID.randomUUID();
+		String imgName = uuid + "_" + upload_box.getOriginalFilename();
+		System.out.println("imgName = " + imgName);
+		File saveImg = new File(imgPath, imgName);
+//		Image saveImage = new Image(imgPath, filename);
+		upload_box.transferTo(saveImg);
+		product.setImgName(imgName);
+		product.setImgPath("/uploadImg/"+imgName);
 		
-		String imgFileName = uuid + "-" + upload_box.getOriginalFilename();
-		
-		String path = "/Users/kimgangyoung/upload/";
-		
-		Path imgPath = Paths.get(MyPath.IMAGEPATH + imgFileName);
-		
-		try {
-			Files.write(imgPath, upload_box.getBytes());
-			product.setImgName(imgFileName);
-			product.setImgPath(imgPath.toString());
-		} catch (Exception e) {
-			
-		}
-//		File saveImg = new File(path, imgFileName);
-//		upload_box.transferTo(saveImg);
-//		product.setImgName(imgFileName);
-//		product.setImgPath(path+imgFileName);
-		
-		
-		// CountDown
 		LocalDateTime date = LocalDateTime.now().withNano(0);
 		addRepository.save(product);
 		product.setStartDate(date);
@@ -112,53 +101,30 @@ public class AddService {
 		}
 		System.out.println("남은 시간 : " + sb);
 		product.setCellPeriod(sb);
-        
-//        System.out.println(startDateTime);
-//        System.out.println(endDateTime);
-//       
-//        Date startTime = null;
-//        Date endTime = null;
-//
-//        try {
-//            startTime = timeFormat.parse(startDateTime);
-//            endTime = timeFormat.parse(endDateTime);
-//            System.out.println(startTime);
-//            System.out.println(endTime);
-//        } catch (Exception e) {
-//        }
-//       System.out.println(startTime.getTime());
-//       System.out.println(endTime.getTime());
-//        long calcBetweenTime = endTime.getTime() - startTime.getTime();
-//        long sec = calcBetweenTime % 1000;
-//        
-//        long secForMin = calcBetweenTime / 1000;
-//        long min = secForMin % 60;
-//        long minForHour = secForMin / 60;
-//        long hour = minForHour / 60;
-        
-//        StringBuffer sb = new StringBuffer();
-//        sb.append(hour).append(":");
-//        if((min+"").length() == 1) {
-//            sb.append("0").append(min).append(":");
-//        }
-//        if((sec+"").length() == 1) {
-//            sb.append("0").append(sec);
-//        }
-//        product.setCellPeriod(sb.toString());
-//
-//        System.out.println(product.getCellPeriod());
 		return product;
 	}
 	
 	// 전체 물품 조회
 	public List<Product> findProducts(String productCategory){
 		return addRepository.findAll(productCategory);
-	}
-	
+}
+
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		System.out.println("1");
+		System.out.println("asd");
 		return addRepository.findById(id);
+	}
+
+	// 상품 금액 업데이트
+//	public Product priceUpdate(Long new_price) {
+//		System.out.println("업데이트 서비스 도착 여부");
+//		return addRepository.update(new_price);
+//	}
+	
+	public Product priceUpdate(Product product, Long new_price) {
+		product.setProductPrice(new_price);
+		
+		return addRepository.update(new_price);
 	}
 	
 	public Product deleteProduct(Product product) {

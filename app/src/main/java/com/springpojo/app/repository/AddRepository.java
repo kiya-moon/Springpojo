@@ -21,34 +21,33 @@ public class AddRepository {
 	@PersistenceContext
 	private final EntityManager em;
 
-	// Product Repository
+	// Product 등록
 	public void save(Product product) {
 		if (product.getId() == null) {
+			// insert 역할
 			em.persist(product);
 		} else {
+			// update 역할
 			em.merge(product);
 		}
 	}
 	
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		System.out.println("2");
-		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id)
 				.getSingleResult();
 	}
 
+	// 카테고리별 상품 가져오기
 	public List<Product> findAll(String productCategory) {
 		return em.createQuery("select p from Product p where p.productCategory = :productCategory order by p.id", Product.class)
 				.setParameter("productCategory", productCategory)
 				.getResultList();
 	}
-	
-	public void delete(Product product) {
-		if(product.getId() != null) {
-			em.remove(product);
-		}else {
-			em.merge(product);
-		}
+
+
+	// 상품 가격 업데이트
+	public Product update(Long new_price) {
+		System.out.println("업데이트 레파지토리 도착");
+		return (Product) em.createQuery("update p set p.productPrice = :new_price where p.id = :id", Product.class);
 	}
-	
 }
