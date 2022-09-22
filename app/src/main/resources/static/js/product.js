@@ -24,13 +24,10 @@ function chk_price(){
 	document.getElementById('new_price').submit();
 }
 
-$(document).ready(function remindTime(){
+function remindTime(){
 				var end = document.getElementById('endDate').value;
 				var dday = new Date(end).getTime();
 				var now = new Date().getTime();
-				console.log("end" + end);
-				console.log("dday : " + dday);
-				console.log("now" + now);
 
 
 				 $(".time").fadeIn();
@@ -50,6 +47,18 @@ $(document).ready(function remindTime(){
 			      $(".seconds").html(sec);
 			      
 			 setInterval(remindTime,1000);
+			 
+			 if(sec <= 0){
+				$.ajax({
+					url: '/delete',
+					type:'DELETE',
+					success: function(data){
+						
+					}
+				})
+			}
 			
-			 })
+			 }
+
+$(document).ready(remindTime())
 			      

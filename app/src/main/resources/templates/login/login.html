@@ -120,7 +120,9 @@ input::-webkit-inner-spin-button {
 							<input type="password"  class="sw_floating" id="userPw" name="userPw"  placeholder = " " th:field="*{userPw}" required autocomplete="off">
 							<label id="sw_textColor">비밀번호</label>
 						</div>
-						<button type="button" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary sw_btnColor" onclick="LoginOn()">로그인</button>
+						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="LoginOn()">로그인</button>
+						<p th:text="${loginMessage}" style="color: red"></p>
+
 						<div class="sw_etc" style="cursor:pointer">
 							<a onclick="location.href='signup.html'"
 							th:onclick="|location.href='@{/agree}'|">회원가입</a>
@@ -141,6 +143,12 @@ input::-webkit-inner-spin-button {
 		</div>
 	</div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<!-- <script type="text/javascript" th:src="@{/js/login.js}"></script> -->
+<th:block layout:fragment="script">
+		<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</th:block>
+
 </body>
 <th:block layout:fragment="script">
 <script type="text/javascript" th:src="@{/js/login.js}"></script>

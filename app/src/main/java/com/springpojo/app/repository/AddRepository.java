@@ -35,7 +35,6 @@ public class AddRepository {
 	
 	// 특정 상품 조회
 	public Product findById(Long id) {
-		return em.createQuery("select p from Product p where p.id = :id", Product.class).setParameter("id", id)
 				.getSingleResult();
 	}
 
@@ -46,11 +45,10 @@ public class AddRepository {
 				.getResultList();
 	}
 
+
 	// 상품 가격 업데이트
 	public void update(Long id, Long checkPrice) {
 		System.out.println("업데이트 레파지토리 도착");
 		em.createQuery("update Product p set p.productPrice = :checkPrice where p.id = :id").setParameter("checkPrice", checkPrice).setParameter("id", id).executeUpdate();
 	}
-	
-	
 }

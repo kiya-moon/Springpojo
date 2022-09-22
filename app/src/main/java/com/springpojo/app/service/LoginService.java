@@ -1,8 +1,8 @@
 package com.springpojo.app.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.UserRepository;
@@ -22,6 +22,11 @@ public class LoginService {
 		return users.getId();
 	}
 	
+	public Users login(String userId) throws Exception{
+		
+		return userRepository.login(userId);
+	}
+	
 //	public String joinUser(User user) {
 ////		user.setUserRole("USER");
 //		userRepository.save(user);
@@ -29,18 +34,18 @@ public class LoginService {
 //	}
 	
 	// 로그인
-	public boolean login(Users users) {
-		Users findUser = userRepository.findByUserId(users.getUserId());
-		
-		if(findUser == null) {
-			return false;
-		} 
-		if(findUser != null && findUser.getUserPw().equals(users.getUserPw())) {
-			return true;
-		}
-		return true;
-			
-		}
+//	public boolean login(Users users) {
+//		Users findUser = userRepository.findByUserId(users.getUserId());
+//		
+//		if(findUser == null) {
+//			return false;
+//		} 
+//		if(findUser != null && findUser.getUserPw().equals(users.getUserPw())) {
+//			return true;
+//		}
+//		return true;
+//			
+//		}
 	
 //	public User loginUser(String id, String pw) {
 //		User user = userRepository.selectUserInfo(id, pw);
