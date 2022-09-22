@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.springpojo.app.DTO.CartList;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.MypageService;
 
