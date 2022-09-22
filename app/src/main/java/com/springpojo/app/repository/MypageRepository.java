@@ -5,7 +5,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.CartList;
 import com.springpojo.app.DTO.Users;
 
