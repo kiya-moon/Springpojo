@@ -35,18 +35,25 @@ public class ProductController {
 	// 상품 페이지
 	@GetMapping("/product/{id}")
 	public String product(@PathVariable Long id, Model model) {
-		System.out.println("asd");
+		System.out.println("3");
 		Product product = addService.findById(id);
+		System.out.println(product.getImgPath());
 		model.addAttribute("product", product);
 		return "contents/product";
 	}
 	
 	
 	// 상품 등록
+//	@PostMapping("/product")
+//	public String add(Product product, Long id) {
+//		addService.saveProduct(product);
+//		return "contents/product";
+//	}
+	// 상품 등록
 	@PostMapping("/product")
 	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes) throws Exception {
 		Product savedProduct = addService.saveProduct(product, upload_box);
-		
+
 		redirectAttributes.addAttribute("id", savedProduct.getId());
 		return "redirect:/product/{id}";
 	}
@@ -65,6 +72,7 @@ public class ProductController {
 		return "/contents/productList";
 	}
 	
+
 	// 상품 금액 업데이트
 	@PostMapping("/new_price")
 	public String priceUpdate(Product product, Long new_price, RedirectAttributes redirectAttributes) {

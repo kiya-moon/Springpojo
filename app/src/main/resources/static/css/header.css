@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+a{
+	cursor: pointer;
+}
 .speech-bubble-wrapper::-webkit-scrollbar {
     display: none;
 }

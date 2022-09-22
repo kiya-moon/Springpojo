@@ -119,13 +119,18 @@ input:focus{
 	display: flex;
 }
 
-.period{
+.time{
 	width: 90%;
 	height: 100%;
 	margin: 0 auto;
 	font-size: 50px;
 	text-align: center;
 	line-height: 80px;
+	letter-spacing: 0px;
+}
+
+.days{
+	font-size: 30px;
 }
 
 .currentPrice_form{

@@ -1,5 +1,6 @@
 package com.springpojo.app.service;
 
+
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.repository.AddRepository;
+import com.springpojo.appl.utils.MyPath;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,11 +46,11 @@ public class AddService {
 		product.setStartDate(date);
 		System.out.println(product.getStartDate());
 		if(product.getProductDate().equals("day")) {
-			product.setEndDate(date.plusDays(1));
+			product.setEndDate((date.plusDays(1)).toString().replace("T", " "));
 		}else if(product.getProductDate().equals("3days")) {
-			product.setEndDate(date.plusDays(3));
+			product.setEndDate((date.plusDays(3)).toString().replace("T", " "));
 		}else if(product.getProductDate().equals("week")) {
-			product.setEndDate(date.plusDays(7));
+			product.setEndDate((date.plusDays(7)).toString().replace("T", " "));
 		}
 		
 		String startDateTime = (product.getStartDate().toString()).replace("T", " ");
@@ -99,7 +101,6 @@ public class AddService {
 		}
 		System.out.println("남은 시간 : " + sb);
 		product.setCellPeriod(sb);
-		
 		return product;
 	}
 	
@@ -111,7 +112,6 @@ public class AddService {
 	// 특정 상품 조회
 	public Product findById(Long id) {
 		System.out.println("asd");
-    
 		return addRepository.findById(id);
 	}
 
@@ -125,6 +125,13 @@ public class AddService {
 		product.setProductPrice(new_price);
 		
 		return addRepository.update(new_price);
+	}
+	
+	public Product deleteProduct(Product product) {
+		
+		addRepository.delete(product);
+		
+		return product;
 	}
 	
 }

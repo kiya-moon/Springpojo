@@ -1,14 +1,14 @@
 // 로그인 아이디, 비밀번호 입력 안했을 시
-/* function LoginOn() {
-	let userId = document.getElementById('userId').value;
-	let userPw = document.getElementById('userPw').value;
+function LoginOn() {
+	let f = document.login;
+
 	
-	if(userId == "") {
+	if($('#userId').val() == "") {
 		alert("아이디를 입력 해주세요");
 		return false;
 	}
 	
-	if (userPw == "") {
+	if ($('#userPw').val() == "") {
 		alert("비밀번호를 입력 해주세요.");
 		return false;
 	}
@@ -36,5 +36,6 @@ function LoginOn() {
 	}
 
 	f.submit();
+	
 }
 
