@@ -58,8 +58,8 @@ public class Users {
 //	@OneToMany(mappedBy = "users")
 //	private List<Product> product = new ArrayList<>();
 
-	@OneToMany(mappedBy = "users")
-	private List<Image> image = new ArrayList<>();
+//	@OneToMany(mappedBy = "users")
+//	private List<Image> image = new ArrayList<>();
 
 	@OneToMany(mappedBy = "users")
 	private List<Like> like = new ArrayList<>();

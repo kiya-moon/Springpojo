@@ -43,5 +43,12 @@ public class AddRepository {
 				.getResultList();
 	}
 	
+	public void delete(Product product) {
+		if(product.getId() != null) {
+			em.remove(product);
+		}else {
+			em.merge(product);
+		}
+	}
 	
 }

@@ -1,5 +1,6 @@
 package com.springpojo.app.DTO;
 	
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,8 @@ public class Product {
 //	@Column(nullable=true)
 	private String endDate;
 	private StringBuffer cellPeriod;
+	private String imgName;
+	private String imgPath;
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();
 	

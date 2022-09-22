@@ -5,6 +5,15 @@
 <title>header</title>
 </head>
 <body>
+<script>
+$(document).ready(function() {
+        let message = "[[${msg}]]";
+        if (message != "") {
+            alert(message);
+        }else {
+        }
+    })
+</script>
 	<th:block th:fragment="headerFragment">
 		<header>
 			<nav class="nav-top">
@@ -24,12 +33,22 @@
 					</th:block>
 				</div>
 				</div>
-				<ul class="nav-user">
-					<li><a id="login_btn" th:if="${session.userId == null}" href="#" th:onclick="|location.href='@{/login}'|">로그인</a></li>
-					<li><a href="#" th:onclick="|location.href='@{/agree}'|">회원가입</a></li>
-					<li><a href="#">고객센터</a></li>
-					<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
-				</ul>
+				<th:block th:if="${session.userId == null}">
+					<ul class="nav-user">
+						<li><a id="login_btn" href="#" th:onclick="|location.href='@{/login}'|">로그인</a></li>
+						<li><a href="#" th:onclick="|location.href='@{/agree}'|">회원가입</a></li>
+						<li><a href="#">고객센터</a></li>
+						<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
+					</ul>
+				</th:block>
+				<th:block th:if="${session.userId != null}">
+					<ul class="nav-user">
+						<li><a id="logout_btn" href="#" th:onclick="|location.href='@{/logout}'|">로그아웃</a></li>
+						<li><a href="#" th:onclick="|location.href='@{/mypage}'|">마이페이지</a></li>
+						<li><a href="#">고객센터</a></li>
+						<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
+					</ul>
+				</th:block>
 			</nav>
 			<nav class="nav-main-menu">
 				<ul class="main-menu">

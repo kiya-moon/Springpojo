@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springpojo.app.DTO.Product;
@@ -35,6 +36,7 @@ public class ProductController {
 	public String product(@PathVariable Long id, Model model) {
 		System.out.println("3");
 		Product product = addService.findById(id);
+		System.out.println(product.getImgPath());
 		model.addAttribute("product", product);
 		return "contents/product";
 	}
@@ -47,9 +49,9 @@ public class ProductController {
 //	}
 	// 상품 등록
 	@PostMapping("/product")
-	public String add(@ModelAttribute("product") Product product, RedirectAttributes redirectAttributes) {
-		Product savedProduct = addService.saveProduct(product);
-		
+	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes) throws Exception {
+		Product savedProduct = addService.saveProduct(product, upload_box);
+		System.out.println(product.getImgPath());
 		redirectAttributes.addAttribute("id", savedProduct.getId());
 		return "redirect:/product/{id}";
 	}
@@ -69,6 +71,16 @@ public class ProductController {
 		return "/contents/productList";
 	}
 	
+	
+	
+//	@PostMapping("/delete")
+//	@ResponseBody
+//	public Product delete(@RequestBody Product product) {
+//		System.out.println("aaaaa");
+//		Product deleteProduct = addService.deleteProduct(product);
+//		
+//		return product;
+//	}
 //	@GetMapping
 //	public String productList(Model model, String productCategory) {
 //		List<Product> productList = addService.findProducts(productCategory);

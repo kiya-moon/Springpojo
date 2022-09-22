@@ -1,16 +1,22 @@
 package com.springpojo.app.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.repository.AddRepository;
+import com.springpojo.appl.utils.MyPath;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +29,29 @@ public class AddService {
 	SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	// 물품등록
-	public Product saveProduct(Product product) {
+	public Product saveProduct(Product product, MultipartFile upload_box) throws Exception {
+		UUID uuid = UUID.randomUUID();
+		
+		String imgFileName = uuid + "-" + upload_box.getOriginalFilename();
+		
+		String path = "/Users/kimgangyoung/upload/";
+		
+		Path imgPath = Paths.get(MyPath.IMAGEPATH + imgFileName);
+		
+		try {
+			Files.write(imgPath, upload_box.getBytes());
+			product.setImgName(imgFileName);
+			product.setImgPath(imgPath.toString());
+		} catch (Exception e) {
+			
+		}
+//		File saveImg = new File(path, imgFileName);
+//		upload_box.transferTo(saveImg);
+//		product.setImgName(imgFileName);
+//		product.setImgPath(path+imgFileName);
+		
+		
+		// CountDown
 		LocalDateTime date = LocalDateTime.now().withNano(0);
 		addRepository.save(product);
 		product.setStartDate(date);
@@ -133,5 +161,11 @@ public class AddService {
 		return addRepository.findById(id);
 	}
 	
+	public Product deleteProduct(Product product) {
+		
+		addRepository.delete(product);
+		
+		return product;
+	}
 	
 }
