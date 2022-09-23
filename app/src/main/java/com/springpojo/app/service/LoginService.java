@@ -22,6 +22,7 @@ public class LoginService {
 		return users.getId();
 	}
 	
+	// 로그인
 	public Users login(String userId) throws Exception{
 		
 		return userRepository.login(userId);

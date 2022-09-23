@@ -57,7 +57,7 @@ public class Product {
 //	private String productCeller;
 //	// Date인지 잘 모르겠지만 일단 넣어둠
 //	@Column(nullable=true)
-	private String endDate;
+	private LocalDateTime endDate;
 	private StringBuffer cellPeriod;
 
 	private String imgName;

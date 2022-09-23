@@ -4,21 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.springpojo.app.DTO.Users;
-//import com.springpojo.app.repository.UserRepository;
-//import com.springpojo.app.session.Login;
-//import com.springpojo.app.session.SessionManager;
+
+import com.springpojo.app.session.SessionManager;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-@Controller
+@Slf4j
 @RequiredArgsConstructor
+@Controller
 public class HomeController {
-	
-//    private final UserRepository userRepository;
-
-//    private final SessionManager sessionManager;
-
+	private final SessionManager sessionManager;
 
 	@GetMapping("/")
 	public String home() {
@@ -49,18 +45,18 @@ public class HomeController {
 		return "shop";
 	}
 
-//	// 로그인 페이지
-//	@GetMapping("/login")
-//	public String login() {
-//		return "login/login";
-//	}
-//	
-//	// 회원가입
-//	@GetMapping("/signup")
-//	public String signup() {
-//		return "login/signup";
-//	}
-	
+	// 로그인 페이지
+	@GetMapping("/login")
+	public String login() {
+		return "login/login";
+	}
+
+	// 회원가입
+	@GetMapping("/signup")
+	public String signup() {
+		return "login/signup";
+	}
+
 	// 아이디 찾기
 	@GetMapping("/forgotId")
 	public String forgotId(Model model) {
@@ -75,29 +71,15 @@ public class HomeController {
 
 	// 이용약관
 	@GetMapping("/agree")
-	public String agree() {
+	public String agree(Model model) {
 		return "/login/agree";
 	}
 
-//	// 마이페이지
-//	@GetMapping("/mypage")
-//	public String mypage(Model model) {
-//		return "/mypage/Edit_member_information";
-//	}
-	
-
-//    @GetMapping("/")
-//    public String homeLoginV3ArgumentResolver(@Login Users users
-//            , Model model) {
-//        // 세션에 회원 데이터가 없으면 home
-//        if (users == null) {
-//            return "/contents/home";
-//        }
-//
-//        // 세션이 유지되면 로그인 된 상태의 홈으로 이동
-//        model.addAttribute("users", users);
-//
-//        return "/contents/home";
-//    }
+	// 마이페이지
+	@GetMapping("/mypage")
+	public String mypage(Model model) {
+		return "/mypage/Edit_member_information";
+	}
 
 }
+

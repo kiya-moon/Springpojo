@@ -17,7 +17,6 @@ function signChk() {
 	if(chk_dupli == 0){
 		alert('아이디 중복체크를 해주세요.');
 	return false;
-
 	}
 	
 	if(pw_chk == 0){
@@ -31,9 +30,7 @@ function signChk() {
 	if(birth_chk == 0){
 		return false;
 	}
-  
 	if(email_chk == 0){
-
 		return false;
 	}
 	if(phone_chk == 0){
@@ -67,7 +64,6 @@ $(function() {
 			$('#chkNotice_N').attr('color', '#f82a2aa3');
 			$('#sw_btnColor').attr("disabled", "disabled");
 			name_chk = 0;
-
 		}else{
 			$('#chkNotice_N').html('');
 			$('#sw_btnColor').removeAttr("disabled");
@@ -127,8 +123,7 @@ $(function() {
 			phone_chk = 1;
 		}
 	})
-
-$('#userPwCheck').keyup(function() {
+	$('#userPwCheck').keyup(function() {
 		if ($('#userPw').val() != $('#userPwCheck').val()) {
 			$('#chkNotice').html('비밀번호가 일치하지 않습니다.<br>');
 			$('#chkNotice').attr('color', '#f82a2aa3');
@@ -153,7 +148,6 @@ $('#userPwCheck').keyup(function() {
 		}
 	});
 });
-
 
 function checkId() {
 	var userId = $('#userId').val();

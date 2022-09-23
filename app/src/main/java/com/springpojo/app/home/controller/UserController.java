@@ -15,7 +15,6 @@ public class UserController {
       this.userRepository = userRepository;
    }
 
-
    @RequestMapping("/signup")
    public String ereate(Users users) {
       this.userRepository.save(users);
