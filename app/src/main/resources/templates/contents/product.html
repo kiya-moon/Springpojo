@@ -1,58 +1,175 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/default_layout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/Product.css}">
+</th:block>
 </head>
-<link rel="stylesheet" th:href="@{/css/product.css}">
 <body>
-	<div class="bg_color">
-		<div class="productContainer">
-			<div>
-				<!-- img -->
-			</div>
-			<div class="productInfo">
-				<div>
-					<input type="text" id="productName" class="productName" value="상품명"
-						readonly> <input type="text" id="productCategory"
-						class="productCategory" value="카테고리" readonly>
-				</div>
-				<div>
-					<p>시간</p>
-				</div>
-				<div>
-					<span>₩<input type="text" id="productPrice"
-						class="productPrice" value="현재금액" readonly></span>
-				</div>
-				<div>
-					<button>+ ₩1000</button>
-					<button>+ ₩5000</button>
-					<button>+ ₩10000</button>
-					<button>Reset</button>
-				</div>
-				<form method="post">
-					<div>
-						<p>입찰 금액</p>
-						<span>₩<input type="text" id="productPrice"
-							class="productPrice" value="현재금액" readonly></span>
+	<th:block layout:fragment="content">
+		<div class="bg_color">
+			<div class="devideContainer"></div>
+			<div class="productContainer">
+				<div class="productSubContainer">
+					<div class="product_info">
+						<div class="img_view_box">
+							<img th:src="|/upload/${product.id}|" width="100%" height="100%"/>
+
+						</div>
+						<div class="productInfo">
+							<div class="nameCategory">
+								<div class="productName">
+									<input class="productName" name="productName"
+										th:value="${product.productName}" readonly>
+								</div>
+								<div class="productCategory">
+									<input class="productCategory" name="productCategory"
+										th:value="${product.productCategory}" readonly>
+								</div>
+							</div>
+							<div class="priceCeller">
+								<div class="startPrice">
+									<input id="startPrice" class="startPrice" name="productPrice"
+										th:value="${product.productPrice} + 원"
+										readonly>
+								</div>
+								<div class="productCeller">
+									판매자 : <a class="cellerName" href="#">ooo</a>
+								</div>
+							</div>
+							<!-- 카운트다운 박스 -->
+							<div class="deadLineBox">
+								<input type="hidden" id="endDate" class="endDate" name="endDate"
+									th:value="${product.endDate}" readonly>
+								<!-- 								<input type="text" id="period" class="period" name="period" th:value="${product.cellPeriod}" readonly> -->
+								<div class="time">
+									<span class="day"></span><span class="col days">일&nbsp;</span> <span class="hours"></span><span class="col days">시&nbsp;
+									</span><span class="minutes"></span><span class="col days">분&nbsp;</span> <span class="seconds"></span><span class="col days">초</span>
+								</div>
+							</div>
+							<form method="post" th:action="@{/updatePrice/}+${product.id}" id="new_price" name="new_price">
+								<div class="currentPrice_form">
+									<div class="currentPrice">입찰 금액</div>
+									<div class="currentPriceBox">
+										<div class="checkPrice">
+											<input id="checkPrice" class="checkPrice" name="checkPrice"
+												th:value="${product.productPrice}" readonly>
+										</div>
+									</div>
+									<div class="priceBtn">
+										<button type="button" class="one_btn btn_group" name="price1"
+											th:value=1000
+											th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price1.value)">+
+											₩1000</button>
+										<button type="button" class="five_btn btn_group" name="price2"
+											th:value=5000
+											th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price2.value)">+
+											₩5000</button>
+										<button type="button" class="ten_btn btn_group" name="price3"
+											th:value=10000
+											th:onclick="checkPrice.value=parseInt(checkPrice.value)+parseInt(price3.value)">+
+											₩10000</button>
+										<button type="reset" class="reset_btn btn_group">Reset</button>
+									</div>
+								</div>
+								<div class="bid_btnGroup">
+									<button type="button" class="bid_btn btn_group2"
+										th:onclick="chk_price()">입찰하기</button>
+								</div>
+							</form>
+							<div class="func_btn">
+								<button type="button" class="likeList_btn btn_group2">찜
+									목록</button>
+								<button type="button" class="like_btn btn_group2"
+									th:onclick="imgToggle()">
+									<div class="like_line">
+										<img id="like_off" th:src="@{img/likeoff.png}"> <span
+											th:value="0">0</span>
+									</div>
+								</button>
+							</div>
+						</div>
 					</div>
-					<!-- 보더바텀, 바탕 그레이 -->
-				</form>
-				<div>
-					<button>입찰하기</button>
-					<button>찜 목록</button>
-					<button>
-						<img> <span>0</span>
-					</button>
+					<div>
+						<!-- 판매자정보 -->
+					</div>
+					<div class="productEx_body">
+						<div class="productEx_title">상세설명</div>
+						<div class="productEx_contents">
+							<textarea id="productText" class="productText" name="productText"
+								th:text="${product.productText}" readonly></textarea>
+						</div>
+					</div>
+					<div class="list_btn_box">
+						<button type="button" class="productList" th:onclick="|location.href='@{/productList}'|">목록</button>
+					</div>
 				</div>
-			</div>
-			<div>
-				<!-- 판매자정보 -->
-			</div>
-			<div>
-				<!-- 상품설명 -->
 			</div>
 		</div>
-	</div>
+	</th:block>
+
+	<th:block layout:fragment="script">
+		<script type="text/javascript" th:src="@{/js/product.js}"></script>
+ <!-- 		<script> 
+			function remindTime(){
+				var end = document.getElementById('endDate').value;
+				var dday = new Date(end).getTime();
+				var now = new Date().getTime();
+				console.log("end" + end);
+				console.log("dday : " + dday);
+				console.log("now" + now);
+
+
+				 $(".time").fadeIn();
+			     sec = parseInt(dday - now) / 1000;
+			     day  = parseInt(sec/60/60/24);
+			     sec = (sec - (day * 60 * 60 * 24));
+			     hour = parseInt(sec/60/60);
+			     sec = (sec - (hour*60*60));
+			     min = parseInt(sec/60);
+			     sec = parseInt(sec-(min*60));
+			     if(hour<10){hour="0"+hour;}
+			     if(min<10){min="0"+min;}
+			     if(sec<10){sec="0"+sec;}
+			      $(".day").html(day);
+			      $(".hours").html(hour);
+			      $(".minutes").html(min);
+			      $(".seconds").html(sec);
+			      
+			 }
+			      
+			 setInterval(remindTime,1000);
+			      function remindTime(){
+			    	  
+			    	    var now = new Date();
+			    	    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),23,30,00);
+			    	  
+			    	    var nt = now.getTime();
+			    	    var et = end.getTime();
+			    	  
+			    	  $(".time").fadeIn();
+			    	     sec =parseInt(et - nt) / 1000;
+			    	     day  = parseInt(sec/60/60/24);
+			    	     sec = (sec - (day * 60 * 60 * 24));
+			    	     hour = parseInt(sec/60/60);
+			    	     sec = (sec - (hour*60*60));
+			    	     min = parseInt(sec/60);
+			    	     sec = parseInt(sec-(min*60));
+			    	     if(hour<10){hour="0"+hour;}
+			    	     if(min<10){min="0"+min;}
+			    	     if(sec<10){sec="0"+sec;}
+			    	      $(".hours").html(hour);
+			    	      $(".minutes").html(min);
+			    	      $(".seconds").html(sec);
+			    	 }
+			      
+			   	setInterval(remindTime,1000);
+			   
+		</script>	-->
+	</th:block>
 </body>
 </html>

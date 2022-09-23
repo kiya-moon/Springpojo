@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
-<meta charset="UTF-8">
+<eta charset="UTF-8">
 <title>회원가입</title>
 <link href="../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
 <style>
@@ -65,6 +66,7 @@ button, select {
 
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
+    border : none;
 }
 
 hr {
@@ -77,6 +79,13 @@ hr {
 
 hr:not([size]) {
     height: 1px;
+}
+
+/* input type=number 박스 없애주기 */
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 </style>
 </head>
@@ -96,36 +105,43 @@ hr:not([size]) {
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">회원가입</h2>
-				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer" onclick=""> <!-- 닫기 버튼 -->
+				<!-- 닫기 버튼 -->
+			<button class="sw_close"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="signup">
+				<form name="signup" method="post" action="/singup.do" th:action="@{/signup.do}" >
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2" id="sw_idcheck">
-							<input type="text" class="sw_floating" name="userId" placeholder=" ">
-							<label id="sw_textColor">아이디</label>
-							<input class="sw_check" type="button" value="중복확인" onclick="">
+							<input type="text" class="sw_floating" name="userId" id="userId" placeholder=" " >
+							<label id="sw_textColor" for ="UserId">아이디</label>
+							<button class="sw_check" type="button" id ="overlapperdID" th:onclick="checkId(signup.userId.value)">중복확인</button>
+						</div>
+							<p id="text"></p>
+						<!--	<span id="olmessage"></span> -->
+						<div class="sw_form-floating sw_mg2">
+							<input type="password"  class="sw_floating" name="userPw" id="userPw" placeholder=" ">
+							<label id="sw_textColor" for="UserPw">비밀번호(문자, 숫자, 특수문자포함 8자이상)</label>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password"  class="sw_floating" name="userPw" placeholder=" ">
-							<label id="sw_textColor">비밀번호</label>
+							<input type="password" class="sw_floating" name="userPwCheck" id="userPwCheck" placeholder=" " >
+							<label id="sw_textColor" for="UserPwCheck">비밀번호 확인</label>
+							<font id="chkNotice"></font>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="password"  class="sw_floating" name="userPwCheck" placeholder=" ">
-							<label id="sw_textColor">비밀번호 확인</label>
+							<input type="text"  class="sw_floating" name="userName" id="userName" placeholder=" " >
+							<label id="sw_textColor" for="UserName">이름</label>
+							<font id="chkNotice_N"></font>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="text"  class="sw_floating" name="userName" placeholder=" ">
-							<label id="sw_textColor">이름</label>
+							<input type="number"  class="sw_floating" name="userBirth" id="userBirth" placeholder=" " >
+							<label id="sw_textColor" for="userBirth">생년월일</label>
+							<font id="chkNotice_B"></font>
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="number"  class="sw_floating" name="userBirth" placeholder=" ">
-							<label id="sw_textColor">생년월일</label>
-						</div>
-						<div class="sw_form-floating sw_mg2" id="sw_email">
-							<input type="text" class="sw_floating" name="userEmail" placeholder=" ">
-							<label id="sw_textColor">이메일</label>
-							<h3 class="sw_h3">@</h3>
+							<input type="text" class="sw_floating" name="userEmail" id="userEmail" placeholder=" ">
+							<label id="sw_textColor" for="UserEmail">이메일</label>
+							<font id="chkNotice_E"></font>
+<!--							<h3 class="sw_h3">@</h3>
 							<select class="sw_emailCheck" id="domain-list">
 							  <option value="naver.com">naver.com</option>
 							  <option value="google.com">google.com</option>
@@ -133,41 +149,26 @@ hr:not([size]) {
 							  <option value="daum.net">daum.net</option>
 							  <option value="nate.com">nate.com</option>
 							  <option value="hotmail.com">hotmail.com</option>
-							</select>
+							</select>				-->
 						</div>
 						<div class="sw_form-floating sw_mg2">
-							<input type="number" class="sw_floating" name="userPhone" placeholder=" ">
-							<label id="sw_textColor">전화번호</label>
+							<input type="text" oninput="autoHyphen(this)" class="sw_floating" name="userPhone" id="userPhone" placeholder=" " th:value="*{UserPhone}">
+							<label id="sw_textColor" for="UserPhone">전화번호</label>
+							<font id="chkNotice_P"></font>
 						</div>
-							<div class="checkWrap">
-								<div class="sw_formCheck sw_formCheckInput">
-									<h3>
-										<input class="" type="checkbox" name='sw_selectAll' value='sw_selectAll' style="zoom: 1.3;" onclick='selectAll(this)'> 
-										<!-- <label id="sw_agree">전체 동의</label> -->
-										<b id="sw_agree">전체 동의</b>
-									</h3>
-									<hr border="1">
-									<input class="" type="checkbox" name='sw_select' value='1' onclick='checkSelectAll()'> 
-									<!-- <label>이용약관</label><br>  -->
-									이용약관<br> 
-									<input class="" type="checkbox" name='sw_select' value='2' onclick='checkSelectAll()'> 
-<!-- 									<label>전자금융거래 이용약관</label><br>  -->
-									전자금융거래 이용약관<br> 
-									<input class="" type="checkbox" name='sw_select' value='3' onclick='checkSelectAll()'> 
-									<!-- <label>개인정보 수집 및 이용</label><br> -->
-									개인정보 수집 및 이용<br>
-								</div>
-							</div>
-							<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>
-						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor"
-						onclick="location.href='login.html'"
-							>취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
+						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="signChk()" >회원가입</button>
+<!--						<button type="button"  class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="signSend()">회원가입</button>	-->
 					</div>
 				</form>
+						<button class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" th:onclick="|location.href='@{/}'|">취소</button><!-- th:onclick="|location.href='@{/login}'|" -->
 			</div>
 		</div>
 	</div>
 </div>
+<th:block layout:fragment="script">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--   <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <script type="text/javascript" th:src="@{/js/signup.js}"></script>
+</th:block>
 </body>
 </html>

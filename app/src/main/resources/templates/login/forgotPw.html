@@ -66,7 +66,6 @@ button, select {
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
 }
-
 hr {
     margin: 1rem 0;
     color: inherit;
@@ -77,6 +76,13 @@ hr {
 
 hr:not([size]) {
     height: 1px;
+}
+
+/* input type=number 박스 없애주기 */
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 </style>
 </head>
@@ -95,10 +101,11 @@ hr:not([size]) {
 		<div class="sw_m-content sw_shadow">
 			<div class="sw_m-header sw_p2 sw_p3 sw_b1">
 				<h2 class="sw_f1 sw_mg1">비밀번호 찾기</h2>
-				<img src="../img/x-square.svg" width="30em" height="30em" style="cursor:pointer">
+				<!-- 닫기 버튼 -->
+				<button class="sw_close" onclick="closeModal();"><img th:src="@{/img/x-square.svg}" width="30em" height="30em" style="cursor:pointer" th:onclick="|location.href='@{/}'|"></button>
 			</div>
 			<div class="sw_m2 sw_p4">
-				<form name="forgotPw">
+				<form  name="forgotPw">
 					<div class="sw_UI">
 						<div class="sw_form-floating sw_mg2">
 							<input type="text" class="sw_floating" name="userId" placeholder=" ">
@@ -112,7 +119,7 @@ hr:not([size]) {
 							<input type="number"  class="sw_floating" name="userPhone" placeholder=" ">
 							<label id="sw_textColor">전화번호</label>
 						</div>
-						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary" id="sw_btnColor" onclick="pw_search()">비밀번호 찾기</button>
+						<button type="submit" class="sw_w1 sw_mg3 sw_btn sw_btn-lg sw_btn-primary sw_btnColor"  onclick="pw_search()">비밀번호 찾기</button>
 					</div>
 				</form>
 			</div>
@@ -120,6 +127,5 @@ hr:not([size]) {
 	</div>
 </div>
 <script type="text/javascript" th:src="@{/js/forgotPw.js}"></script>
-
 </body>
 </html>

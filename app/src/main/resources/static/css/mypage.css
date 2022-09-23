@@ -1,0 +1,275 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.test{
+	background-color: white;
+}
+
+.list {
+	padding: 10px;
+	height: 1500p;
+}
+
+#list img {
+	width: 150px;
+	height: 150px;
+}
+
+table {
+	margin: auto;
+	text-align: center;
+	border-spacing: 0;
+	width: auto;
+	height: auto;
+}
+
+th td {
+	padding: 3px 20px;
+}
+
+.page02 {
+	border: 1px solid;
+	padding: 10px;
+	height: 400px;
+	width: 400px;
+	margin: auto;
+}
+
+.menu ::before {
+	font-family: 'Material Icons';
+	font-size: 1.5em;
+	float: left;
+	clear: left;
+}
+
+.menu label::before {
+	content: '\e5d2';
+}
+
+.menu li:nth-child(1) a::before {
+	content: '\f02e';
+}
+
+.menu li:nth-child(2) a::before {
+	content: '\e8d6';
+}
+
+.menu li:nth-child(3) a::before {
+	content: '\e854';
+}
+
+.menu li:nth-child(4) a::before {
+	content: '\e8cc';
+}
+
+.menu li:nth-child(5) a::before {
+	content: '\e87d';
+}
+
+.menu li:nth-child(6) a::before {
+	content: '\e8b8';
+}
+
+#expand-menu { /* 체크박스 폼 요소 감춤 */
+	display: none;
+}
+
+#expand-menu:checked ~ ul { /* 체크박스 체크되었으면 메뉴 목록 표시 - 반응형 표시용 */
+	display: block;
+	height: auto;
+}
+
+.menu {
+	position: fixed;
+	background: blue;
+	color: white;
+	text-align: center;
+	margin: 10% 0 0 0;
+	display: block;
+	width: 15%;
+	height: 32%;
+	background-color: #000;
+	color: #fff;
+	border-radius: 20px;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow: hidden; /* 반응형 애니메이션용 */
+	transition: all 0.5s ease; /* 반응형 애니메이션 */
+}
+
+.menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu a, .menu>label {
+	display: block;
+	padding: 8px;
+	cursor: pointer;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu a:hover {
+	color: #000;
+}
+
+.menu ul li:hover, .menu>label:hover {
+	padding: 0 0 0 0;
+	background-color: #fff;
+	color: #000;
+	border-radius: 10px;
+}
+
+.menu div {
+	line-height: 1.5;
+	font-size: 1em;
+	font-family: 'Noto Sans KR';
+	padding: 0 0 0 50px; /* 아이콘과 텍스트 사이 여백 */
+}
+
+@media screen and (max-width:1023px) {
+	.menu { /* 1단계 */
+		width: 60px;
+	}
+}
+
+@media screen and (max-width:560px) {
+	.menu #expand-menu:not(:checked) ~ ul { /* 2단계 */
+		display: none;
+	}
+}
+
+@media screen and (max-width:1023px) {
+	.menu { /* 1단계 */
+		width: 60px;
+	}
+}
+
+@media screen and (max-width:560px) {
+	.menu #expand-menu:not(:checked) ~ ul { /* 2단계 */
+		display: none;
+	}
+}
+
+tbody {
+	font-size: 12px;
+	
+}
+
+td {
+	padding: 15px 5px;
+	border-bottom: 1px solid lightgray;
+	text-align: center;
+}
+
+.like {
+	border: 1px solid lightgray;
+	padding: 10px;
+	width: 75%;
+	margin: 15% 0 10% 22%;
+}
+
+.like-list-1 a {
+	font-size: 12px;
+}
+
+.like-list-1 p {
+	margin-top: 6px;
+	font-weight: bold;
+}
+
+.like-mainbtn {
+	width: 35%;
+	height: 122px;
+	padding-top: 40px;
+	display: block;
+	margin: auto;
+}
+
+.like-mainbtn2 {
+	width: 150px;
+	height: 30px;
+	font-size: 13px;
+	margin: auto;
+	border-radius: 5px;
+}
+
+.like-mainbtn2.left {
+	background-color: ffbd55;
+	border: 1px solid white;
+}
+
+.like-mainbtn2.right {
+	backgroud-color: ffbd55;
+	border: 1px solid white;
+}
+
+.singup_retoch {
+	border: 1px solid lightgray;
+	text-align: center;
+	width: 60%;
+	margin: 15% 0 15% 25%;
+	padding: 2% 0 0 0;
+}
+
+.singup_retoch_title {
+	margin: 0 0 5% 0;
+}
+
+.hj_floating {
+	margin: 1% 0 0 0;
+	width: 70%;
+	height: 20%;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	background-color: #f1f3f5;
+	background-clip: padding-box;
+	border-color: lightgray;
+	border-radius: 0.25rem;
+}
+
+.textform {
+	margin: 1% 0 0 0;
+}
+
+h1{
+	margin: 3% 0 -4% 0;
+}
+
+.retoch_btn {
+	margin: 3% 5% 3% 0;
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 0.3rem;
+}
+
+.cancell_btn {
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 0.3rem;
+}
+
+.hj_textColor {
+	text-align: left;
+	font-weight: bold;
+}

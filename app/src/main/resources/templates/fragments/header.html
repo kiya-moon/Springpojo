@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>header</title>
 </head>
 <body>
+<script>
+$(document).ready(function() {
+        let message = "[[${msg}]]";
+        if (message != "") {
+            alert(message);
+        }else {
+        }
+    })
+</script>
+	<th:block th:fragment="headerFragment">
+		<header>
+			<nav class="nav-top">
+				<div class="nav-logo">
+					<i class="fa-brands fa-artstation"></i>
+					<a class="logo-name" href="/">uction</a>
+				</div>
+				<div class="nav-search">
+					<input id="nav-search-bar" class="nav-search-bar" type="text" spellcheck="false" maxlength="30">
+					<a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+				<div id="speech-bubble-wrapper" class="speech-bubble-wrapper">
+					<!-- 나중에 검색을 안했을땐 랭킹 or 이름순 검색 시 해당 검색 문자가 포함된 수만큼 반복 -->
+					<th:block th:each="num: ${#numbers.sequence(1,10)}">
+						<div class="search-result">
+							<div class="search-result-name"><a href="#">상품 이름</a></div>
+						</div>
+					</th:block>
+				</div>
+				</div>
+				<th:block th:if="${session.userId == null}">
+					<ul class="nav-user">
+						<li><a id="login_btn" href="#" th:onclick="|location.href='@{/login}'|">로그인</a></li>
+						<li><a href="#" th:onclick="|location.href='@{/agree}'|">회원가입</a></li>
+						<li><a href="#">고객센터</a></li>
+						<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
+					</ul>
+				</th:block>
+				<th:block th:if="${session.userId != null}">
+					<ul class="nav-user">
+						<li><a id="logout_btn" href="#" th:onclick="|location.href='@{/logout}'|">로그아웃</a></li>
+						<li><a href="#" th:onclick="|location.href='@{/mypage}'|">마이페이지</a></li>
+						<li><a href="#">고객센터</a></li>
+						<li id="sellItems" class="nav-user-sell"><a href="#">판매하기</a></li>
+					</ul>
+				</th:block>
 
+			</nav>
+			<nav class="nav-main-menu">
+				<ul class="main-menu">
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Fashion}'|">Fashion & Beauty</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Furniture}'|">Furniture & Electronic</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Game}'|">Game & Hobby</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Sports}'|">Sports & Car</a></li>
+					<li><a th:onclick="|location.href='@{/productList?productCategory=Book}'|">Book & ETC</a></li>
+				</ul>
+			</nav>
+		</header>
+	</th:block>
+		<script type="text/javascript" th:src="@{/js/header.js}"></script>
 </body>
 </html>
