@@ -40,6 +40,9 @@ public class Product {
 //	@ManyToOne
 //	@JoinColumn(name="USERID")
 //	private Users users;
+	@ManyToOne
+	@JoinColumn(name="USERID")
+	private Users users;
 	private String productName;
 	
 	private Long productPrice;

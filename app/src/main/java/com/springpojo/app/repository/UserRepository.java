@@ -18,7 +18,7 @@ public class UserRepository {
 	
 	// 회원가입
 	public void save(Users user) {
-		if (user.getId() == null) {
+		if (user.getUserId() == null) {
 			em.persist(user);
 		} else {
 			em.merge(user);
