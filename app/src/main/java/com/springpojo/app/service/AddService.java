@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.repository.AddRepository;
 
@@ -123,17 +124,18 @@ public class AddService {
 	}
 
 	// 상품 금액 업데이트
-//	public Product priceUpdate(Long new_price) {
-//		System.out.println("업데이트 서비스 도착 여부");
-//		return addRepository.update(new_price);
-//	}
-	
 	public Product priceUpdate(Long id, Long checkPrice) throws Exception {
 		addRepository.update(id, checkPrice);
 		
 		Product product = new Product();
 		
 		return product;
+	}
+
+	// 경매 참여
+	public Bid bidUpdate(Bid bid, String userId, Long id) throws Exception {
+		addRepository.bidUpdate(bid, userId, id);
+		return bid;
 	}
 	
 }

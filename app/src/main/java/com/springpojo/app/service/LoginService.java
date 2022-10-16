@@ -17,9 +17,9 @@ public class LoginService {
 	private final UserRepository userRepository;
 
 	// 회원가입
-	public Long saveUser(Users users) {
+	public String saveUser(Users users) {
 		userRepository.save(users);
-		return users.getId();
+		return users.getUserId();
 	}
 	
 	// 로그인

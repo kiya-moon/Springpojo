@@ -16,7 +16,7 @@ public class UserController {
    }
 
    @RequestMapping("/signup")
-   public String ereate(Users users) {
+   public String create(Users users) {
       this.userRepository.save(users);
       return "redirect:/";
    }

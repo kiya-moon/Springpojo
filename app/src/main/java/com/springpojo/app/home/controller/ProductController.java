@@ -1,7 +1,10 @@
 package com.springpojo.app.home.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -17,17 +20,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
+import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.AddService;
+import com.springpojo.app.service.MypageService;
 
 @Controller
 public class ProductController {
 	private final AddService addService;
+	private final MypageService mypageService;
 	
 	@Autowired
-	public ProductController(AddService addService) {
+	public ProductController(AddService addService, MypageService mypageService) {
 		this.addService = addService;
+		this.mypageService = mypageService;
 	}
+
 	
 	// 이미지 불러오기
 	@GetMapping("/upload/{id}")
@@ -36,6 +45,7 @@ public class ProductController {
 		System.out.println("이미지 컨트롤러");
 		Product product = addService.findById(id);
 		System.out.println(product.getImgPath());
+		System.out.println();
 		return new UrlResource("file:" + product.getImgPath());
 	}
 	
@@ -56,31 +66,43 @@ public class ProductController {
 		return "contents/product";
 	}
 	
-	
-	// 상품 등록
-//	@PostMapping("/product")
-//	public String add(Product product, Long id) {
-//		addService.saveProduct(product);
-//		return "contents/product";
-//	}
+
 	// 상품 등록
 	@PostMapping("/product")
-	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes) throws Exception {
+	public String add(@ModelAttribute("product") Product product, MultipartFile upload_box, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		String userId = (String)httpSession.getAttribute("userId");
+		
+		Users users = mypageService.findById(userId);
+		product.setUsers(users);
+		
 		Product savedProduct = addService.saveProduct(product, upload_box);
 
 		redirectAttributes.addAttribute("id", savedProduct.getId());
 		return "redirect:/product/{id}";
 	}
-	
-//	@GetMapping("/product")
-//	public String productPage(@PathVariable Long id, Model model) {
-//		return "contents/product";
-//	}
+
 	
 	// 상품 리스트
 	@GetMapping("/productList")
 	public String prodcutList(@RequestParam("productCategory") String productCategory, Product product, Model model) {
 		List<Product> productList = addService.findProducts(productCategory);
+		
+		System.out.println(productList);
+		
+		long dday = new Date().getTime();
+		
+		for (int i = productList.size()-1; i >= 0; i--) {
+			long end = (java.sql.Timestamp.valueOf(productList.get(i).getEndDate())).getTime();
+			long calc = dday - end;
+			System.out.println("i = " + i);
+			
+			if(end - dday <= 0) {
+				System.out.println("if문 안에 몇 번 들어와? : " + i);
+				productList.remove(i);
+			}
+		}
+		
+		System.out.println(productList);
 		
 		model.addAttribute("productList", productList);
 		return "/contents/productList";
@@ -89,33 +111,34 @@ public class ProductController {
 
 	// 상품 금액 업데이트
 	@PostMapping("/updatePrice/{id}")
-	public String priceUpdate(@PathVariable Long id, Long checkPrice, RedirectAttributes redirectAttributes) throws Exception {
+	public String priceUpdate(@PathVariable Long id, Long checkPrice, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		// 세션 아이디와 프로덕트 등록 아이디 비교해서 해당하는 아이디가 있을 경우 참여 불가
+		// 로그인 안하고 경매 참여버튼 눌러쓸 때 예외처리
+		
+		// 상품 금액 업데이트
 		addService.priceUpdate(id, checkPrice);
 		
-//		product.setId(id);
-//		product.setProductPrice(checkPrice);
+		// BID에 저장
+		Bid bid = new Bid();
 		
-//		addService.priceUpdate(product);
+		String userId = (String)httpSession.getAttribute("userId");
+		System.out.println(userId);
+		Users users = mypageService.findById(userId);
+		System.out.println(users);
+		bid.setUsers(users);
+		
+		Product product = addService.findById(id);
+		bid.setProduct(product);
+		System.out.println(product);
+		
+		bid.setBidPrice(checkPrice);
+		
+		addService.bidUpdate(bid, userId, id);
 		
 		redirectAttributes.addAttribute("id", id);
 		
 		return "redirect:/product/{id}";
 		
 	}
-	
-//	@GetMapping
-//	public String productList(Model model, String productCategory) {
-//		List<Product> productList = addService.findProducts(productCategory);
-//		model.addAttribute("productList", productList);
-//		
-//		return "/contents/productList";
-//	}
-
-	
-//	@PostMapping("/price")
-//	public String price(Model model) {
-//		Product product = new Product();
-//		product.setProductPrice(model)
-//	}
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.MypageService;
 
+
 public class MypageController {
 	
 	private final MypageService mypageService;
@@ -23,27 +24,31 @@ public class MypageController {
 
 	// 회원업데이트
 	@PostMapping("/mypage")
-	public String mypageUpdate(Users updateParam, Long id) {
+	public String mypageUpdate(Users updateParam, String userId) {
 		mypageService.updateUser(updateParam);
 		return "mypage/mypage";
 	}	
 	
 	// 마이페이지 // 수정예정
-	@GetMapping("/mypage/{id}") 
-	public String mypage(@PathVariable Long id, Model model) {
-		Users users = mypageService.findById(id);
+	@GetMapping("/mypage/{userId}") 
+	public String mypage(@PathVariable String userId, Model model) {
+		System.out.println(userId);
+		Users users = mypageService.findById(userId);
+		System.out.println(users);
 		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
 	
 	//입찰중인물건
-	@GetMapping("/mypage/{BidJoinNum}{userid}")
-	public String mypagegetcar(Long BidJoinNum, Long userid) {
+	@GetMapping("/mypage/{BidJoinNum}{userId}")
+	public String mypagegetcar(Long BidJoinNum, String userId) {
 		return "mypage/mypage";
+	}
+	
 	}
 	
 		
 		
-	}
+	
 	
 
