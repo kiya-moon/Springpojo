@@ -25,6 +25,7 @@ import lombok.Setter;
 @Entity
 public class Users {
 
+
    @Id
    @Column(unique = true, nullable = false)
    @NotEmpty
@@ -32,6 +33,7 @@ public class Users {
 
    @NotEmpty
    private String userPw;
+
 
    @NotEmpty
    private String userName;
@@ -50,14 +52,14 @@ public class Users {
    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
    private List<Bid> bid = new ArrayList<>();
 
+
    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
    private List<Product> product = new ArrayList<>();
 
-//   @OneToMany(mappedBy = "users")
-//   private List<Image> image = new ArrayList<>();
 
    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
    private List<Like> like = new ArrayList<>();
+
 
    public Users(String userId, String userPw, String userName, String userBirth, String userEmail, String userPhone) {
       this.userId = userId;
@@ -67,5 +69,4 @@ public class Users {
       this.userEmail = userEmail;
       this.userPhone = userPhone;
    }
-
 }

@@ -21,7 +21,6 @@ public class MypageService {
    private final MypageRepository mypageRepository;
    private HttpSession session;
 
-   
    public Users findById(String userId) {
       System.out.println(userId);
       return mypageRepository.findById(userId);

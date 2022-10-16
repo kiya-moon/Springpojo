@@ -27,17 +27,14 @@
 			<div class="productList_contents">
 				<div class="product_wrap">
 					<th:block th:each="product : ${productList}">
-					<!-- 상품 리스트를 불러올 때, if문으로 상품 기한 체크 -->
-						<th:block th:if="${product.endDate}.getTime() - ${product.startDate}.getTime()) > 0">
-							<div class="productList_contents_list" th:onclick="|location.href='@{product/{id}(id=${product.id})}'|">
-								<img class="productList_contents_img"
-									alt="productList_contents_img"
-									th:src="|/upload/${product.id}|">
-								<div class="productList_contents_name" th:text="${product.productName}">상품 이름</div>
-								<div class="productList_contents_about" th:text="${product.endDate}">경매 종료일자</div>
-								<div class="productList_contents_price" th:text="${product.productPrice} + 원">현재 입찰가</div>
-							</div>
-						</th:block>
+						<div class="productList_contents_list" th:onclick="|location.href='@{product/{id}(id=${product.id})}'|">
+							<img class="productList_contents_img"
+								alt="productList_contents_img"
+								th:src="|/upload/${product.id}| ">
+							<div class="productList_contents_name" th:text="${product.productName}">상품 이름</div>
+							<div class="productList_contents_about" th:text="${product.endDate}">경매 종료일자</div>
+							<div class="productList_contents_price" th:text="${product.productPrice} + 원">현재 입찰가</div>
+						</div>
 					</th:block>
 				</div> 
 			</div>
@@ -47,6 +44,7 @@
 <th:block layout:fragment="script">
 	<!-- home.js 스크립트(검색창으로 인해 공통으로 분류) -->
 	<script th:src="@{/js/home.js}" type="text/javascript"></script>
+
 </th:block>
 
 </body>

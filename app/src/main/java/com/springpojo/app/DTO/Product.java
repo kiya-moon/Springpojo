@@ -37,18 +37,14 @@ public class Product {
 	private Long id;
 	
 	// 유저아이디 -> FK
-//	@ManyToOne
-//	@JoinColumn(name="USERID")
-//	private Users users;
 	@ManyToOne
 	@JoinColumn(name="USERID")
 	private Users users;
+
 	private String productName;
 	
 	private Long productPrice;
 	private String productCategory;
-	// 이미지는 이미지 DB에서 받아올 예정
-//	private String productImage;
 	private LocalDateTime startDate;
 	private String productDate;
 	@Column(nullable=true, length=500)
@@ -71,8 +67,5 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	private List<Like> like = new ArrayList<>();
-	
-//	@OneToMany(mappedBy = "product")
-//	private List<Image> image = new ArrayList<>();
 
 }

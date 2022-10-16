@@ -35,7 +35,7 @@ public class MypageController {
 		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
-
+  
 	// 입찰중인물건
 	@GetMapping("/mypage/{BidJoinNum}{userid}")
 	public String mypagegetcar(Long BidJoinNum, Long userid) {
@@ -71,5 +71,4 @@ public class MypageController {
 	public String checkPwdView() {
 		return "member/check-pwd";
 	}
-
 }
