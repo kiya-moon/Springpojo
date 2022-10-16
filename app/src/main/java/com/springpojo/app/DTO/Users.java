@@ -25,47 +25,48 @@ import lombok.Setter;
 @Entity
 public class Users {
 
-	@Id
-	@Column(unique = true, nullable = false)
-	@NotEmpty
-	private String userId;
 
-	@NotEmpty
-	private String userPw;
+   @Id
+   @Column(unique = true, nullable = false)
+   @NotEmpty
+   private String userId;
 
-	@NotEmpty
-	private String userName;
+   @NotEmpty
+   private String userPw;
 
-	@NotEmpty
-	private String userBirth;
 
-	@NotEmpty
-	private String userEmail;
+   @NotEmpty
+   private String userName;
 
-	@NotEmpty
-	private String userPhone;
+   @NotEmpty
+   private String userBirth;
 
-//	private String UserRole;		// 유저 권한
+   @NotEmpty
+   private String userEmail;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
-	private List<Bid> bid = new ArrayList<>();
+   @NotEmpty
+   private String userPhone;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
-	private List<Product> product = new ArrayList<>();
+//   private String UserRole;      // 유저 권한
 
-//	@OneToMany(mappedBy = "users")
-//	private List<Image> image = new ArrayList<>();
+   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
+   private List<Bid> bid = new ArrayList<>();
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
-	private List<Like> like = new ArrayList<>();
 
-	public Users(String userId, String userPw, String userName, String userBirth, String userEmail, String userPhone) {
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.userBirth = userBirth;
-		this.userEmail = userEmail;
-		this.userPhone = userPhone;
-	}
+   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
+   private List<Product> product = new ArrayList<>();
 
+
+   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
+   private List<Like> like = new ArrayList<>();
+
+
+   public Users(String userId, String userPw, String userName, String userBirth, String userEmail, String userPhone) {
+      this.userId = userId;
+      this.userPw = userPw;
+      this.userName = userName;
+      this.userBirth = userBirth;
+      this.userEmail = userEmail;
+      this.userPhone = userPhone;
+   }
 }

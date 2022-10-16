@@ -72,10 +72,10 @@ public class HomeController {
 	}
 
 	// 마이페이지
-	@GetMapping("/mypage")
-	public String mypage(Model model) {
-		return "/mypage/Edit_member_information";
-	}
+//	@GetMapping("/mypage")
+//	public String mypage(Model model) {
+//		return "mypage/mypage";
+//	}
 
 }
 
