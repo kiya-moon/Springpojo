@@ -30,7 +30,7 @@
                data-toggle="list" role="tab" aria-controls="success"><div>낙찰된
                      물품 목록</div></a></li>
             <li><a href="#bid" class="item" id="list-bid-list"
-               data-toggle="list" role="tab" aria-controls="bid"><div>입찰중인
+               data-toggle="list" role="tab" aria-controls="bid" ><div>입찰중인
                      물건</div></a></li>
             <li><a href="#like" class="item" id="list-like-list"
                data-toggle="list" role="tab" aria-controls="like"><div>관심상품
@@ -39,8 +39,7 @@
       </div>
 
       <!-- 회원정보  -->
-<!--       <form method=post th:action="@{/changeUser/}+${session.userId}">-->
-       <form method=post th:action="@{/updateUser.do}">
+       <form method=post th:action="@{/mypage/}+${session.userId}">
          <div class="singup_retoch" id="user">
             <div class="singup_retoch_title">
                <h2>회원정보 수정</h2>
@@ -68,7 +67,6 @@
                   <font id="chkNotice_N"></font>
                </div>
                <div class="textform">
-                  <!-- 수정안되게 기능넣기  --> <!-- 수정완료 -->
                   <label class="hj_textColor" id="hj_textColor" for="UserBirth">생년월일</label><br>
                   <input type="text" class="hj_floating" id="UserBirth" name="UserBirth"
                   th:value="${users.userBirth}" readonly>
@@ -76,17 +74,17 @@
                <div class="textform">
                   <label class="hj_textColor" id="hj_textColor" for="UserEmail">이메일</label><br>
                   <input type="text" class="hj_floating" id="UserEmail" name="UserEmail"
-                  th:value="${users.userEmail}">
+                  th:value="${users.userEmail}"><br>
+                  <font id="chkNotice_E"></font>
                </div>
                <div class="textform">
                   <label class="hj_textColor" id="hj_textColor" for="UserPhone">전화번호</label><br>
                   <input type="text" oninput="autoHyphen2(this)" maxlength="13" placeholder="전화번호를 입력해보세요!" class="hj_floating" id="UserPhone" name="UserPhone"
-                  th:value="${users.userPhone}"> <!-- 전화번호 수정 할 시 - 이거 자동으로 들어가게 -->
+                  th:value="${users.userPhone}">
                </div>
 
             </div>
             <div class="singup_retoch_btn">
-<!--               <button type="submit" class="retoch_btn" id="hj_btnColor" th:onclick="checkForm() |location.href='@{/updateUser.do}'|">수정하기</button>-->
                <button type="submit" class="retoch_btn" id="hj_btnColor" th:onclick="checkForm()">수정하기</button>
                <button type="button" class="cancell_btn" id="hj_btnColor" th:onclick="|location.href='@{/delete.do}'|">탈퇴하기</button>
             </div>
@@ -94,6 +92,7 @@
       </form>
       
       <!-- 새고로침되는 위치  -->
+<!--		입찰중인 목록      -->
       <div id="bid" role="tabpanel">
          <section class="like">
             <h1 style="text-align: center;">입찰중인 목록</h1>
@@ -110,28 +109,16 @@
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;">
-                     <tr class="like-list-1">
-                        <td><a href=""> <img
+                  <tbody style="font-size: 12px;" th:each="bid : ${bid}">
+                     <tr class="like-list-1" >
+                        <td ><img th:src="${bid.product.imgPath}"
                               src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
                               alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
+                        <td th:text="${bid.product.productText}">
                         </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
-                     </tr>
-                     <tr class="like-list-1">
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
+                        <td th:text="${product.users.userId}"></td>
+                        <td th:text="${bid.product.endDate}"></td>
+                        <td th:text="${bid.product.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>
@@ -139,8 +126,7 @@
          </section>
       </div>
 
-
-
+<!--		관심상품 목록	-->
       <div id="like" role="tabpanel">
          <section class="like">
             <h1 style="text-align: center;">관심상품 목록</h1>
@@ -196,6 +182,7 @@
          </section>
       </div>
 
+<!--	판매물품 등록목록-->
       <div id="sale" role="tabpanel">
          <section class="like">
             <h1 style="text-align: center;">판매물품 등록목록</h1>
@@ -241,6 +228,7 @@
          </section>
       </div>
 
+<!--		낙찰된 물품목록-->
       <div id="success" role="tabpanel">
          <section class="like">
             <h1 style="text-align: center;">낙찰된 물품목록</h1>

@@ -1,4 +1,3 @@
-
 // 회원정보 수정 이름 유효성 검사
 var chk_dupli = 0;
 var name_chk = 0;
@@ -31,6 +30,55 @@ $(function() {
 		}
 	});
 });
+
+// 이메일 유효성 검사
+var email_chk = 0;
+var email_reg = new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
+
+$('#UserEmail').keyup(function() {
+	if ($('#UserEmail').val() == "") {
+		$('#chkNotice_E').html('이메일을 입력해주세요.<br>');
+		$('#chkNotice_E').attr('color', '#f82a2aa3');
+		$('#hj_btnColor').attr("disabled", "disabled");
+		email_chk = 0;
+	} else if (!email_reg.test($("input[name=UserEmail]").val())) {
+		$('#chkNotice_E').html('이메일 형식을 확인해주세요.<br>');
+		$('#chkNotice_E').attr('color', '#f82a2aa3');
+		$('#hj_btnColor').attr("disabled", "disabled");
+		email_chk = 0;
+	} else {
+		$('#chkNotice_E').html('');
+		$('#hj_btnColor').removeAttr("disabled");
+		email_chk = 1;
+	}
+});
+
+// 회원수정 -비밀번호체크
+
+//$('#userCheckPw').keyup(function() {
+//	if ($('#userPw').val() != $('#userCheckPw').val()) {
+//		$('#chkNotice').html('비밀번호가 일치하지 않습니다.<br>');
+//		$('#chkNotice').attr('color', '#f82a2aa3');
+//		$('#sw_btnColor').attr("disabled", "disabled");
+//		pw_chk = 0;
+//	} else if (!pw_reg.test($("input[name=userPw]").val())) {
+//		$('#chkNotice').html('비밀번호는 숫자,문자,특수문자를 포함한 8자리이상으로 입력해주세요.<br>');
+//		$('#chkNotice').attr('color', '#f82a2aa3');
+//		$('#sw_btnColor').attr("disabled", "disabled");
+//		pw_chk = 0;
+//	} else {
+//		$('#chkNotice').html('비밀번호가 확인되었습니다.<br>');
+//		$('#chkNotice').attr('color', '#199894b3');
+//		$('#sw_btnColor').removeAttr("disabled");
+//		pw_chk = 1;
+//	}
+//	if ($('#userPw').val().length <= 7) {
+//		$('#chkNotice').html('비밀번호는 8자리 이상으로 입력해주세요<br>');
+//		$('#chkNotice').attr('color', '#f82a2aa3');
+//		$('#sw_btnColor').attr("disabled", "disabled");
+//		pw_chk = 0;
+//	}
+//});
 
 $(document).ready(function() {
 	$("#user").show();
@@ -164,31 +212,7 @@ $(window).scroll(function(e) {
 	}
 });
 
-// 회원수정 -비밀번호체크
-//$('#userCheckPw').keyup(function() {
-//   if ($('#userPw').val() != $('#userCheckPw').val()) {
-//      $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br>');
-//      $('#chkNotice').attr('color', '#f82a2aa3');
-//      $('#sw_btnColor').attr("disabled", "disabled");
-//      pw_chk = 0;
-//   } else if (!pw_reg.test($("input[name=userPw]").val())) {
-//      $('#chkNotice').html('비밀번호는 숫자,문자,특수문자를 포함한 8자리이상으로 입력해주세요.<br>');
-//      $('#chkNotice').attr('color', '#f82a2aa3');
-//      $('#sw_btnColor').attr("disabled", "disabled");
-//      pw_chk = 0;
-//   } else {
-//      $('#chkNotice').html('비밀번호가 확인되었습니다.<br>');
-//      $('#chkNotice').attr('color', '#199894b3');
-//      $('#sw_btnColor').removeAttr("disabled");
-//      pw_chk = 1;
-//   }
-//   if ($('#userPw').val().length <= 7) {
-//      $('#chkNotice').html('비밀번호는 8자리 이상으로 입력해주세요<br>');
-//      $('#chkNotice').attr('color', '#f82a2aa3');
-//      $('#sw_btnColor').attr("disabled", "disabled");
-//      pw_chk = 0;
-//   }
-//});
+
 
 // 회원수정 폰번호 작대기 자동생성기
 const autoHyphen2 = (target) => {

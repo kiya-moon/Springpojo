@@ -1,5 +1,7 @@
 package com.springpojo.app.home.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 import com.springpojo.app.service.MypageService;
@@ -33,12 +36,13 @@ public class MypageController {
 		Users users = mypageService.findById(userId);
 		System.out.println(users);
 		model.addAttribute("users", users);
-		return "mypage/mypage";
-	}
-  
-	// 입찰중인물건
-	@GetMapping("/mypage/{BidJoinNum}{userid}")
-	public String mypagegetcar(Long BidJoinNum, Long userid) {
+		
+		System.out.println("123");
+		List<Bid> bid = mypageRepository.bid(userId);
+		System.out.println("234");
+		model.addAttribute("bid", bid);
+		
+		
 		return "mypage/mypage";
 	}
 
@@ -57,18 +61,17 @@ public class MypageController {
 	
 	// 회원정보 수정
 	@Transactional
-	@PostMapping("/updateUser.do")
-	public String changeUser(Users updateUser) {
+	@PostMapping("/mypage/{userId}")
+	public String changeUser(Users updateUser, Model model, @PathVariable String userId) {
 		
 		System.out.println("컨트1");
 		mypageRepository.changeUsers(updateUser);
 		System.out.println("컨트2");
+		
+		Users users = mypageService.findById(userId);
+		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
-
-	// 비밀번호확인 개발중인거
-	@GetMapping("/checkPwd")
-	public String checkPwdView() {
-		return "member/check-pwd";
-	}
+	
+	
 }

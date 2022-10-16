@@ -1,14 +1,15 @@
 package com.springpojo.app.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import com.springpojo.app.DTO.CartList;
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -45,20 +46,11 @@ public class MypageRepository {
 	   System.out.println("레파2");
    }
    
-   // +
-   //카트목록조회
-   
-   //입찰중인 물건번호 조회
-   public CartList getcart (Long userid, Long BidJoinNum) {
-      return (CartList) em.createQuery("select * from CartList c "
-            + "where BidJoinNum = #{BidJoinNum} and userid = #{userid}");
+   // 입찰중인 상품
+   @SuppressWarnings("unchecked")
+   public List<Bid> bid(String userid) {
+	   System.out.println("345");
+	   return  em.createQuery("select b, p, u from Bid b, Product p, Users u where 1=1 and b.product.productName = p.productName and p.users.userId = u.userId and u.userId = :userId")
+			   .setParameter("userId", userid).getResultList();
    }
-   
-   // 낙찰된 물품목록
-   
-   // 관심상품목록
-   
-   // 판매물품 등록목록
-   
-   
 }
