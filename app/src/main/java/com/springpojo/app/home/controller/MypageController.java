@@ -47,7 +47,6 @@ public class MypageController {
 //		List<Product> product = mypageRepository.product(userId);
 		List<Product> product = mypageService.product(userId);
 
-		List<Map<String, Object>> listMap = product;
 //		List<Bid> bid = mypageService.bid(userId);
 //		List<Product> product = mypageRepository.bid(userId);
 		System.out.println(product.toString());
