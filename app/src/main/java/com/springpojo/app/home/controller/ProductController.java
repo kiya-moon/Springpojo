@@ -169,5 +169,7 @@ public class ProductController {
 		addService.bidUpdate(bid, userId, id);
 		
 		redirectAttributes.addAttribute("id", id);
+		
+		return "redirect:/product/{id}";
   }	
 }
