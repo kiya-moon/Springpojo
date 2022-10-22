@@ -53,32 +53,27 @@ $('#UserEmail').keyup(function() {
 	}
 });
 
-// 회원수정 -비밀번호체크
+// 비밀번호 유효성 검사
+var pw_chk = 0;
+var pw_reg = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/);
 
-//$('#userCheckPw').keyup(function() {
-//	if ($('#userPw').val() != $('#userCheckPw').val()) {
-//		$('#chkNotice').html('비밀번호가 일치하지 않습니다.<br>');
-//		$('#chkNotice').attr('color', '#f82a2aa3');
-//		$('#sw_btnColor').attr("disabled", "disabled");
-//		pw_chk = 0;
-//	} else if (!pw_reg.test($("input[name=userPw]").val())) {
-//		$('#chkNotice').html('비밀번호는 숫자,문자,특수문자를 포함한 8자리이상으로 입력해주세요.<br>');
-//		$('#chkNotice').attr('color', '#f82a2aa3');
-//		$('#sw_btnColor').attr("disabled", "disabled");
-//		pw_chk = 0;
-//	} else {
-//		$('#chkNotice').html('비밀번호가 확인되었습니다.<br>');
-//		$('#chkNotice').attr('color', '#199894b3');
-//		$('#sw_btnColor').removeAttr("disabled");
-//		pw_chk = 1;
-//	}
-//	if ($('#userPw').val().length <= 7) {
-//		$('#chkNotice').html('비밀번호는 8자리 이상으로 입력해주세요<br>');
-//		$('#chkNotice').attr('color', '#f82a2aa3');
-//		$('#sw_btnColor').attr("disabled", "disabled");
-//		pw_chk = 0;
-//	}
-//});
+$('#UserPw').keyup(function() {
+	if($('#UserPw').val() == "") {
+		$('#chkNotice_P').html('비밀번호를 입력해주세요.<br>');
+		$('#chkNotice_P').attr('color', '#f82a2aa3');
+		$('#hj_btnColor').attr("disabled", "disabled");
+		pw_chk = 0;
+	}else if(!pw_reg.test($("input[name=UserPw]").val())){
+		$('#chkNotice_P').html('비밀번호의 형식을 확인해주세요.<br>(대,소문자, 특수문자, 숫자 포함 8자리 이상)<br>');
+		$('#chkNotice_P').attr('color', '#f82a2aa3');
+		$('#hj_btnColor').attr("disabled", "disabled");
+		pw_chk = 0;
+	} else {
+		$('#chkNotice_P').html('');
+		$('#hj_btnColor').removeAttr("disabled");
+		pw_chk = 1;
+	}
+});
 
 $(document).ready(function() {
 	$("#user").show();

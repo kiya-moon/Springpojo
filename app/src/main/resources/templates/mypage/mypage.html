@@ -54,12 +54,9 @@
                <div class="textform">
                   <label class="hj_textColor" id="hj_textColor" for="UserPw">비밀번호</label><br>
                   <input type="password" class="hj_floating" id="UserPw" name="UserPw"
-                  th:value="${users.userPw}">
+                  th:value="${users.userPw}"><br>
+                  <font id="chkNotice_P"></font>
                </div>
-<!--               <div class="textform">-->
-<!--                  <label class="hj_textColor" id="hj_textColor" for="UserCheckPw">비밀번호 확인</label><br>-->
-<!--                  <input type="password" class="hj_floating" id="userCheckPw" name="UserCheckPw">-->
-<!--               </div>-->
                <div class="textform">
                   <label class="hj_textColor" id="hj_textColor" for="UserName">이름</label><br>
                   <input type="text" class="hj_floating" id="UserName" name="UserName"
@@ -106,19 +103,20 @@
                         <td>상품설명</td>
                         <td>판매자</td>
                         <td>경매 종료일</td>
-                        <td>현재입찰가</td>
+                        <td>현재 상품 입찰가</td>
+                        <td>내 임찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;" th:each="bid : ${bid}">
+                  <tbody style="font-size: 12px;" th:each="product : ${product}">
                      <tr class="like-list-1" >
-                        <td ><img th:src="${bid.product.imgPath}"
+                        <td ><img th:src="|/upload/${product.id}| "
                               src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td th:text="${bid.product.productText}">
+                            alt="TV"></a></td>
+                        <td th:text="${product.productName}">
                         </a></td>
-                        <td th:text="${product.users.userId}"></td>
-                        <td th:text="${bid.product.endDate}"></td>
-                        <td th:text="${bid.product.productPrice}"></td>
+                        <td th:text="${product.users.userid}"></td>
+                        <td th:text="${product.endDate}"></td>
+                        <td th:text="${product.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>

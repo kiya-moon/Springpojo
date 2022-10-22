@@ -1,5 +1,6 @@
 package com.springpojo.app.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Repository;
 
 import com.springpojo.app.DTO.Bid;
+import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -45,12 +47,15 @@ public class MypageRepository {
 	   .setParameter("userBirth", updateParam.getUserBirth()).setParameter("userEmail", updateParam.getUserEmail()).setParameter("userName", updateParam.getUserName()).setParameter("userPhone", updateParam.getUserPhone()).setParameter("userPw", updateParam.getUserPw()).setParameter("userId", updateParam.getUserId()).executeUpdate();
 	   System.out.println("레파2");
    }
-   
    // 입찰중인 상품
-   @SuppressWarnings("unchecked")
-   public List<Bid> bid(String userid) {
+   public List<Product> product(String userId) {
 	   System.out.println("345");
-	   return  em.createQuery("select b, p, u from Bid b, Product p, Users u where 1=1 and b.product.productName = p.productName and p.users.userId = u.userId and u.userId = :userId")
-			   .setParameter("userId", userid).getResultList();
+	   return em.createQuery("select p.imgPath, p.productText, p.users.userId, p.endDate, p.productPrice  from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
+   
+//   @SuppressWarnings("unchecked")
+//   public List<Bid> bid(String userId){
+//	   System.out.println("566");
+//	   return em.createQuery("select b from Bid b where b.users.userId = :userId", Bid.class).setParameter("userId",userId).getResultList();
+//   }
 }
