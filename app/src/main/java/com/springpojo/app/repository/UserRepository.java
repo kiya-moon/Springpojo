@@ -40,5 +40,31 @@ public class UserRepository {
 				.setParameter("userId", userId).getSingleResult();
 		return user;
 	}
+	
+	// 아이디 찾기
+	public String findId(String userName, String userPhone) throws Exception {
+		
+		try {
+			return em.createQuery("select u.userId from Users u where u.userName = :userName and u.userPhone = :userPhone", String.class)
+					.setParameter("userName", userName).setParameter("userPhone", userPhone).getSingleResult();
+			
+		} catch(Exception e) {
+			String id = null;
+			return id;
+		}
+		
+		
+	}
+	
+	// 비밀번호 찾기
+	public String findPw(String userId, String userName, String userPhone) throws Exception {
+		try {
+		return em.createQuery("select u.userPw from Users u where u.userId = :userId and u.userName = :userName and u.userPhone = :userPhone", String.class)
+				.setParameter("userId", userId).setParameter("userName", userName).setParameter("userPhone", userPhone).getSingleResult();
+		} catch(Exception e) {
+			String pw = null;
+			return pw;
+		}
+	}
 }
 

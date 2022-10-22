@@ -22,7 +22,6 @@ public class MypageService {
    private final MypageRepository mypageRepository;
    private HttpSession session;
 
-   
    public Users findById(String userId) {
       System.out.println(userId);
       return mypageRepository.findById(userId);
@@ -32,7 +31,7 @@ public class MypageService {
    public int delete(HttpSession session, String userId) throws Exception{
       return mypageRepository.delete(session, userId);
    }
-   
+
    public List<Product> product(String userId){
 	   System.out.println("2222");
 	   return mypageRepository.product(userId);

@@ -11,6 +11,8 @@
 </head>
 <body>
 	<th:block layout:fragment="content">
+	<input type="hidden" id="userId" th:value="${session.userId}">
+	<input type="hidden" id="id" th:value="${product.id}">
 		<div class="bg_color">
 			<div class="devideContainer"></div>
 			<div class="productContainer">
@@ -85,11 +87,11 @@
 							<div class="func_btn">
 								<button type="button" class="likeList_btn btn_group2">찜
 									목록</button>
-								<button type="button" class="like_btn btn_group2"
+								<button type="button" id="like_btn" class="like_btn btn_group2"
 									th:onclick="imgToggle()">
 									<div class="like_line">
-										<img id="like_off" th:src="@{img/likeoff.png}"> <span
-											th:value="0">0</span>
+										<img id="like_off" th:src="@{img/likeoff.png}">
+										 <span th:text="${likeCnt}"></span>
 									</div>
 								</button>
 							</div>

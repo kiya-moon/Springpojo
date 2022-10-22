@@ -83,6 +83,4 @@ public class MypageController {
 		model.addAttribute("users", users);
 		return "mypage/mypage";
 	}
-	
-	
 }

@@ -150,6 +150,14 @@
 	</th:block>
 
 	<th:block layout:fragment="script">
+	<script>
+$(document).ready(function() {
+    let message = "[[${msg}]]";
+    if (message != "") {
+        alert(message);
+    }
+})
+</script>
 		<!-- 슬릭 슬라이더 스크립트 -->
 		<script type="text/javascript"
 			src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

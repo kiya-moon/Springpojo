@@ -2,9 +2,9 @@ package com.springpojo.app.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springpojo.app.DTO.Users;
+import com.springpojo.app.repository.LoginRepository;
 import com.springpojo.app.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class LoginService {
 	
 	private final UserRepository userRepository;
+	private final LoginRepository loginRepository;
 
 	// 회원가입
 	public String saveUser(Users users) {
@@ -26,6 +27,18 @@ public class LoginService {
 	public Users login(String userId) throws Exception{
 		
 		return userRepository.login(userId);
+	}
+
+	public String findId(String userName, String userPhone) throws Exception {
+		System.out.println("findId");
+		return userRepository.findId(userName, userPhone);
+		// TODO Auto-generated method stub
+	
+	}
+	
+	public String findPw(String userId, String userName, String userPhone) throws Exception {
+		
+		return userRepository.findPw(userId, userName, userPhone);
 	}
 	
 //	public String joinUser(User user) {
