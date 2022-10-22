@@ -1,15 +1,40 @@
-var cnt = 1;
+var likeChk;
+var likeImg = document.getElementById("like_off");
+
+function likeChks(){
+	if(likeChk == "Y"){
+		likeImg.src="img/likeon.png";
+	}else {
+		likeImg.src="img/likeoff.png";
+	}
+}
 
 function imgToggle(){
-
 	var img1 = document.getElementById("like_off");
-	
-	if(cnt%2 == 1){
-		img1.src="img/likeon.png";
-	}else{
-		img1.src="img/likeoff.png";
+	var userId= document.getElementById("userId").value;
+	var id= document.getElementById("id").value;
+	$.ajax({
+		type:"POST",
+		url:"/updateLike/"+id,
+		data:{userId: userId},
+//		contentType: false, processData: false,
+		success: function(data){
+			if(data != null){
+				img1.src="img/likeoff.png";
+				likeChk = "N";
+			} else {
+				img1.src="img/likeon.png";
+				likeChk = "Y";
+			}
 		}
-		cnt++;
+		
+	})
+//	if(cnt%2 == 1){
+//		img1.src="img/likeon.png";
+//	}else{
+//		img1.src="img/likeoff.png";
+//		}
+//		cnt++;
 		}
 		
 function chk_price(){
@@ -61,4 +86,5 @@ function remindTime(){
 			 }
 
 $(document).ready(remindTime())
+$(document).ready(likeChks())
 			      

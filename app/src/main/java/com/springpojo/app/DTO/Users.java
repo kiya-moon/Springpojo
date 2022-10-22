@@ -25,7 +25,6 @@ import lombok.Setter;
 @Entity
 public class Users {
 
-
    @Id
    @Column(unique = true, nullable = false)
    @NotEmpty
