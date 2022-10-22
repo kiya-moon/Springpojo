@@ -40,7 +40,8 @@
 										readonly>
 								</div>
 								<div class="productCeller">
-									판매자 : <a class="cellerName" href="#">ooo</a>
+									<!-- 에러날 경우 input 태그 사용 -->
+									판매자 : <a class="cellerName" href="#">${product.users.userId}</a>
 								</div>
 							</div>
 							<!-- 카운트다운 박스 -->
@@ -116,62 +117,7 @@
 
 	<th:block layout:fragment="script">
 		<script type="text/javascript" th:src="@{/js/product.js}"></script>
- <!-- 		<script> 
-			function remindTime(){
-				var end = document.getElementById('endDate').value;
-				var dday = new Date(end).getTime();
-				var now = new Date().getTime();
-				console.log("end" + end);
-				console.log("dday : " + dday);
-				console.log("now" + now);
 
-
-				 $(".time").fadeIn();
-			     sec = parseInt(dday - now) / 1000;
-			     day  = parseInt(sec/60/60/24);
-			     sec = (sec - (day * 60 * 60 * 24));
-			     hour = parseInt(sec/60/60);
-			     sec = (sec - (hour*60*60));
-			     min = parseInt(sec/60);
-			     sec = parseInt(sec-(min*60));
-			     if(hour<10){hour="0"+hour;}
-			     if(min<10){min="0"+min;}
-			     if(sec<10){sec="0"+sec;}
-			      $(".day").html(day);
-			      $(".hours").html(hour);
-			      $(".minutes").html(min);
-			      $(".seconds").html(sec);
-			      
-			 }
-			      
-			 setInterval(remindTime,1000);
-			      function remindTime(){
-			    	  
-			    	    var now = new Date();
-			    	    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),23,30,00);
-			    	  
-			    	    var nt = now.getTime();
-			    	    var et = end.getTime();
-			    	  
-			    	  $(".time").fadeIn();
-			    	     sec =parseInt(et - nt) / 1000;
-			    	     day  = parseInt(sec/60/60/24);
-			    	     sec = (sec - (day * 60 * 60 * 24));
-			    	     hour = parseInt(sec/60/60);
-			    	     sec = (sec - (hour*60*60));
-			    	     min = parseInt(sec/60);
-			    	     sec = parseInt(sec-(min*60));
-			    	     if(hour<10){hour="0"+hour;}
-			    	     if(min<10){min="0"+min;}
-			    	     if(sec<10){sec="0"+sec;}
-			    	      $(".hours").html(hour);
-			    	      $(".minutes").html(min);
-			    	      $(".seconds").html(sec);
-			    	 }
-			      
-			   	setInterval(remindTime,1000);
-			   
-		</script>	-->
 	</th:block>
 </body>
 </html>

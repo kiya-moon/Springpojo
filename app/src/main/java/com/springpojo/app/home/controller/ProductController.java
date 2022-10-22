@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -22,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springpojo.app.DTO.Like;
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.AddService;
@@ -117,23 +120,7 @@ public class ProductController {
       return "/contents/productList";
    }
    
-
-   // 상품 금액 업데이트
-   @PostMapping("/updatePrice/{id}")
-   public String priceUpdate(@PathVariable Long id, Long checkPrice, RedirectAttributes redirectAttributes) throws Exception {
-      addService.priceUpdate(id, checkPrice);
-      
-//      product.setId(id);
-//      product.setProductPrice(checkPrice);
-      
-//      addService.priceUpdate(product);
-      
-      redirectAttributes.addAttribute("id", id);
-      
-      return "redirect:/product/{id}";
-      
-   }
-   
+   // 좋아요
    @PostMapping("/updateLike/{id}")
    @ResponseBody
 	public Optional<Like> likeChk(@PathVariable Long id, HttpSession session, Model model) throws Exception{
@@ -154,5 +141,33 @@ public class ProductController {
 		}
 		return result;
 	}
-   
+
+ // 상품 금액 업데이트
+	@PostMapping("/updatePrice/{id}")
+	public String priceUpdate(@PathVariable Long id, Long checkPrice, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		// 세션 아이디와 프로덕트 등록 아이디 비교해서 해당하는 아이디가 있을 경우 참여 불가
+		// 로그인 안하고 경매 참여버튼 눌렀을 때 예외처리
+		
+		// 상품 금액 업데이트
+		addService.priceUpdate(id, checkPrice);
+		
+		// BID에 저장
+		Bid bid = new Bid();
+		
+		String userId = (String)httpSession.getAttribute("userId");
+		System.out.println(userId);
+		Users users = mypageService.findById(userId);
+		System.out.println(users);
+		bid.setUsers(users);
+		
+		Product product = addService.findById(id);
+		bid.setProduct(product);
+		System.out.println(product);
+		
+		bid.setBidPrice(checkPrice);
+		
+		addService.bidUpdate(bid, userId, id);
+		
+		redirectAttributes.addAttribute("id", id);
+  }	
 }
