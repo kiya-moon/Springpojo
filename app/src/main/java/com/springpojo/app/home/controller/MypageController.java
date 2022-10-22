@@ -1,6 +1,7 @@
 package com.springpojo.app.home.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -45,6 +46,8 @@ public class MypageController {
 		System.out.println("123");
 //		List<Product> product = mypageRepository.product(userId);
 		List<Product> product = mypageService.product(userId);
+
+		List<Map<String, Object>> listMap = product;
 //		List<Bid> bid = mypageService.bid(userId);
 //		List<Product> product = mypageRepository.bid(userId);
 		System.out.println(product.toString());
