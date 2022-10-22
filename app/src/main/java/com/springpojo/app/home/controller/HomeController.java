@@ -57,18 +57,6 @@ public class HomeController {
 		return "login/signup";
 	}
 
-	// 아이디 찾기
-	@GetMapping("/forgotId")
-	public String forgotId(Model model) {
-		return "login/forgotId";
-	}
-
-	// 비밀번호 찾기
-	@GetMapping("/forgotPw")
-	public String forgotPw(Model model) {
-		return "login/forgotPw";
-	}
-
 	// 이용약관
 	@GetMapping("/agree")
 	public String agree(Model model) {

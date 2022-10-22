@@ -1,6 +1,5 @@
 package com.springpojo.app.DTO;
 	
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,9 +37,9 @@ public class Product {
 	private Long id;
 	
 	// 유저아이디 -> FK
-//	@ManyToOne
-//	@JoinColumn(name="USERID")
-//	private Users users;
+	@JoinColumn(name="USERID")
+	@ManyToOne
+	private Users users;
 	private String productName;
 	
 	private Long productPrice;
@@ -68,6 +68,8 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	private List<Like> like = new ArrayList<>();
+	
+//	private int like_cnt;
 	
 //	@OneToMany(mappedBy = "product")
 //	private List<Image> image = new ArrayList<>();

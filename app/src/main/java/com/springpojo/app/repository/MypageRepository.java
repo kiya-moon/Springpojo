@@ -18,8 +18,9 @@ public class MypageRepository {
 	private final EntityManager em;
 	
 	// 특정 회원 찾기
-	public Users findById(Long id) {
-		return em.createQuery("select u from Users u where u.usernum = :id", Users.class).setParameter("id", id).getSingleResult();
+	public Users findById(String userId) {
+		System.out.println(userId);
+		return em.createQuery("select u from Users u where u.userId = :id", Users.class).setParameter("id", userId).getSingleResult();
 	}
 	
 	// 마이페이지 회원정보 업데이트
@@ -42,9 +43,9 @@ public class MypageRepository {
 	//카트목록조회
 	
 	//입찰중인 물건번호 조회
-	public CartList getcart (Long userid, Long BidJoinNum) {
+	public CartList getcart (Long BidJoinNum, String userId) {
 		return (CartList) em.createQuery("select * from CartList c "
-				+ "where BidJoinNum = #{BidJoinNum} and userid = #{userid}");
+				+ "where BidJoinNum = #{BidJoinNum} and userId = #{userId}");
 	}
 	
 	// 낙찰된 물품목록

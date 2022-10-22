@@ -18,7 +18,7 @@ public class UserRepository {
 	
 	// 회원가입
 	public void save(Users user) {
-		if (user.getId() == null) {
+		if (user.getUserId() == null) {
 			em.persist(user);
 		} else {
 			em.merge(user);
@@ -39,6 +39,32 @@ public class UserRepository {
 		Users user = em.createQuery("select u from Users u where u.userId = :userId", Users.class)
 				.setParameter("userId", userId).getSingleResult();
 		return user;
+	}
+	
+	// 아이디 찾기
+	public String findId(String userName, String userPhone) throws Exception {
+		
+		try {
+			return em.createQuery("select u.userId from Users u where u.userName = :userName and u.userPhone = :userPhone", String.class)
+					.setParameter("userName", userName).setParameter("userPhone", userPhone).getSingleResult();
+			
+		} catch(Exception e) {
+			String id = null;
+			return id;
+		}
+		
+		
+	}
+	
+	// 비밀번호 찾기
+	public String findPw(String userId, String userName, String userPhone) throws Exception {
+		try {
+		return em.createQuery("select u.userPw from Users u where u.userId = :userId and u.userName = :userName and u.userPhone = :userPhone", String.class)
+				.setParameter("userId", userId).setParameter("userName", userName).setParameter("userPhone", userPhone).getSingleResult();
+		} catch(Exception e) {
+			String pw = null;
+			return pw;
+		}
 	}
 }
 

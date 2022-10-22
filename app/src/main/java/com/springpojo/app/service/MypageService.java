@@ -18,20 +18,21 @@ public class MypageService {
 	
 	private final MypageRepository mypageRepository;
 
-	public Long updateUser(Users updateParam) {
+	public String updateUser(Users updateParam) {
 		mypageRepository.save(updateParam);
-		return updateParam.getId();
+		return updateParam.getUserId();
 	}
 	
-	public Users findById(Long id) {
-		return mypageRepository.findById(id);
+	public Users findById(String userId) {
+		System.out.println(userId);
+		return mypageRepository.findById(userId);
 	}
 	
 	// 입찰목록조회
-	public CartList getcart(Long BidJoinNum, Long userid){
-		return mypageRepository.getcart(BidJoinNum,userid);
+	public CartList getcart(Long BidJoinNum, String userId){
+		return mypageRepository.getcart(BidJoinNum,userId);
 	}
-	
+
 //	// 아래는 개발대기예정 안할확률높음
 //	/* 카트 추가 */
 //	public int addCart(CartList cartList) {
