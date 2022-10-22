@@ -1,6 +1,7 @@
 package com.springpojo.app.home.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springpojo.app.DTO.Bid;
+import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 import com.springpojo.app.service.MypageService;
@@ -37,10 +39,19 @@ public class MypageController {
 		System.out.println(users);
 		model.addAttribute("users", users);
 		
+//		System.out.println(userId);
+//		userId = (String)session.getAttribute("userId");
+//		model.addAttribute("users", userId);
+		
 		System.out.println("123");
-		List<Bid> bid = mypageRepository.bid(userId);
+//		List<Product> product = mypageRepository.product(userId);
+		List<Product> product = mypageService.product(userId);
+
+//		List<Bid> bid = mypageService.bid(userId);
+//		List<Product> product = mypageRepository.bid(userId);
+		System.out.println(product.toString());
 		System.out.println("234");
-		model.addAttribute("bid", bid);
+		model.addAttribute("product", product);
 		
 		
 		return "mypage/mypage";
