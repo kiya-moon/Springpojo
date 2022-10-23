@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 
-import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -68,7 +67,7 @@ public class LoginController {
 				out.println("<script>alert('아이디, 비밀번호를 확인해주세요.');</script>");
 				return "login/login";
 			}
-		
+
 		session = req.getSession();
 		session.setAttribute("userId", userId);
 		session.setAttribute("user", loginService.login(userId));
@@ -101,63 +100,4 @@ public class LoginController {
 		return result;
 	}
 	
-	// 아이디 찾기
-		@GetMapping("/forgotId")
-		public String forgotId(Model model) {
-			return "login/forgotId";
-		}
-
-		// 비밀번호 찾기
-		@GetMapping("/forgotPw")
-		public String forgotPw(Model model) {
-			return "login/forgotPw";
-		}
-	
-	@PostMapping("/forgotId")
-//	public String findId(Users user, Model model) throws Exception {
-	public String findId(Users user, Model model, HttpServletRequest req) throws Exception{
-		
-		String userName = req.getParameter("userName");
-		String userPhone = req.getParameter("userPhone");
-		
-		System.out.println(userName);
-		System.out.println(userPhone);
-		String id = loginService.findId(userName, userPhone);
-		
-		 req.setAttribute("id",id);
-		 
-	        if(id == null){
-	        	model.addAttribute("msg","일치하는 회원정보가 없습니다.");
-	        	return "login/forgotId";
-	        } else {
-	        	model.addAttribute("id", user.getUserId());
-	        	model.addAttribute("msg","아이디는 "+ id +" 입니다.");
-	        	
-	        	return "contents/home";
-	        }
-		
-		
-	}
-	
-	@PostMapping("/forgotPw")
-	public String findPw(Users user, Model model, HttpServletRequest req) throws Exception {
-		String userId = req.getParameter("userId");
-		String userName = req.getParameter("userName");
-		String userPhone = req.getParameter("userPhone");
-		
-		String pw = loginService.findPw(userId, userName, userPhone);
-		
-		req.setAttribute("pw", pw);
-		
-		if(pw == null) {
-			model.addAttribute("msg", "일치하는 회원정보가 없습니다.");
-			return "login/forgotPw";
-		} else {
-			model.addAttribute("pw", user.getUserPw());
-			model.addAttribute("msg", "비밀번호는 "+pw + "입니다.");
-			
-			return "contents/home";
-		}
-		
-	}
 }

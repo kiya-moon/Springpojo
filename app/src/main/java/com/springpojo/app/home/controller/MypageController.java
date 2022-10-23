@@ -31,31 +31,42 @@ public class MypageController {
       this.mypageRepository = mypageRepository;
    }
 
-   // 마이페이지 처음 불러오는거
-   @GetMapping("/mypage/{userId}")
-   public String mypage(@PathVariable String userId, Model model) {
-      System.out.println(userId);
-      Users users = mypageService.findById(userId);
-      System.out.println(users);
-      model.addAttribute("users", users);
-      
-//      System.out.println(userId);
-//      userId = (String)session.getAttribute("userId");
-//      model.addAttribute("users", userId);
-      
-      System.out.println("123");
-//      List<Product> product = mypageRepository.product(userId);
-      List<Product> product = mypageService.product(userId);
+	// 마이페이지 처음 불러오는거
+	@GetMapping("/mypage/{userId}")
+	public String mypage(@PathVariable String userId, Model model, Long id) {
+		System.out.println(userId);
+		Users users = mypageService.findById(userId);
+		
+		System.out.println(users);
+		model.addAttribute("users", users);
+		
+//		System.out.println(userId);
+//		userId = (String)session.getAttribute("userId");
+//		model.addAttribute("users", userId);
+		
+		System.out.println("123");
+//		List<Product> product = mypageRepository.product(userId);
+//		List product = mypageService.product(userId);
 
-//      List<Bid> bid = mypageService.bid(userId);
-//      List<Product> product = mypageRepository.bid(userId);
-      System.out.println(product.toString());
-      System.out.println("234");
-      model.addAttribute("product", product);
-      
-      
-      return "mypage/mypage";
-   }
+//		List<Bid> bid = mypageService.bid(userId);
+//		List<Product> product = mypageRepository.bid(userId);
+		
+		// product, bid 수정예정
+		model.addAttribute("product", mypageService.product(userId));
+			System.out.println("bid23");
+		try {
+			model.addAttribute("bid", mypageService.bidPrice(userId, id));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			System.out.println("bidddd");
+		//int bidPrice = mypageService.bidPrice(userId, id);
+		System.out.println("234");
+		
+		
+		return "mypage/mypage";
+	}
 
    // 회원탈퇴
    @GetMapping("/delete.do")

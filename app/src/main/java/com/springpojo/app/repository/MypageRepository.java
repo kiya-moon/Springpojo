@@ -1,7 +1,7 @@
 package com.springpojo.app.repository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -50,7 +50,14 @@ public class MypageRepository {
    // 입찰중인 상품
    public List<Product> product(String userId) {
 	   System.out.println("345");
-	   return em.createQuery("select p.imgPath, p.productText, p.users.userId, p.endDate, p.productPrice  from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+	   return em.createQuery("select p from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+   }
+   
+   public List<Bid> bidPrice(String userId, Long id) {
+	   System.out.println("bidR");
+	   
+	   return em.createQuery("select b from Bid b where b.users.userId =:userId and b.product.id=:id")
+			   .setParameter("userId", userId).setParameter("id",id).getResultList();
    }
    
 //   @SuppressWarnings("unchecked")
