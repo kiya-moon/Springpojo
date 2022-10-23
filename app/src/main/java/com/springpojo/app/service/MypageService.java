@@ -32,11 +32,16 @@ public class MypageService {
       return mypageRepository.delete(session, userId);
    }
 
+   // 상품 호출
    public List<Product> product(String userId){
 	   System.out.println("2222");
 	   return mypageRepository.product(userId);
    }
    
+   public List<Bid> bidPrice(String userId, Long id) throws Exception{
+	   System.out.println("2222222222222");
+	   return mypageRepository.bidPrice(userId, id);
+   }
 //   public List<Bid> bid(String userId){
 //	   System.out.println("33333");
 //	   return mypageRepository.bid(userId);
