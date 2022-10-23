@@ -51,6 +51,17 @@ public class LikeRepository {
 		return em.createQuery("select l from Like l where l.product.id = :id", Like.class)
 				.setParameter("id", id).getResultList();
 	}
+
+	public Long likeCntTest(Long id) {
+		return em.createQuery("select count(l) from Like l where l.product.id = :id", Long.class)
+				.setParameter("id", id).getSingleResult();
+	}
+
+	public Long likeChkTest(Long id, String userId) {
+		// TODO Auto-generated method stub
+		return em.createQuery("select count(l) from Like l where l.product.id = :id and l.users.userId = :userId", Long.class)
+				.setParameter("id", id).setParameter("userId", userId).getSingleResult();
+	}
 	
 	
 //	public Like findList(Users user, Product product) {

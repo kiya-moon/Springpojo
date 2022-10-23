@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -23,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springpojo.app.DTO.Like;
 import com.springpojo.app.DTO.Bid;
+import com.springpojo.app.DTO.Like;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.AddService;
@@ -65,9 +63,18 @@ public class ProductController {
    
    // 상품 페이지
    @GetMapping("/product/{id}")
-   public String product(@PathVariable Long id, Model model) throws Exception {
+   public String product(@PathVariable Long id, Model model, HttpSession session) throws Exception {
+	   String userId = (String)session.getAttribute("userId");
+	   String likeChk = "";
       System.out.println("3");
       Product product = addService.findById(id);
+      Optional<Like> result = likeService.likeChk(userId, id);
+      if(result.isPresent()) {	// 객체에 값이 있으면 = null이 아니면
+    	  likeChk = "Y";
+		}else {	// null이면
+			likeChk = "N";
+		}
+      model.addAttribute("likeChk",likeChk);
       System.out.println(product.getImgPath());
       model.addAttribute("product", product);
       List<Like> likeCnt = likeService.likeCnt(id);
@@ -86,6 +93,7 @@ public class ProductController {
       
       Users users = mypageService.findById(userId);
       product.setUsers(users);
+      product.setProductCeller(users.getUserName());
       
       Product savedProduct = addService.saveProduct(product, upload_box);
 
@@ -123,24 +131,68 @@ public class ProductController {
    // 좋아요
    @PostMapping("/updateLike/{id}")
    @ResponseBody
-	public Optional<Like> likeChk(@PathVariable Long id, HttpSession session, Model model) throws Exception{
-		System.out.println(1);
-		System.out.println(session.getAttribute("userId"));
-		String userId = (String)session.getAttribute("userId");
-		
-		Optional<Like> result = likeService.likeChk(userId, id);
-		System.out.println(result);
-		model.addAttribute("likeImg",result);
-		
+//	public Optional<Like> likeChk(@PathVariable Long id, HttpSession session, Model model) throws Exception{
+//		System.out.println(1);
+//		System.out.println(session.getAttribute("userId"));
+//		String userId = (String)session.getAttribute("userId");
+//		
+//		Optional<Like> result = likeService.likeChk(userId, id);
+//		System.out.println(result);
+//		model.addAttribute("likeImg",result);
+//		
+//		// like가 null이면 like에 저장
+//		// like가 null이 아니면 like에서 삭제
+//		if(result.isPresent()) {	// 객체에 값이 있으면 = null이 아니면
+//			likeService.remove(userId, id);
+//		}else {	// null이면
+//			likeService.insert(userId, id);
+//		}
+//		return result;
+//	}
+   public Long likeChk(@PathVariable Long id, HttpSession session, Model model) throws Exception{
+	   String userId = (String)session.getAttribute("userId");
+	   Long likeChk = likeService.likeChkTest(id, userId);
+	   model.addAttribute("likeChk", likeChk);
+	   
 		// like가 null이면 like에 저장
 		// like가 null이 아니면 like에서 삭제
-		if(result.isPresent()) {	// 객체에 값이 있으면 = null이 아니면
+		if(likeChk==1) {	// 객체에 값이 있으면 = null이 아니면
 			likeService.remove(userId, id);
-		}else {	// null이면
+		}else {	// 0이면
 			likeService.insert(userId, id);
 		}
-		return result;
-	}
+	   
+	   return likeChk;
+   }
+   
+   @GetMapping("/updateLike/{id}")
+   @ResponseBody
+   public Long likeCnt(@PathVariable Long id, HttpSession session, Model model) throws Exception{
+//	   String userId = (String)session.getAttribute("userId");
+//	   List<Like> likeCnt = likeService.likeCnt(id);
+//	   int likeCnts = likeCnt.size();
+//	   
+//	   Optional<Like> result = likeService.likeChk(userId, id);
+//		System.out.println("찜횟수?");
+//		
+//		// like가 null이면 like에 저장
+//		// like가 null이 아니면 like에서 삭제
+//		if(result.isPresent()) {	// 객체에 값이 있으면 = null이 아니면
+//			likeService.likeCnt(id);
+//			System.out.println(likeCnts);
+//		}else {	// null이면
+//			likeService.likeCnt(id);
+//			System.out.println(likeCnts+"2");
+//		}
+//	   System.out.println("들어와라아아아");
+//	   return likeCnts;
+	   Long likeCnt = likeService.likeCntTest(id);
+	   System.out.println("likeCnt" + likeCnt);
+	   model.addAttribute("likeCnt", likeCnt);
+	   
+	   return likeCnt;
+	   
+   }
 
  // 상품 금액 업데이트
 	@PostMapping("/updatePrice/{id}")

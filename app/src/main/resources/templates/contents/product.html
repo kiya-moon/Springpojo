@@ -41,7 +41,7 @@
 								</div>
 								<div class="productCeller">
 									<!-- 에러날 경우 input 태그 사용 -->
-									판매자 : <a class="cellerName" href="#">${product.users.userId}</a>
+									판매자 : <a class="cellerName" href="#" th:text="${product.productCeller}"></a>
 								</div>
 							</div>
 							<!-- 카운트다운 박스 -->
@@ -89,10 +89,18 @@
 									목록</button>
 								<button type="button" id="like_btn" class="like_btn btn_group2"
 									th:onclick="imgToggle()">
+									<th:block th:if="${likeChk == 'Y'}">
+									<div class="like_line">
+										<img id="like_off" th:src="@{img/likeon.png}">
+										 <span id="likeCnt" th:text="${likeCnt}"></span>
+									</div>
+									</th:block>
+									<th:block th:if="${likeChk == 'N'}">
 									<div class="like_line">
 										<img id="like_off" th:src="@{img/likeoff.png}">
-										 <span th:text="${likeCnt}"></span>
+										 <span id="likeCnt" th:text="${likeCnt}"></span>
 									</div>
+									</th:block>
 								</button>
 							</div>
 						</div>

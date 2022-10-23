@@ -13,13 +13,14 @@ function imgToggle(){
 	var img1 = document.getElementById("like_off");
 	var userId= document.getElementById("userId").value;
 	var id= document.getElementById("id").value;
+	
 	$.ajax({
 		type:"POST",
 		url:"/updateLike/"+id,
 		data:{userId: userId},
 //		contentType: false, processData: false,
 		success: function(data){
-			if(data != null){
+			if(data == 1){
 				img1.src="img/likeoff.png";
 				likeChk = "N";
 			} else {
@@ -29,13 +30,16 @@ function imgToggle(){
 		}
 		
 	})
-//	if(cnt%2 == 1){
-//		img1.src="img/likeon.png";
-//	}else{
-//		img1.src="img/likeoff.png";
-//		}
-//		cnt++;
+	$.ajax({
+		type:"GET",
+		url:"/updateLike/"+id,
+		data:{userId: userId},
+		success: function(data){
+			$('#likeCnt').text(data);
+			console.log("likeCnt Test" + data);
 		}
+	})
+}
 		
 function chk_price(){
 	var p1 = document.getElementById('startPrice').value;
@@ -86,5 +90,4 @@ function remindTime(){
 			 }
 
 $(document).ready(remindTime())
-$(document).ready(likeChks())
 			      

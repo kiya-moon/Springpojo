@@ -53,7 +53,7 @@ public class Product {
 	// likecount는 like 테이블에서 prodcut_name을 count
 //	private int likeCount;
 //	@Column(nullable=true)
-//	private String productCeller;
+	private String productCeller;
 //	// Date인지 잘 모르겠지만 일단 넣어둠
 //	@Column(nullable=true)
 	private LocalDateTime endDate;
