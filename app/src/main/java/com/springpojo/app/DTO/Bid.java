@@ -38,9 +38,13 @@ public class Bid {
 	
 	// FK
 	@ManyToOne
-	@JoinColumn(name="PRODUCT_NAME")
+	@JoinColumn(name="PRODUCT_ID")
 	private Product product;
 	
 	private Long bidPrice;
+	
+	
+	
+	
 
 }

@@ -100,23 +100,22 @@
                      style="text-align: center; font-weight: bold; background-color: black; color: white;">
                      <tr>
                         <td>상품사진</td>
-                        <td>상품설명</td>
+                        <td>상품명</td>
                         <td>판매자</td>
                         <td>경매 종료일</td>
                         <td>현재 상품 입찰가</td>
-                        <td>내 임찰가</td>
+                        <td>내 입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;" th:each="product : ${product}">
-                     <tr class="like-list-1" >
-                        <td ><img th:src="|/upload/${product.id}| "
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                            alt="TV"></a></td>
+                  <tbody style="font-size: 12px;" th:each="product : ${product}" >
+                     <tr class="like-list-1">
+                        <td ><img th:src="|/upload/${product.id}|" alt="TV" style="width: 200; height: 200;"></td>
                         <td th:text="${product.productName}">
                         </a></td>
-                        <td th:text="${product.users.userid}"></td>
+                        <td th:text="${product.users.userId}"></td>
                         <td th:text="${product.endDate}"></td>
                         <td th:text="${product.productPrice}"></td>
+                        <td th:text="${bid.bidPrice}"></td>
                      </tr>
                   </tbody>
                </form>
