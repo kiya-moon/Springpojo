@@ -17,25 +17,31 @@ function imgToggle(){
 		type:"POST",
 		url:"/updateLike/"+id,
 		data:{userId: userId},
-//		contentType: false, processData: false,
 		success: function(data){
-			if(data != null){
+			if(data == 1){
 				img1.src="img/likeoff.png";
-				likeChk = "N";
+				likeChk = "Y";
 			} else {
 				img1.src="img/likeon.png";
-				likeChk = "Y";
+				likeChk = "N";
 			}
+	$.ajax({
+		type:"GET",
+		url:"/updateLike/"+id,
+		data:{userId: userId},
+		async: false,
+		success: function(data){
+			$('#likeCnt').text(data);
+			console.log("likeCnt Test" + data);
+		}
+	})
 		}
 		
 	})
-//	if(cnt%2 == 1){
-//		img1.src="img/likeon.png";
-//	}else{
-//		img1.src="img/likeoff.png";
-//		}
-//		cnt++;
-		}
+	
+	
+	
+}
 		
 function chk_price(){
 	var p1 = document.getElementById('startPrice').value;
@@ -86,5 +92,4 @@ function remindTime(){
 			 }
 
 $(document).ready(remindTime())
-$(document).ready(likeChks())
 			      

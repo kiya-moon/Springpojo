@@ -1,10 +1,10 @@
 package com.springpojo.app.home.controller;
 
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.service.LoginService;
@@ -53,23 +54,20 @@ public class LoginController {
 	
 	// 로그인
 	@PostMapping("/login.do")
-	public String login(String userId,String userPw, HttpSession session, HttpServletRequest req, Model model, HttpServletResponse resp) throws Exception {
-		try {
+	public String login(String userId,String userPw, HttpSession session, HttpServletRequest req, Model model, HttpServletResponse resp, RedirectAttributes rattr) throws Exception {
+			try {
 			Users login = loginService.login(userId);
-			resp.setContentType("text/html;charset=euc-kr");
 			PrintWriter out = resp.getWriter();
 			if(login == null || !login.getUserPw().equals(userPw)) {
+			out.println("<script>alert('아이디, 비밀번호를 확인해주세요.');</script>");
+			return "login/login";
+			}
+			} catch (NoResultException e) {
+				PrintWriter out = resp.getWriter();
 				out.println("<script>alert('아이디, 비밀번호를 확인해주세요.');</script>");
 				return "login/login";
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 		session = req.getSession();
 		session.setAttribute("userId", userId);
 		session.setAttribute("user", loginService.login(userId));

@@ -53,4 +53,13 @@ public class LikeService {
 		System.out.println("likeCnt2");
 		return likeRepository.likeCnt(id);
 	}
+
+	public Long likeCntTest(Long id) {
+		return likeRepository.likeCntTest(id);
+	}
+
+	public Long likeChkTest(Long id, String userId) {
+		// TODO Auto-generated method stub
+		return likeRepository.likeChkTest(id, userId);
+	}
 }
