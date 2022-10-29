@@ -13,32 +13,34 @@ function imgToggle(){
 	var img1 = document.getElementById("like_off");
 	var userId= document.getElementById("userId").value;
 	var id= document.getElementById("id").value;
-	
 	$.ajax({
 		type:"POST",
 		url:"/updateLike/"+id,
 		data:{userId: userId},
-//		contentType: false, processData: false,
 		success: function(data){
 			if(data == 1){
 				img1.src="img/likeoff.png";
-				likeChk = "N";
+				likeChk = "Y";
 			} else {
 				img1.src="img/likeon.png";
-				likeChk = "Y";
+				likeChk = "N";
 			}
-		}
-		
-	})
 	$.ajax({
 		type:"GET",
 		url:"/updateLike/"+id,
 		data:{userId: userId},
+		async: false,
 		success: function(data){
 			$('#likeCnt').text(data);
 			console.log("likeCnt Test" + data);
 		}
 	})
+		}
+		
+	})
+	
+	
+	
 }
 		
 function chk_price(){
