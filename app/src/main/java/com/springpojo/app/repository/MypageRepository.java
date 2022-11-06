@@ -1,7 +1,6 @@
 package com.springpojo.app.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
 
-import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 
@@ -48,21 +46,21 @@ public class MypageRepository {
 	   System.out.println("레파2");
    }
    // 입찰중인 상품
-   public List<Product> product(String userId) {
+   public List<Product> bid(String userId) {
 	   System.out.println("345");
 	   return em.createQuery("select p from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
-   public List<Bid> bidPrice(String userId, Long id) {
-	   System.out.println("bidR");
-	   
-	   return em.createQuery("select b from Bid b where b.users.userId =:userId and b.product.id=:id")
-			   .setParameter("userId", userId).setParameter("id",id).getResultList();
+   // 관심상품
+   public List<Product> like(String userId) {
+	   System.out.println("likeRe");
+	   return em.createQuery("select p from Product p where p.id in (select l.product.id from Like l where l.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
-//   @SuppressWarnings("unchecked")
-//   public List<Bid> bid(String userId){
-//	   System.out.println("566");
-//	   return em.createQuery("select b from Bid b where b.users.userId = :userId", Bid.class).setParameter("userId",userId).getResultList();
-//   }
+   // 판매 물품
+   public List<Product> sellProduct(String userId) {
+	   System.out.println("sellRe");
+	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
+   }
+   
 }
