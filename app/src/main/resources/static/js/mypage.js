@@ -152,7 +152,6 @@ function checkListAll() {
 	} else {
 		ListAll.checked = false;
 	}
-
 }
 
 function ListAll(ListAll) {

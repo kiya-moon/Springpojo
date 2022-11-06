@@ -104,18 +104,15 @@
                         <td>판매자</td>
                         <td>경매 종료일</td>
                         <td>현재 상품 입찰가</td>
-                        <td>내 입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;" th:each="product : ${product}" >
+                  <tbody style="font-size: 12px;" th:each="bid , i : ${bid}" >
                      <tr class="like-list-1">
-                        <td ><img th:src="|/upload/${product.id}|" alt="TV" style="width: 200; height: 200;"></td>
-                        <td th:text="${product.productName}">
-                        </a></td>
-                        <td th:text="${product.users.userId}"></td>
-                        <td th:text="${product.endDate}"></td>
-                        <td th:text="${product.productPrice}"></td>
-                        <td th:text="${bid.bidPrice}"></td>
+                        <td ><img th:src="|/upload/${bid.id}|" alt="TV" style="width: 200; height: 200;"></td>
+                        <td th:text="${bid.productName}"></td>
+                        <td th:text="${bid.users.userId}"></td>
+                        <td th:text="${bid.endDate}"></td>
+                        <td th:text="${bid.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>
@@ -142,32 +139,13 @@
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;">
+                  <tbody style="font-size: 12px;" th:each="like , i : ${like}" >
                      <tr class="like-list-1">
-                        <td><input class="" type="checkbox" name="one" value="1"
-                           onclick='checkListAll()'></td>
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
-                     </tr>
-                     <tr class="like-list-1">
-                        <td><input class="" type="checkbox" name="one" value="2"
-                           onclick='checkListAll()'></td>
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
+                        <td ><img th:src="|/upload/${like.id}|" alt="TV" style="width: 200; height: 200;"></td>
+                        <td th:text="${like.productName}"></td>
+                        <td th:text="${like.users.userId}"></td>
+                        <td th:text="${like.endDate}"></td>
+                        <td th:text="${like.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>
@@ -196,28 +174,13 @@
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 12px;">
+                  <tbody style="font-size: 12px;" th:each="sellProduct , i : ${sellProduct}" >
                      <tr class="like-list-1">
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
-                     </tr>
-                     <tr class="like-list-1">
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
+                        <td ><img th:src="|/upload/${sellProduct.id}|" alt="TV" style="width: 200; height: 200;"></td>
+                        <td th:text="${sellProduct.productName}"></td>
+                        <td th:text="${sellProduct.users.userId}"></td>
+                        <td th:text="${sellProduct.endDate}"></td>
+                        <td th:text="${sellProduct.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>
