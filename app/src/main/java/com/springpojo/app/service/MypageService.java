@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springpojo.app.DTO.Join;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
@@ -46,6 +47,12 @@ public class MypageService {
    public List<Product> sellProduct(String userId){
 	   System.out.println("sellSE");
 	   return mypageRepository.sellProduct(userId);
+   }
+   
+   // 낙찰물품
+   public List<Join> successfulBid(){
+	   System.out.println("successfulBid");
+	   return mypageRepository.successfulBid();
    }
    
 }

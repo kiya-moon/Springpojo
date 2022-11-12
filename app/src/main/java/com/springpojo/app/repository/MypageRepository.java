@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
 
+import com.springpojo.app.DTO.Join;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 
@@ -48,35 +49,25 @@ public class MypageRepository {
    // 입찰중인 상품
    public List<Product> bid(String userId) {
 	   System.out.println("345");
-	   return em.createQuery("select p from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+	   return em.createQuery("select p from Product p where 1=1 and p.endDate >= sysdate and p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
-
-   // 판매주인 상품
-//   public List<Product> product(String userId) {
-//	   System.out.println("345");
-//	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
-//   }
-   
-   
-   // 입찰한 가격
-   public List<Bid> bidPrice(String userId, Long id) {
-	   System.out.println("bidR");
-	   
-	   return em.createQuery("select b from Bid b where b.users.userId =:userId and b.product.id=:id")
-			   .setParameter("userId", userId).setParameter("id",id).getResultList();
-
    // 관심상품
    public List<Product> like(String userId) {
 	   System.out.println("likeRe");
-	   return em.createQuery("select p from Product p where p.id in (select l.product.id from Like l where l.users.userId = :userId)").setParameter("userId", userId).getResultList();
+	   return em.createQuery("select p from Product p where 1=1 and p.endDate >= sysdate and  p.id in (select l.product.id from Like l where l.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
    // 판매 물품
    public List<Product> sellProduct(String userId) {
 	   System.out.println("sellRe");
 	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
-
+   }
+   
+   // 낙찰 물품
+   public List<Join> successfulBid(){
+	   System.out.println("낙찰R");
+	   return em.createQuery("select p.imgPath, p.productName, p.users.userId as celler, p.endDate, p.productPrice from Product p where 1=1 and p.productPrice in (select max(b.bidPrice) from bid b)").getResultList();
    }
    
 }

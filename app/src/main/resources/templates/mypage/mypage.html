@@ -198,34 +198,19 @@
                      style="text-align: center; font-weight: bold; background-color: black; color: white;">
                      <tr>
                         <td>상품사진</td>
-                        <td>상품설명</td>
+                        <td>상품명</td>
                         <td>판매자</td>
                         <td>경매 종료일</td>
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 130%;">
-                     <tr class="like-list-1">
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
-                     </tr>
-                     <tr class="like-list-1">
-                        <td><a href=""> <img
-                              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-                              alt="TV"></a></td>
-                        <td><a href="#">TV입니다.
-                              <p>이것은 TV입니다.</p>
-                        </a></td>
-                        <td>홍길동</td>
-                        <td>2022-08-01</td>
-                        <td>100만원</td>
+                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${successfulBid}" >
+						<tr class="like-list-1">
+                        <td ><img th:src="|/upload/${successfulBid.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
+                        <td th:text="${successfulBid.productName}"></td>
+                        <td th:text="${successfulBid.users.userId}"></td>
+                        <td th:text="${successfulBid.endDate}"></td>
+                        <td th:text="${successfulBid.productPrice}"></td>
                      </tr>
                   </tbody>
                </form>
