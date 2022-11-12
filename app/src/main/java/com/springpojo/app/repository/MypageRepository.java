@@ -53,6 +53,14 @@ public class MypageRepository {
 	   return em.createQuery("select p from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
+   // 판매주인 상품
+//   public List<Product> product(String userId) {
+//	   System.out.println("345");
+//	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
+//   }
+   
+   
+   // 입찰한 가격
    public List<Bid> bidPrice(String userId, Long id) {
 	   System.out.println("bidR");
 	   

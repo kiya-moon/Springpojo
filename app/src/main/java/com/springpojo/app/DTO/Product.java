@@ -47,20 +47,17 @@ public class Product {
 	private String productCategory;
 	private LocalDateTime startDate;
 	private String productDate;
+	
 	@Column(nullable=true, length=500)
 	private String productText;
-//	@Column(nullable=true)
-	// likecount는 like 테이블에서 prodcut_name을 count
-//	private int likeCount;
-//	@Column(nullable=true)
 	private String productCeller;
-//	// Date인지 잘 모르겠지만 일단 넣어둠
-//	@Column(nullable=true)
 	private LocalDateTime endDate;
 	private StringBuffer cellPeriod;
 
 	private String imgName;
 	private String imgPath;
+	
+	private Long likeCnt;
 
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();

@@ -137,5 +137,14 @@ public class AddService {
 		addRepository.bidUpdate(bid, userId, id);
 		return bid;
 	}
+
+	public void reduceLike(Long id) {
+		addRepository.reduceLike(id);
+	}
+
+	public void updateLike(Long id) {
+		addRepository.updateLike(id);
+		
+	}
 	
 }
