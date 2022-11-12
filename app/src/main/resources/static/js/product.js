@@ -1,3 +1,7 @@
+var msg = document.getElementById("msg").value;
+if(msg === "fail"){
+	alert('판매자는 입찰할 수 없습니다.');
+}
 var likeChk;
 var likeImg = document.getElementById("like_off");
 
