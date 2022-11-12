@@ -51,6 +51,21 @@ public class MypageRepository {
 	   return em.createQuery("select p from Product p where p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
+
+   // 판매주인 상품
+//   public List<Product> product(String userId) {
+//	   System.out.println("345");
+//	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
+//   }
+   
+   
+   // 입찰한 가격
+   public List<Bid> bidPrice(String userId, Long id) {
+	   System.out.println("bidR");
+	   
+	   return em.createQuery("select b from Bid b where b.users.userId =:userId and b.product.id=:id")
+			   .setParameter("userId", userId).setParameter("id",id).getResultList();
+
    // 관심상품
    public List<Product> like(String userId) {
 	   System.out.println("likeRe");
@@ -61,6 +76,7 @@ public class MypageRepository {
    public List<Product> sellProduct(String userId) {
 	   System.out.println("sellRe");
 	   return em.createQuery("select p from Product p where p.users.userId = :userId").setParameter("userId", userId).getResultList();
+
    }
    
 }

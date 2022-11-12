@@ -135,39 +135,25 @@ public class ProductController {
 	   String userId = (String)session.getAttribute("userId");
 	   Long likeChk = likeService.likeChkTest(id, userId);
 	   
-		// like가 null이면 like에 저장
-		// like가 null이 아니면 like에서 삭제
+		// like가 null이면 like에 저장, product likeCnt++
+		// like가 null이 아니면 like에서 삭제, product likeCnt--
 		if(likeChk==1) {	// 객체에 값이 있으면 = null이 아니면
 			likeService.remove(userId, id);
+			addService.reduceLike(id);
 		}else {	// 0이면
 			likeService.insert(userId, id);
+			addService.updateLike(id);
+			
 		}
 		model.addAttribute("likeChk", likeChk);
 		return likeChk;
 	   
    }
    
+   // 라이크 카운트 출력
    @GetMapping("/updateLike/{id}")
    @ResponseBody
    public Long likeCnt(@PathVariable Long id, HttpSession session, Model model) throws Exception{
-//	   String userId = (String)session.getAttribute("userId");
-//	   List<Like> likeCnt = likeService.likeCnt(id);
-//	   int likeCnts = likeCnt.size();
-//	   
-//	   Optional<Like> result = likeService.likeChk(userId, id);
-//		System.out.println("찜횟수?");
-//		
-//		// like가 null이면 like에 저장
-//		// like가 null이 아니면 like에서 삭제
-//		if(result.isPresent()) {	// 객체에 값이 있으면 = null이 아니면
-//			likeService.likeCnt(id);
-//			System.out.println(likeCnts);
-//		}else {	// null이면
-//			likeService.likeCnt(id);
-//			System.out.println(likeCnts+"2");
-//		}
-//	   System.out.println("들어와라아아아");
-//	   return likeCnts;
 	   Long likeCnt = likeService.likeCntTest(id);
 	   System.out.println("likeCnttt" + likeCnt);
 	   model.addAttribute("likeCnt", likeCnt);
@@ -175,7 +161,6 @@ public class ProductController {
 	   return likeCnt;
 	   
    }
-   
    
 
  // 상품 금액 업데이트

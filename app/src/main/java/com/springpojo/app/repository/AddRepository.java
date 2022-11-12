@@ -66,4 +66,14 @@ public class AddRepository {
 				.executeUpdate();
 		}
 	}
+
+	public void reduceLike(Long id) {
+		
+		
+	}
+
+	public void updateLike(Long id) {
+		
+		
+	}
 }
