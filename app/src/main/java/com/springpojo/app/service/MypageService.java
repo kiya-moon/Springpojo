@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
@@ -20,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 public class MypageService {
    
    private final MypageRepository mypageRepository;
-   private HttpSession session;
 
    public Users findById(String userId) {
       System.out.println(userId);
@@ -32,18 +30,22 @@ public class MypageService {
       return mypageRepository.delete(session, userId);
    }
 
-   // 상품 호출
-   public List<Product> product(String userId){
+   // 상품 호출(입찰중인 물건)
+   public List<Product> bid(String userId){
 	   System.out.println("2222");
-	   return mypageRepository.product(userId);
+	   return mypageRepository.bid(userId);
    }
    
-   public List<Bid> bidPrice(String userId, Long id) throws Exception{
-	   System.out.println("2222222222222");
-	   return mypageRepository.bidPrice(userId, id);
+   // 관심 상품
+   public List<Product> like(String userId){
+	   System.out.println("likeSE");
+	   return mypageRepository.like(userId);
    }
-//   public List<Bid> bid(String userId){
-//	   System.out.println("33333");
-//	   return mypageRepository.bid(userId);
-//   }
+   
+   // 판매물품
+   public List<Product> sellProduct(String userId){
+	   System.out.println("sellSE");
+	   return mypageRepository.sellProduct(userId);
+   }
+   
 }
