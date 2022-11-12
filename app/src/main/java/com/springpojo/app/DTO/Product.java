@@ -14,14 +14,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@DynamicInsert
 @AllArgsConstructor	// 모든 파라미터가 있는 생성자 생성
 @NoArgsConstructor	// 기본 생성자 생성
 @SequenceGenerator( name="SPRING_SEQ_GENERATOR",
@@ -57,7 +60,8 @@ public class Product {
 	private String imgName;
 	private String imgPath;
 	
-	private Long likeCnt;
+	@Column
+	private int likeCnt = 0;
 
 	@OneToMany(mappedBy = "product")
 	private List<Bid> bid = new ArrayList<>();
