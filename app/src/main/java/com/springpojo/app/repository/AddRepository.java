@@ -67,13 +67,13 @@ public class AddRepository {
 		}
 	}
 
+	// 프로덕트의 likecnt--
 	public void reduceLike(Long id) {
-		
-		
+		em.createQuery("update Product p set p.likeCnt = likeCnt-1 where p.id = :id").setParameter("id", id).executeUpdate();
 	}
 
+	// 프로덕트의 likecnt++
 	public void updateLike(Long id) {
-		
-		
+		em.createQuery("update Product p set p.likeCnt = likeCnt+1 where p.id = :id").setParameter("id", id).executeUpdate();
 	}
 }

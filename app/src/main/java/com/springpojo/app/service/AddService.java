@@ -138,13 +138,14 @@ public class AddService {
 		return bid;
 	}
 
+	// 프로덕트의 likecnt--
 	public void reduceLike(Long id) {
 		addRepository.reduceLike(id);
 	}
 
+	// 프로덕트의 likecnt++
 	public void updateLike(Long id) {
 		addRepository.updateLike(id);
-		
 	}
 	
 }
