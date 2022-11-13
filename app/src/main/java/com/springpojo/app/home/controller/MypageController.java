@@ -47,6 +47,9 @@ public class MypageController {
 		model.addAttribute("sellProduct", mypageService.sellProduct(userId));
 		System.out.println("sellCon");
 		
+		// 낙찰 물품
+		model.addAttribute("successfulBid", mypageService.successfulBid());
+		System.out.println("successfulBid");
 		
 		return "mypage/mypage";
 	}
