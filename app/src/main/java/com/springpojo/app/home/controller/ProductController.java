@@ -1,10 +1,12 @@
 package com.springpojo.app.home.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,26 +172,33 @@ public class ProductController {
 		// 로그인 안하고 경매 참여버튼 눌렀을 때 예외처리
 		
 		// 상품 금액 업데이트
-		addService.priceUpdate(id, checkPrice);
 		
 		// BID에 저장
 		Bid bid = new Bid();
 		
 		String userId = (String)httpSession.getAttribute("userId");
 		System.out.println(userId);
+		Product product = addService.findById(id);
 		Users users = mypageService.findById(userId);
 		System.out.println(users);
-		bid.setUsers(users);
-		
-		Product product = addService.findById(id);
-		bid.setProduct(product);
-		System.out.println(product);
-		
-		bid.setBidPrice(checkPrice);
-		
-		addService.bidUpdate(bid, userId, id);
-		
-		redirectAttributes.addAttribute("id", id);
+
+		System.out.println(product.getUsers().getUserId() + "유저아이디");
+		if(userId.equals(product.getUsers().getUserId())) {
+			redirectAttributes.addFlashAttribute("msg","fail");
+			return "redirect:/product/{id}";
+		}else {
+			bid.setUsers(users);
+			
+			bid.setProduct(product);
+			System.out.println(product);
+			
+			bid.setBidPrice(checkPrice);
+			
+			addService.priceUpdate(id, checkPrice);
+			addService.bidUpdate(bid, userId, id);
+			
+			redirectAttributes.addAttribute("id", id);
+		}
 		
 		return "redirect:/product/{id}";
   }	

@@ -13,6 +13,7 @@
 	<th:block layout:fragment="content">
 	<input type="hidden" id="userId" th:value="${session.userId}">
 	<input type="hidden" id="id" th:value="${product.id}">
+	<input type="hidden" id="msg" th:value="${msg}">
 		<div class="bg_color">
 			<div class="devideContainer"></div>
 			<div class="productContainer">
@@ -125,7 +126,6 @@
 
 	<th:block layout:fragment="script">
 		<script type="text/javascript" th:src="@{/js/product.js}"></script>
-
 	</th:block>
 </body>
 </html>
