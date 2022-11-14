@@ -48,8 +48,8 @@ public class MypageController {
 		System.out.println("sellCon");
 		
 		// 낙찰 물품
-		model.addAttribute("successfulBid", mypageService.successfulBid());
-		System.out.println("successfulBid");
+//		model.addAttribute("successfulBid", mypageService.successfulBid());
+//		System.out.println("successfulBid");
 		
 		return "mypage/mypage";
 	}
