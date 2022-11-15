@@ -51,7 +51,7 @@ public class MypageService {
    
    // 낙찰물품
    public List<Join> successfulBid(){
-	   System.out.println("successfulBid");
+	   System.out.println("successfulBid서비스");
 	   return mypageRepository.successfulBid();
    }
    
