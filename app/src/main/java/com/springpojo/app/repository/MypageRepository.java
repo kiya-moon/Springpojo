@@ -1,5 +1,7 @@
 package com.springpojo.app.repository;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import com.springpojo.app.DTO.Join;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 
+import javassist.expr.NewArray;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -48,8 +51,9 @@ public class MypageRepository {
    }
    // 입찰중인 상품
    public List<Product> bid(String userId) {
+	   LocalDateTime local = null;
 	   System.out.println("345");
-	   return em.createQuery("select p from Product p where 1=1 and p.endDate >= sysdate and p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+	   return em.createQuery("select p from Product p where 1=1 and p.endDate >= :sysdate and p.id in (select b.bidJoinNum from Bid b where b.users.userId = :userId)").setParameter("sysdate", local.now(Clock.systemDefaultZone())).setParameter("userId", userId).getResultList();
    }
    
    // 관심상품
