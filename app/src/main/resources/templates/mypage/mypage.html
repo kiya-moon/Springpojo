@@ -204,7 +204,7 @@
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${join}" >
+                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${product}" >
 						<tr class="like-list-1">
                         <td ><img th:src="|/upload/${successfulBid.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
                         <td th:text="${successfulBid.productName}"></td>

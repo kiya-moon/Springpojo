@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MypageRepository {
 	
-	LocalDateTime local = null;
+	LocalDateTime local = null;		// 시간 받아오기
    
    @PersistenceContext
    private final EntityManager em;
@@ -69,9 +69,14 @@ public class MypageRepository {
    }
    
    // 낙찰 물품
-   public List<Join> successfulBid(){
+//   public List<Join> successfulBid(String userId){
+//	   System.out.println("낙찰R");
+//	   return em.createQuery("select p.imgPath, p.productName, p.users.userId as celler, p.endDate, p.productPrice from Product p where 1=1 and p.productPrice in (select max(b.bidPrice) from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+//   }
+   // 낙찰 물품
+   public List<Product> successfulBid(String userId){
 	   System.out.println("낙찰R");
-	   return em.createQuery("select p.imgPath, p.productName, p.users.userId as celler, p.endDate, p.productPrice from Product p where 1=1 and p.productPrice in (select max(b.bidPrice) from Bid b)").getResultList();
+	   return em.createQuery("select p.imgPath, p.productName, p.users.userId, p.endDate, p.productPrice from Product p left outer join Bid b on p.id = b.product.id where p.productPrice in (select max(b.bidPrice) from Bid b2 where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
    }
    
 }

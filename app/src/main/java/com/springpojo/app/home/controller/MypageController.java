@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springpojo.app.DTO.Join;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 import com.springpojo.app.service.MypageService;
 
 @Controller
 public class MypageController {
-
+	Join join = new Join();
    private final MypageService mypageService;
    private final MypageRepository mypageRepository;
 
@@ -48,7 +49,9 @@ public class MypageController {
 		System.out.println("sellCon");
 		
 		// 낙찰 물품
-		model.addAttribute("successfulBid", mypageService.successfulBid());
+//		model.addAttribute("successfulBid", mypageService.successfulBid(userId));
+//		System.out.println("successfulBid");
+		model.addAttribute("successfulBid", mypageService.successfulBid(userId));
 		System.out.println("successfulBid");
 		
 		return "mypage/mypage";

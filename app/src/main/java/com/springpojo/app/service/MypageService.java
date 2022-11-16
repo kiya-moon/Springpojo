@@ -50,9 +50,13 @@ public class MypageService {
    }
    
    // 낙찰물품
-   public List<Join> successfulBid(){
+//   public List<Join> successfulBid(String userId){
+//	   System.out.println("successfulBid서비스");
+//	   return mypageRepository.successfulBid(userId);
+//   }
+   public List<Product> successfulBid(String userId){
 	   System.out.println("successfulBid서비스");
-	   return mypageRepository.successfulBid();
+	   return mypageRepository.successfulBid(userId);
    }
    
 }
