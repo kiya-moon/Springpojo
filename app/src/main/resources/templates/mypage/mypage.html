@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-   rel="stylesheet">
-<th:block layout:fragment="css">
-   <link rel="stylesheet" th:href="@{/css/mypage.css}">
-</th:block>   
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<th:block layout:fragment="css">
+		<link rel="stylesheet" th:href="@{/css/mypage.css}">
+	</th:block>
 </head>
 
 <body>
@@ -204,9 +203,9 @@
                         <td>현재입찰가</td>
                      </tr>
                   </thead>
-                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${product}" >
+                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${successfulBid}" >
 						<tr class="like-list-1">
-                        <td ><img th:src="|/upload/${successfulBid.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
+                        <td ><img th:src="|/upload/${successfulBid.id}|" style="width: 150px; height: 150px;"></td>
                         <td th:text="${successfulBid.productName}"></td>
                         <td th:text="${successfulBid.users.userId}"></td>
                         <td th:text="${successfulBid.endDate}"></td>
