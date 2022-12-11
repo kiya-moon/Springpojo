@@ -2,7 +2,10 @@ package com.springpojo.app.repository;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
 
-import com.springpojo.app.DTO.Join;
+import com.springpojo.app.DTO.Bid;
 import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 
@@ -21,7 +24,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MypageRepository {
 	
-	LocalDateTime local = null;		// 시간 받아오기
+	private Bid bid = new Bid();
+	private LocalDateTime local = LocalDateTime.now();	// 시간 받아오기
+
    
    @PersistenceContext
    private final EntityManager em;
@@ -67,16 +72,14 @@ public class MypageRepository {
 	   System.out.println("sellRe");
 	   return em.createQuery("select p from Product p where 1=1 and p.endDate >= :sysdate and p.users.userId = :userId").setParameter("sysdate", local.now(Clock.systemDefaultZone())).setParameter("userId", userId).getResultList();
    }
-   
    // 낙찰 물품
-//   public List<Join> successfulBid(String userId){
-//	   System.out.println("낙찰R");
-//	   return em.createQuery("select p.imgPath, p.productName, p.users.userId as celler, p.endDate, p.productPrice from Product p where 1=1 and p.productPrice in (select max(b.bidPrice) from Bid b where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
-//   }
-   // 낙찰 물품
-   public List<Product> successfulBid(String userId){
+   public List<Product> successfulBid(HttpSession session){
+	   
 	   System.out.println("낙찰R");
-	   return em.createQuery("select p.imgPath, p.productName, p.users.userId, p.endDate, p.productPrice from Product p left outer join Bid b on p.id = b.product.id where p.productPrice in (select max(b.bidPrice) from Bid b2 where b.users.userId = :userId)").setParameter("userId", userId).getResultList();
+	   Object logId = session.getAttribute("userId");   // 세션에 저장된 값 불러와서 Object에 저장
+	   String userId = (String)logId;   // Object의 값을 String 값으로 변환
+	   
+	   return em.createQuery("select p from Product p where 1=1 and p.endDate < :local and p.productPrice in (select b.bidPrice from Bid b where 1=1 and b.id in (select b2.id  from Bid b2) and b.users.userId = :userId)").setParameter("local", local).setParameter("userId", userId).getResultList();
    }
    
 }

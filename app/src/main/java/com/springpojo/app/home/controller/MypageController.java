@@ -1,5 +1,8 @@
 package com.springpojo.app.home.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -10,14 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.springpojo.app.DTO.Join;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 import com.springpojo.app.service.MypageService;
 
 @Controller
 public class MypageController {
-	Join join = new Join();
    private final MypageService mypageService;
    private final MypageRepository mypageRepository;
 
@@ -29,7 +30,7 @@ public class MypageController {
 
 	// 마이페이지 처음 불러오는거
 	@GetMapping("/mypage/{userId}")
-	public String mypage(@PathVariable String userId, Model model, Long id) {
+	public String mypage(@PathVariable String userId, Model model, Long id, HttpSession session) {
 		System.out.println(userId);
 		Users users = mypageService.findById(userId);
 		
@@ -49,9 +50,7 @@ public class MypageController {
 		System.out.println("sellCon");
 		
 		// 낙찰 물품
-//		model.addAttribute("successfulBid", mypageService.successfulBid(userId));
-//		System.out.println("successfulBid");
-		model.addAttribute("successfulBid", mypageService.successfulBid(userId));
+		model.addAttribute("successfulBid", mypageService.successfulBid(session));
 		System.out.println("successfulBid");
 		
 		return "mypage/mypage";
