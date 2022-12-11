@@ -177,11 +177,13 @@ td {
 }
 
 .like {
-	border: 1px solid lightgray;
+/*	border: 1px solid lightgray;*/
 	padding: 10px;
 	width: 75%;
 	margin: 15% 0 10% 22%;
 }
+
+
 
 .like-list-1 a {
 	font-size: 12px;

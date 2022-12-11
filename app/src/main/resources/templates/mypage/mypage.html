@@ -3,294 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<th:block layout:fragment="css">
-	<link rel="stylesheet" th:href="@{/css/mypage.css}">
-</th:block>	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<th:block layout:fragment="css">
+		<link rel="stylesheet" th:href="@{/css/mypage.css}">
+	</th:block>
 </head>
 
 <body>
-	<th:block layout:fragment="content">
-	<!-- 전체디브  -->
-	<div class="test" style="padding: 10px;">
+   <th:block layout:fragment="content">
+   <!-- 전체디브  -->
+   <div class="test" style="padding: 10px;">
 
-		<!-- 선택바 예시  -->
-		<div class="menu" role="tablist">
-			<label for="expand-menu"><div>메뉴</div></label> <input type="checkbox"
-				id="expand-menu" name="expand-menu">
-			<ul>
-				<li><a href="#user" class="item" id="list-user-list"
-					data-toggle="list" role="tab" aria-controls="user"><div>회원정보
-							수정</div></a></li>
-				<li><a href="#sale" class="item" id="list-sale-list"
-					data-toggle="list" role="tab" aria-controls="sale"><div>판매
-							물품 등록 목록</div></a></li>
-				<li><a href="#success" class="item" id="list-success-list"
-					data-toggle="list" role="tab" aria-controls="success"><div>낙찰된
-							물품 목록</div></a></li>
-				<li><a href="#bid" class="item" id="list-bid-list"
-					data-toggle="list" role="tab" aria-controls="bid"><div>입찰중인
-							물건</div></a></li>
-				<li><a href="#like" class="item" id="list-like-list"
-					data-toggle="list" role="tab" aria-controls="like"><div>관심상품
-							목록</div></a></li>
-			</ul>
-		</div>
+      <!-- 선택바 예시  -->
+      <div class="menu" role="tablist">
+         <label for="expand-menu"><div>메뉴</div></label> <input type="checkbox"
+            id="expand-menu" name="expand-menu">
+         <ul>
+            <li><a href="#user" class="item" id="list-user-list"
+               data-toggle="list" role="tab" aria-controls="user"><div>회원정보
+                     수정</div></a></li>
+            <li><a href="#sale" class="item" id="list-sale-list"
+               data-toggle="list" role="tab" aria-controls="sale"><div>판매
+                     물품 등록 목록</div></a></li>
+            <li><a href="#success" class="item" id="list-success-list"
+               data-toggle="list" role="tab" aria-controls="success"><div>낙찰된
+                     물품 목록</div></a></li>
+            <li><a href="#bid" class="item" id="list-bid-list"
+               data-toggle="list" role="tab" aria-controls="bid" ><div>입찰중인
+                     물건</div></a></li>
+            <li><a href="#like" class="item" id="list-like-list"
+               data-toggle="list" role="tab" aria-controls="like"><div>관심상품
+                     목록</div></a></li>
+         </ul>
+      </div>
 
-		<!-- 회원정보  -->
-		<form method=post th:action="@{/mypage}">
-			<div class="singup_retoch" id="user">
-				<div class="singup_retoch_title">
-					<h2>회원정보 수정</h2>
-				</div>
-				<div class="singup_retoch_body">
-					<div class="textform" id="hj_idcheck">
-						<!-- 수정안되게 기능넣기 -->
-						<label class="hj_textColor" id="hj_textColor" for="UserId">아이디</label> <br>
-						<input type="text" class="hj_floating" id="UserId" name="UserId"
-						th:value="${users.UserId}" readonly>
-					</div>
-					<div class="textform">
-						<label class="hj_textColor" id="hj_textColor" for="UserPw">비밀번호</label><br>
-						<input type="password" class="hj_floating" id="UserPw" name="UserPw"
-						th:value="${users.UserPw}">
-					</div>
-					<div class="textform">
-						<label class="hj_textColor" id="hj_textColor" for="UserPw">비밀번호 확인</label><br>
-						<input type="password" class="hj_floating" id="UserPw" name="UserPw"
-						th:value="${users.UserPw}">
-					</div>
-					<div class="textform">
-						<label class="hj_textColor" id="hj_textColor" for="UserName">이름</label><br>
-						<input type="text" class="hj_floating" id="UserName" name="UserName"
-						th:value="${users.UserName}">
-					</div>
-					<div class="textform">
-						<!-- 수정안되게 기능넣기 -->
-						<label class="hj_textColor" id="hj_textColor" for="UserBirth">생년월일</label><br>
-						<input type="text" class="hj_floating" id="UserBirth" name="UserBirth"
-						th:value="${users.UserBirth}">
-					</div>
-					<div class="textform">
-						<label class="hj_textColor" id="hj_textColor" for="UserEmail">이메일</label><br>
-						<input type="text" class="hj_floating" id="UserEmail" name="UserEmail"
-						th:value="${users.UserEmail}">
-					</div>
-					<div class="textform">
-						<label class="hj_textColor" id="hj_textColor" for="UserPhone">전화번호</label><br>
-						<input type="text" class="hj_floating" id="UserPhone" name="UserPhone"
-						th:value="${user.UserPhone}">
-					</div>
+      <!-- 회원정보  -->
+       <form method=post th:action="@{/mypage/}+${session.userId}">
+         <div class="singup_retoch" id="user">
+            <div class="singup_retoch_title">
+               <h2>회원정보 수정</h2>
+            </div>
+            <div class="singup_retoch_body">
+               <div class="textform" id="hj_idcheck">
+                  <!-- 수정안되게 기능넣기 --> 
+                  <label class="hj_textColor" id="hj_textColor" for="UserId">아이디</label> <br>
+                  <input type="text" class="hj_floating" id="UserId" name="UserId"
+                  th:value="${users.userId}" readonly>
+               </div>
+               <div class="textform">
+                  <label class="hj_textColor" id="hj_textColor" for="UserPw">비밀번호</label><br>
+                  <input type="password" class="hj_floating" id="UserPw" name="UserPw"
+                  th:value="${users.userPw}"><br>
+                  <font id="chkNotice_P"></font>
+               </div>
+               <div class="textform">
+                  <label class="hj_textColor" id="hj_textColor" for="UserName">이름</label><br>
+                  <input type="text" class="hj_floating" id="UserName" name="UserName"
+                  th:value="${users.userName}"><br>
+                  <font id="chkNotice_N"></font>
+               </div>
+               <div class="textform">
+                  <label class="hj_textColor" id="hj_textColor" for="UserBirth">생년월일</label><br>
+                  <input type="text" class="hj_floating" id="UserBirth" name="UserBirth"
+                  th:value="${users.userBirth}" readonly>
+               </div>
+               <div class="textform">
+                  <label class="hj_textColor" id="hj_textColor" for="UserEmail">이메일</label><br>
+                  <input type="text" class="hj_floating" id="UserEmail" name="UserEmail"
+                  th:value="${users.userEmail}"><br>
+                  <font id="chkNotice_E"></font>
+               </div>
+               <div class="textform">
+                  <label class="hj_textColor" id="hj_textColor" for="UserPhone">전화번호</label><br>
+                  <input type="text" oninput="autoHyphen2(this)" maxlength="13" placeholder="전화번호를 입력해보세요!" class="hj_floating" id="UserPhone" name="UserPhone"
+                  th:value="${users.userPhone}">
+               </div>
 
-				</div>
-				<div class="singup_retoch_btn">
-					<button type="submit" class="retoch_btn" id="hj_btnColor">수정하기</button>
-					<button type="button" class="cancell_btn" id="hj_btnColor">취소하기</button>
-				</div>
-			</div>
-		</form>
-		
-		<!-- 새고로침되는 위치  -->
-		<div id="bid" role="tabpanel">
-			<section class="like">
-				<h1 style="text-align: center;">입찰중인 목록</h1>
-				<table class="like-list"
-					style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
-					<form>
-						<thead
-							style="text-align: center; font-weight: bold; background-color: black; color: white;">
-							<tr>
-								<td>상품사진</td>
-								<td>상품설명</td>
-								<td>판매자</td>
-								<td>경매 종료일</td>
-								<td>현재입찰가</td>
-							</tr>
-						</thead>
-						<tbody style="font-size: 12px;">
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-						</tbody>
-					</form>
-				</table>
-			</section>
-		</div>
+            </div>
+            <div class="singup_retoch_btn">
+               <button type="submit" class="retoch_btn" id="hj_btnColor" th:onclick="checkForm()">수정하기</button>
+               <button type="button" class="cancell_btn" id="hj_btnColor" th:onclick="|location.href='@{/delete.do}'|">탈퇴하기</button>
+            </div>
+         </div>
+      </form>
+      
+      <!-- 새고로침되는 위치  -->
+<!--      입찰중인 목록      -->
+      <div id="bid" role="tabpanel">
+         <section class="like">
+            <h1 style="text-align: center;">입찰중인 목록</h1>
+            <table class="like-list"
+               style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
+               <form>
+                  <thead
+                     style="text-align: center; font-weight: bold; background-color: black; color: white;">
+                     <tr>
+                        <td>상품사진</td>
+                        <td>상품명</td>
+                        <td>판매자</td>
+                        <td>경매 종료일</td>
+                        <td>현재 상품 입찰가</td>
+                     </tr>
+                  </thead>
+                  <tbody style="font-size: 130%;" th:each="bid , i : ${bid}" >
+                     <tr class="like-list-1">
+                        <td ><img th:src="|/upload/${bid.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
+                        <td th:text="${bid.productName}"></td>
+                        <td th:text="${bid.users.userId}"></td>
+                        <td th:text="${bid.endDate}"></td>
+                        <td th:text="${bid.productPrice}"></td>
+                     </tr>
+                  </tbody>
+               </form>
+            </table>
+         </section>
+      </div>
 
+<!--      관심상품 목록   -->
+      <div id="like" role="tabpanel">
+         <section class="like">
+            <h1 style="text-align: center;">관심상품 목록</h1>
+            <table class="like-list"
+               style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
+               <form>
+                  <thead
+                     style="text-align: center; font-weight: bold; background-color: black; color: white;">
+                     <tr>
+                        <td><input class="" type="checkbox" name="full"
+                           value="full" onclick='ListAll(this)'>&nbsp;&nbsp;&nbsp;&nbsp;상품사진</td>
+                        <td>상품이름</td>
+                        <td>판매자</td>
+                        <td>경매 종료일</td>
+                        <td>현재입찰가</td>
+                     </tr>
+                  </thead>
+                  <tbody style="font-size: 130%;" th:each="like , i : ${like}" >
+                     <tr class="like-list-1">
+                        <td ><img th:src="|/upload/${like.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
+                        <td th:text="${like.productName}"></td>
+                        <td th:text="${like.users.userId}"></td>
+                        <td th:text="${like.endDate}"></td>
+                        <td th:text="${like.productPrice}"></td>
+                     </tr>
+                  </tbody>
+               </form>
+            </table>
+            <div class="like-mainbtn">
+               <button class="like-mainbtn2 left">선택상품 삭제</button>
+               <button class="like-mainbtn2 right">전체상품 삭제</button>
+            </div>
+         </section>
+      </div>
 
+<!--   판매물품 등록목록-->
+      <div id="sale" role="tabpanel">
+         <section class="like">
+            <h1 style="text-align: center;">판매물품 등록목록</h1>
+            <table class="like-list"
+               style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
+               <form>
+                  <thead
+                     style="text-align: center; font-weight: bold; background-color: black; color: white;">
+                     <tr>
+                        <td>상품사진</td>
+                        <td>상품설명</td>
+                        <td>판매자</td>
+                        <td>경매 종료일</td>
+                        <td>현재입찰가</td>
+                     </tr>
+                  </thead>
+                  <tbody style="font-size: 130%;" th:each="sellProduct , i : ${sellProduct}" >
+                     <tr class="like-list-1">
+                        <td ><img th:src="|/upload/${sellProduct.id}|" alt="TV" style="width: 150px; height: 150px;"></td>
+                        <td th:text="${sellProduct.productName}"></td>
+                        <td th:text="${sellProduct.users.userId}"></td>
+                        <td th:text="${sellProduct.endDate}"></td>
+                        <td th:text="${sellProduct.productPrice}"></td>
+                     </tr>
+                  </tbody>
+               </form>
+            </table>
+         </section>
+      </div>
 
-		<div id="like" role="tabpanel">
-			<section class="like">
-				<h1 style="text-align: center;">관심상품 목록</h1>
-				<table class="like-list"
-					style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
-					<form>
-						<thead
-							style="text-align: center; font-weight: bold; background-color: black; color: white;">
-							<tr>
-								<td><input class="" type="checkbox" name="full"
-									value="full" onclick='ListAll(this)'></td>
-								<td>상품사진</td>
-								<td>상품설명</td>
-								<td>판매자</td>
-								<td>경매 종료일</td>
-								<td>현재입찰가</td>
-							</tr>
-						</thead>
-						<tbody style="font-size: 12px;">
-							<tr class="like-list-1">
-								<td><input class="" type="checkbox" name="one" value="1"
-									onclick='checkListAll()'></td>
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-							<tr class="like-list-1">
-								<td><input class="" type="checkbox" name="one" value="2"
-									onclick='checkListAll()'></td>
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-						</tbody>
-					</form>
-				</table>
-				<div class="like-mainbtn">
-					<button class="like-mainbtn2 left">선택상품 삭제</button>
-					<button class="like-mainbtn2 right">전체상품 삭제</button>
-				</div>
-			</section>
-		</div>
+<!--      낙찰된 물품목록-->
+      <div id="success" role="tabpanel">
+         <section class="like">
+            <h1 style="text-align: center;">낙찰된 물품목록</h1>
+            <table class="like-list"
+               style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
+               <form>
+                  <thead
+                     style="text-align: center; font-weight: bold; background-color: black; color: white;">
+                     <tr>
+                        <td>상품사진</td>
+                        <td>상품명</td>
+                        <td>판매자</td>
+                        <td>경매 종료일</td>
+                        <td>현재입찰가</td>
+                     </tr>
+                  </thead>
+                  <tbody style="font-size: 130%;" th:each="successfulBid, i: ${successfulBid}" >
+						<tr class="like-list-1">
+                        <td ><img th:src="|/upload/${successfulBid.id}|" style="width: 150px; height: 150px;"></td>
+                        <td th:text="${successfulBid.productName}"></td>
+                        <td th:text="${successfulBid.users.userId}"></td>
+                        <td th:text="${successfulBid.endDate}"></td>
+                        <td th:text="${successfulBid.productPrice}"></td>
+                     </tr>
+                  </tbody>
+               </form>
+            </table>
+         </section>
+      </div>
+   </div>
+   </th:block>
 
-		<div id="sale" role="tabpanel">
-			<section class="like">
-				<h1 style="text-align: center;">판매물품 등록목록</h1>
-				<table class="like-list"
-					style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
-					<form>
-						<thead
-							style="text-align: center; font-weight: bold; background-color: black; color: white;">
-							<tr>
-								<td>상품사진</td>
-								<td>상품설명</td>
-								<td>판매자</td>
-								<td>경매 종료일</td>
-								<td>현재입찰가</td>
-							</tr>
-						</thead>
-						<tbody style="font-size: 12px;">
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-						</tbody>
-					</form>
-				</table>
-			</section>
-		</div>
-
-		<div id="success" role="tabpanel">
-			<section class="like">
-				<h1 style="text-align: center;">낙찰된 물품목록</h1>
-				<table class="like-list"
-					style="border-top: solid 1.5px black; border-collapse: collapse; width: 80%; font-size: 14px; margin: 10% 10% 0 10%;">
-					<form>
-						<thead
-							style="text-align: center; font-weight: bold; background-color: black; color: white;">
-							<tr>
-								<td>상품사진</td>
-								<td>상품설명</td>
-								<td>판매자</td>
-								<td>경매 종료일</td>
-								<td>현재입찰가</td>
-							</tr>
-						</thead>
-						<tbody style="font-size: 12px;">
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-							<tr class="like-list-1">
-								<td><a href=""> <img
-										src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3329975%2F33299754009.jpg&type=a340"
-										alt="TV"></a></td>
-								<td><a href="#">TV입니다.
-										<p>이것은 TV입니다.</p>
-								</a></td>
-								<td>홍길동</td>
-								<td>2022-08-01</td>
-								<td>100만원</td>
-							</tr>
-						</tbody>
-					</form>
-				</table>
-			</section>
-		</div>
-	</div>
-	</th:block>
-
-	<th:block layout:fragment="script">
-		<script src="https://code.jquery.com/jquery-3.4.1.js"
-		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
-		<script type="text/javascript" th:src="@{/js/mypage.js}"></script>
-	</th:block>	
+   <th:block layout:fragment="script">
+      <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+      <script type="text/javascript" th:src="@{/js/mypage.js}"></script>
+   </th:block>   
 </body>
 </html>

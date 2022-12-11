@@ -11,6 +11,9 @@
 </head>
 <body>
 	<th:block layout:fragment="content">
+	<input type="hidden" id="userId" th:value="${session.userId}">
+	<input type="hidden" id="id" th:value="${product.id}">
+	<input type="hidden" id="msg" th:value="${msg}">
 		<div class="bg_color">
 			<div class="devideContainer"></div>
 			<div class="productContainer">
@@ -38,7 +41,8 @@
 										readonly>
 								</div>
 								<div class="productCeller">
-									판매자 : <a class="cellerName" href="#">ooo</a>
+									<!-- 에러날 경우 input 태그 사용 -->
+									판매자 : <a class="cellerName" href="#" th:text="${product.productCeller}"></a>
 								</div>
 							</div>
 							<!-- 카운트다운 박스 -->
@@ -84,12 +88,20 @@
 							<div class="func_btn">
 								<button type="button" class="likeList_btn btn_group2">찜
 									목록</button>
-								<button type="button" class="like_btn btn_group2"
+								<button type="button" id="like_btn" class="like_btn btn_group2"
 									th:onclick="imgToggle()">
+									<th:block th:if="${likeChk == 'Y'}">
 									<div class="like_line">
-										<img id="like_off" th:src="@{img/likeoff.png}"> <span
-											th:value="0">0</span>
+										<img id="like_off" th:src="@{img/likeon.png}">
+										 <span id="likeCnt" th:text="${likeCnt}"></span>
 									</div>
+									</th:block>
+									<th:block th:if="${likeChk == 'N'}">
+									<div class="like_line">
+										<img id="like_off" th:src="@{img/likeoff.png}">
+										 <span id="likeCnt" th:text="${likeCnt}"></span>
+									</div>
+									</th:block>
 								</button>
 							</div>
 						</div>
@@ -105,7 +117,7 @@
 						</div>
 					</div>
 					<div class="list_btn_box">
-						<button type="button" class="productList" th:onclick="|location.href='@{/productList}'|">목록</button>
+						<button type="button" class="productList" th:onclick="|location.href='@{/productList?productCategory=Fashion}'|">목록</button>
 					</div>
 				</div>
 			</div>
@@ -114,62 +126,6 @@
 
 	<th:block layout:fragment="script">
 		<script type="text/javascript" th:src="@{/js/product.js}"></script>
- <!-- 		<script> 
-			function remindTime(){
-				var end = document.getElementById('endDate').value;
-				var dday = new Date(end).getTime();
-				var now = new Date().getTime();
-				console.log("end" + end);
-				console.log("dday : " + dday);
-				console.log("now" + now);
-
-
-				 $(".time").fadeIn();
-			     sec = parseInt(dday - now) / 1000;
-			     day  = parseInt(sec/60/60/24);
-			     sec = (sec - (day * 60 * 60 * 24));
-			     hour = parseInt(sec/60/60);
-			     sec = (sec - (hour*60*60));
-			     min = parseInt(sec/60);
-			     sec = parseInt(sec-(min*60));
-			     if(hour<10){hour="0"+hour;}
-			     if(min<10){min="0"+min;}
-			     if(sec<10){sec="0"+sec;}
-			      $(".day").html(day);
-			      $(".hours").html(hour);
-			      $(".minutes").html(min);
-			      $(".seconds").html(sec);
-			      
-			 }
-			      
-			 setInterval(remindTime,1000);
-			      function remindTime(){
-			    	  
-			    	    var now = new Date();
-			    	    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),23,30,00);
-			    	  
-			    	    var nt = now.getTime();
-			    	    var et = end.getTime();
-			    	  
-			    	  $(".time").fadeIn();
-			    	     sec =parseInt(et - nt) / 1000;
-			    	     day  = parseInt(sec/60/60/24);
-			    	     sec = (sec - (day * 60 * 60 * 24));
-			    	     hour = parseInt(sec/60/60);
-			    	     sec = (sec - (hour*60*60));
-			    	     min = parseInt(sec/60);
-			    	     sec = parseInt(sec-(min*60));
-			    	     if(hour<10){hour="0"+hour;}
-			    	     if(min<10){min="0"+min;}
-			    	     if(sec<10){sec="0"+sec;}
-			    	      $(".hours").html(hour);
-			    	      $(".minutes").html(min);
-			    	      $(".seconds").html(sec);
-			    	 }
-			      
-			   	setInterval(remindTime,1000);
-			   
-		</script>	-->
 	</th:block>
 </body>
 </html>

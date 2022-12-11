@@ -1,16 +1,51 @@
-var cnt = 1;
+var msg = document.getElementById("msg").value;
+if(msg === "fail"){
+	alert('판매자는 입찰할 수 없습니다.');
+}
+var likeChk;
+var likeImg = document.getElementById("like_off");
+
+function likeChks(){
+	if(likeChk == "Y"){
+		likeImg.src="img/likeon.png";
+	}else {
+		likeImg.src="img/likeoff.png";
+	}
+}
 
 function imgToggle(){
-
 	var img1 = document.getElementById("like_off");
+	var userId= document.getElementById("userId").value;
+	var id= document.getElementById("id").value;
+	$.ajax({
+		type:"POST",
+		url:"/updateLike/"+id,
+		data:{userId: userId},
+		success: function(data){
+			if(data == 1){
+				img1.src="img/likeoff.png";
+				likeChk = "Y";
+			} else {
+				img1.src="img/likeon.png";
+				likeChk = "N";
+			}
+	$.ajax({
+		type:"GET",
+		url:"/updateLike/"+id,
+		data:{userId: userId},
+		async: false,
+		success: function(data){
+			$('#likeCnt').text(data);
+			console.log("likeCnt Test" + data);
+		}
+	})
+		}
+		
+	})
 	
-	if(cnt%2 == 1){
-		img1.src="img/likeon.png";
-	}else{
-		img1.src="img/likeoff.png";
-		}
-		cnt++;
-		}
+	
+	
+}
 		
 function chk_price(){
 	var p1 = document.getElementById('startPrice').value;

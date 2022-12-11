@@ -1,11 +1,18 @@
 package com.springpojo.app.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springpojo.app.DTO.CartList;
+import com.springpojo.app.DTO.Product;
 import com.springpojo.app.DTO.Users;
 import com.springpojo.app.repository.MypageRepository;
 
@@ -15,41 +22,45 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class MypageService {
-	
+
+	private LocalDateTime local = LocalDateTime.now();;
+
 	private final MypageRepository mypageRepository;
 
-	public Long updateUser(Users updateParam) {
-		mypageRepository.save(updateParam);
-		return updateParam.getId();
+	public Users findById(String userId) {
+		System.out.println(userId);
+		return mypageRepository.findById(userId);
 	}
-	
-	public Users findById(Long id) {
-		return mypageRepository.findById(id);
+
+	// 회원탈퇴
+	public int delete(HttpSession session, String userId) throws Exception {
+		return mypageRepository.delete(session, userId);
 	}
-	
-	// 입찰목록조회
-	public CartList getcart(Long BidJoinNum, Long userid){
-		return mypageRepository.getcart(BidJoinNum,userid);
+
+	// 상품 호출(입찰중인 물건)
+	public List<Product> bid(String userId) {
+		System.out.println("2222");
+		return mypageRepository.bid(userId);
 	}
-	
-//	// 아래는 개발대기예정 안할확률높음
-//	/* 카트 추가 */
-//	public int addCart(CartList cartList) {
-//		return 0;
-//	}
-//	
-//	/* 카트 삭제 */
-//	public int deleteCart(int cartId) {
-//		return 0;
-//	}
-//	
-//	/* 카트 수량 수정 */
-//	public int modifyCount(CartList cartList) {
-//		return 0;
-//	}
-//	
-//	/* 카트 확인 */
-//	public CartList checkCart(CartList cartList) {
-//		return null;
-//	}
+
+	// 관심 상품
+	public List<Product> like(String userId) {
+		System.out.println("likeSE");
+		return mypageRepository.like(userId);
+	}
+
+	// 판매물품
+	public List<Product> sellProduct(String userId) {
+		System.out.println("sellSE");
+		return mypageRepository.sellProduct(userId);
+	}
+
+	// 낙찰물품
+
+	public List<Product> successfulBid(HttpSession session){
+		System.out.println("낙찰 서비스");
+		
+		return mypageRepository.successfulBid(session);
+	}
+
 }
