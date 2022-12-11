@@ -56,13 +56,23 @@
 			</div>
 			<div id="popular-product-list-fashion-beauty"
 				class="popular-product-menu">
-				<th:block th:each="num: ${#numbers.sequence(1,6)}">
-					<div class="popular-product-list">
-						<img class="popular-product-img" alt="popular-product-img"
-							src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg">
-						<div class="popular-product-name">상품 이름</div>
-						<div class="popular-product-about">현재 입찰 인원</div>
-						<div class="popular-product-price">현재 입찰가</div>
+<!-- 				<th:block th:each="num: ${#numbers.sequence(1,6)}"> -->
+<!-- 					<div class="popular-product-list"> -->
+<!-- 						<img class="popular-product-img" alt="popular-product-img" -->
+<!-- 							src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg"> -->
+<!-- 						<div class="popular-product-name">상품 이름</div> -->
+<!-- 						<div class="popular-product-about">현재 입찰 인원</div> -->
+<!-- 						<div class="popular-product-price">현재 입찰가</div> -->
+<!-- 					</div> -->
+<!-- 				</th:block> -->
+				<th:block th:each="product: ${productList.sequence(1,6)}">
+					<div class="popular-product-list" th:onclick="|location.href='@{product/{id}(id=${product.id})}'|">
+						<img class="productList_contents_img"
+								alt="productList_contents_img"
+								th:src="|/upload/${product.id}| ">
+						<div class="productList_contents_name" th:text="${product.productName}">상품 이름</div>
+						<div class="productList_contents_about" th:text="${product.endDate}">경매 종료일자</div>
+						<div class="productList_contents_price" th:text="${product.productPrice} + 원">현재 입찰가</div>
 					</div>
 				</th:block>
 			</div>
